@@ -3,10 +3,7 @@ on:
   push:
     branches:
       - main
-      - "test/**"
   pull_request:
-    branches:
-      - main
   workflow_dispatch:
 
 jobs:
@@ -16,31 +13,9 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: "Install devcontainer CLI"
-        run: |
-          npm install -g @devcontainers/cli
+        run: npm install -g @devcontainers/cli
 
-      - name: "Test git-extended feature (default options)"
-        run: |
-          devcontainer features test  --base-image "mcr.microsoft.com/devcontainers/base:ubuntu"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: "Test git-extended scenarios"
-        if: success()
-        run: |
-          cd test/git-extended
-          for scenario in $(cat scenarios.json | jq -r 'keys[]'); do
-            echo "Running scenario: $scenario"
-            devcontainer features test ../../src/git-extended \
-              --base-image $(jq -r ".[\"$scenario\"].image" scenarios.json) \
-              --features-json "$(jq -c ".[\"$scenario\"].features[\"git-extended\"]" scenarios.json)"
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: "Test on Debian base image"
-        if: success()
-        run: |
-          devcontainer features test ./src/git-extended --base-image "mcr.microsoft.com/devcontainers/base:debian"
+      - name: "Test git-extended feature"
+        run: devcontainer features test .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -8,17 +8,37 @@ INSTALL_GCR_FUNCTION=${INSTALLGCRFUNCTION:-true}
 INSTALL_GWR_FUNCTION=${INSTALLGWRFUNCTION:-true}
 ENABLE_POST_CHECKOUT=${ENABLEPOSTCHECKOUT:-true}
 
-# User environment
-REMOTE_USER_HOME="${_REMOTE_USER_HOME:-/home/vscode}"
-CONTAINER_USER_HOME="${_CONTAINER_USER_HOME:-/home/vscode}"
+# User environment - handle test and real container scenarios
+if [ -n "${_REMOTE_USER_HOME}" ]; then
+    REMOTE_USER_HOME="${_REMOTE_USER_HOME}"
+elif [ -n "${_CONTAINER_USER_HOME}" ]; then
+    REMOTE_USER_HOME="${_CONTAINER_USER_HOME}"
+elif [ -n "${USER}" ] && [ -d "/home/${USER}" ]; then
+    REMOTE_USER_HOME="/home/${USER}"
+elif [ -d "/home/vscode" ]; then
+    REMOTE_USER_HOME="/home/vscode"
+elif [ -d "/home/node" ]; then
+    REMOTE_USER_HOME="/home/node"
+else
+    REMOTE_USER_HOME="${HOME:-/home/vscode}"
+fi
+
+# Detect if user is root and adjust
+if [ "$(id -u)" -eq 0 ] && [ -z "${_REMOTE_USER}" ]; then
+    # Running as root in build - use /home/vscode as default
+    REMOTE_USER_HOME="${REMOTE_USER_HOME:-/home/vscode}"
+fi
 
 # Detect shell profile files
+# Ensure the profile file exists
 if [ -n "$ZSH_VERSION" ] || [ -f "$REMOTE_USER_HOME/.zshrc" ]; then
     PROFILE="$REMOTE_USER_HOME/.zshrc"
     SHELL_TYPE="zsh"
+    [ ! -f "$PROFILE" ] && touch "$PROFILE"
 else
     PROFILE="$REMOTE_USER_HOME/.bashrc"
     SHELL_TYPE="bash"
+    [ ! -f "$PROFILE" ] && touch "$PROFILE"
 fi
 
 # Create directory for git-extended scripts
