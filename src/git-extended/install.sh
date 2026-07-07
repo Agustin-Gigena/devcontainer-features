@@ -48,8 +48,8 @@ mkdir -p "$GIT_EXTENDED_DIR"
 # Write pm_detect.sh - Package manager auto-detection
 cat > "$GIT_EXTENDED_DIR/pm_detect.sh" << 'PM_DETECT_EOF'
 #!/bin/sh
-# pm_detect.sh - Detección Automática de Gestores de Paquetes
-# Ejecutar tras operaciones de git (checkout, clone, pull)
+# pm_detect.sh - Automatic Package Manager Detection
+# Run after git operations (checkout, clone, pull, etc.)
 
 PM_DETECTORS="
 npm:package.json:npm install --save-exact
@@ -62,7 +62,7 @@ cargo:Cargo.toml:cargo build
 
 run_pm_check() {
     REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
-        echo "[WARN] No es un repositorio git, omitiendo detección" >&2
+        echo "[WARN] Not a git repository, skipping package detection" >&2
         return 0
     }
     
@@ -72,20 +72,20 @@ run_pm_check() {
         
         if find "$REPO_ROOT" -maxdepth 3 -name "$DETECT_FILE" 2>/dev/null | grep -q .; then
             FOUND=1
-            echo "Detección: ${KEY} - ${INSTALL_CMD}"
+            echo "Detected: ${KEY} - ${INSTALL_CMD}"
             (cd "$REPO_ROOT" && eval "$INSTALL_CMD") || { 
-                echo "[ERROR] Falló: ${INSTALL_CMD}" >&2
+                echo "[ERROR] Failed: ${INSTALL_CMD}" >&2
                 continue
             }
         fi
     done
     
     if [ "$FOUND" -eq 1 ]; then
-        echo "Instalación de dependencias completada"
+        echo "Dependency installation completed"
     fi
 }
 
-# Ejecutar si se llama directamente
+# Run if called directly
 if [ "${1:-}" = "--run" ]; then
     run_pm_check
 fi
@@ -103,7 +103,7 @@ if [ "$INSTALL_GCR_FUNCTION" = "true" ] || [ "$INSTALL_GWR_FUNCTION" = "true" ];
     if [ "$INSTALL_GCR_FUNCTION" = "true" ]; then
         cat > "$GIT_EXTENDED_DIR/functions/gcr.sh" << 'GCR_EOF'
 # gcr - Git Checkout Remote
-# Uso: gcr <remote-branch> [nombre-rama-local]
+# Usage: gcr <remote-branch> [local-branch-name]
 gcr() {
     local REMOTE='origin'
     
@@ -149,8 +149,8 @@ GCR_EOF
     if [ "$INSTALL_GWR_FUNCTION" = "true" ]; then
         cat > "$GIT_EXTENDED_DIR/functions/gwr.sh" << 'GWR_EOF'
 # gwr - Git Worktree Remote
-# Crea un worktree nuevo basado en una rama remota
-# Uso: gwr <remote-branch> [nombre-worktree]
+# Creates a new worktree based on a remote branch
+# Usage: gwr <remote-branch> [worktree-name]
 gwr() {
     local REMOTE='origin'
     
@@ -216,7 +216,7 @@ if [ "$ENABLE_POST_CHECKOUT" = "true" ]; then
     
     cat > "$GLOBAL_HOOKS_DIR/post-checkout" << 'HOOK_EOF'
 #!/bin/sh
-# post-checkout hook - Auto package installation
+# post-checkout hook - Automatic package installation
 PREVIOUS_HEAD="$1"
 NEW_HEAD="$2"
 BRANCH_CHECKOUT="$3"
@@ -225,7 +225,7 @@ BRANCH_CHECKOUT="$3"
 [ "$BRANCH_CHECKOUT" != "1" ] && exit 0
 
 if [ -f /usr/local/git-extended/pm_detect.sh ]; then
-    echo ">>> git post-checkout: Detectando paquetes..."
+    echo ">>> git post-checkout: Detecting packages..."
     . /usr/local/git-extended/pm_detect.sh
     run_pm_check
 fi
