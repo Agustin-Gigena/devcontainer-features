@@ -56,6 +56,18 @@ Automatically install dependencies when switching branches.
 | `installGwrFunction` | `true` | Install the `gwr` shell function |
 | `enablePostCheckout` | `true` | Enable automatic package installation on git checkout |
 
+## Tests Included
+
+✅ **6 test scenarios** covering all option combinations
+✅ **Basic installation tests** - verifies all files and hooks
+✅ **Integration tests** - validates gcr/gwr/pm_detect functionality
+✅ **Multi-platform** - tests on Ubuntu and Debian base images
+
+Run tests locally:
+```bash
+devcontainer features test ./src/git-extended
+```
+
 ## Based on
 
 Git functions from [iyaki/dotfiles](https://github.com/iyaki/dotfiles/blob/main/.bash_functions)
@@ -63,3 +75,4 @@ Git functions from [iyaki/dotfiles](https://github.com/iyaki/dotfiles/blob/main/
 ---
 
 **Full documentation**: [src/git-extended/README.md](src/git-extended/README.md)
+**Test documentation**: [test/git-extended/README.md](test/git-extended/README.md)

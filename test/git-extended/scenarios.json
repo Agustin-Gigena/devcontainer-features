@@ -1,0 +1,52 @@
+{
+    "default_options": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "git-extended": {}
+        }
+    },
+    "all_features_enabled": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "git-extended": {
+                "installGcrFunction": true,
+                "installGwrFunction": true,
+                "enablePostCheckout": true
+            }
+        }
+    },
+    "only_gcr": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "git-extended": {
+                "installGcrFunction": true,
+                "installGwrFunction": false
+            }
+        }
+    },
+    "only_gwr": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "git-extended": {
+                "installGcrFunction": false,
+                "installGwrFunction": true
+            }
+        }
+    },
+    "all_disabled": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "git-extended": {
+                "installGcrFunction": false,
+                "installGwrFunction": false,
+                "enablePostCheckout": false
+            }
+        }
+    },
+    "debian_test": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "git-extended": {}
+        }
+    }
+}
