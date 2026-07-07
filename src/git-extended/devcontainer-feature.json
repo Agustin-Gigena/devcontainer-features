@@ -1,0 +1,27 @@
+{
+    "name": "Git Extended",
+    "id": "git-extended",
+    "version": "1.0.0",
+    "description": "Git workflow extensions with automatic package manager detection and remote branch checkout helpers",
+    "documentationURL": "https://github.com/devcontainers/features/tree/main/src/git-extended",
+    "options": {
+        "installGcrFunction": {
+            "type": "boolean",
+            "default": true,
+            "description": "Install the gcr (Git Checkout Remote) shell function"
+        },
+        "installGwrFunction": {
+            "type": "boolean",
+            "default": true,
+            "description": "Install the gwr (Git Worktree Remote) shell function"
+        },
+        "enablePostCheckout": {
+            "type": "boolean",
+            "default": true,
+            "description": "Enable automatic package installation on git checkout"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
