@@ -21,7 +21,7 @@ jobs:
 
       - name: "Test git-extended feature (default options)"
         run: |
-          devcontainer features test ./src/git-extended --base-image "mcr.microsoft.com/devcontainers/base:ubuntu"
+          devcontainer features test  --base-image "mcr.microsoft.com/devcontainers/base:ubuntu"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
