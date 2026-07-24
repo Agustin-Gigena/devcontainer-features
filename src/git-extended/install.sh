@@ -67,25 +67,27 @@ run_pm_check() {
     }
     
     FOUND=0
-    echo "$PM_DETECTORS" | while IFS=: read -r KEY DETECT_FILE INSTALL_CMD; do
+    while IFS=: read -r KEY DETECT_FILE INSTALL_CMD; do
         [ -z "$KEY" ] && continue
-        
+
         if find "$REPO_ROOT" -maxdepth 3 -name "$DETECT_FILE" 2>/dev/null | grep -q .; then
             FOUND=1
             echo "Detected: ${KEY} - ${INSTALL_CMD}"
-            (cd "$REPO_ROOT" && eval "$INSTALL_CMD") || { 
+            (cd "$REPO_ROOT" && eval "$INSTALL_CMD") || {
                 echo "[ERROR] Failed: ${INSTALL_CMD}" >&2
                 continue
             }
         fi
-    done
-    
+    done <<EOF
+$PM_DETECTORS
+EOF
+
     if [ "$FOUND" -eq 1 ]; then
         echo "Dependency installation completed"
     fi
 }
 
-# Run if called directly
+# Run if invoked directly with --run (CLI wrapper triggers this; internal sources pass no args)
 if [ "${1:-}" = "--run" ]; then
     run_pm_check
 fi
@@ -139,9 +141,11 @@ gcr() {
 }
 GCR_EOF
         
-        echo "" >> "$PROFILE"
-        echo "# Git Extended - gcr function" >> "$PROFILE"
-        echo ". $GIT_EXTENDED_DIR/functions/gcr.sh" >> "$PROFILE"
+        if ! grep -q "Git Extended - gcr function" "$PROFILE"; then
+            echo "" >> "$PROFILE"
+            echo "# Git Extended - gcr function" >> "$PROFILE"
+            echo ". $GIT_EXTENDED_DIR/functions/gcr.sh" >> "$PROFILE"
+        fi
         echo "gcr function installed in $PROFILE"
     fi
     
@@ -200,9 +204,11 @@ gwr() {
 }
 GWR_EOF
         
-        echo "" >> "$PROFILE"
-        echo "# Git Extended - gwr function" >> "$PROFILE"
-        echo ". $GIT_EXTENDED_DIR/functions/gwr.sh" >> "$PROFILE"
+        if ! grep -q "Git Extended - gwr function" "$PROFILE"; then
+            echo "" >> "$PROFILE"
+            echo "# Git Extended - gwr function" >> "$PROFILE"
+            echo ". $GIT_EXTENDED_DIR/functions/gwr.sh" >> "$PROFILE"
+        fi
         echo "gwr function installed in $PROFILE"
     fi
 fi
@@ -237,13 +243,16 @@ HOOK_EOF
     echo "  git config --global core.hooksPath $GLOBAL_HOOKS_DIR"
 fi
 
-# Copy scripts to user's home for easy access
-mkdir -p "$REMOTE_USER_HOME/bin"
-cp "$GIT_EXTENDED_DIR/pm_detect.sh" "$REMOTE_USER_HOME/bin/pm_detect"
-chmod +x "$REMOTE_USER_HOME/bin/pm_detect"
+# Install pm_detect CLI wrapper in standard PATH (sources the real script and runs pm detection)
+cat > "/usr/local/bin/pm_detect" << 'PM_DETECT_CLI_EOF'
+#!/bin/sh
+. /usr/local/git-extended/pm_detect.sh
+run_pm_check
+PM_DETECT_CLI_EOF
+chmod +x "/usr/local/bin/pm_detect"
 
 echo "git-extended feature installed successfully!"
-echo "  - pm_detect: $REMOTE_USER_HOME/bin/pm_detect"
+echo "  - pm_detect: /usr/local/bin/pm_detect"
 echo "  - gcr function: ${INSTALL_GCR_FUNCTION:-false}"
 echo "  - gwr function: ${INSTALL_GWR_FUNCTION:-false}"
 echo "  - post-checkout hook: ${ENABLE_POST_CHECKOUT:-false}"

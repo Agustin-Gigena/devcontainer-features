@@ -1,7 +1,7 @@
 {
     "name": "Git Extended",
     "id": "git-extended",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Git workflow extensions with automatic package manager detection and remote branch checkout helpers",
     "documentationURL": "https://github.com/devcontainers/features/tree/main/src/git-extended",
     "options": {
