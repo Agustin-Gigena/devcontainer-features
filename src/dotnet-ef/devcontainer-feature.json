@@ -1,0 +1,17 @@
+{
+    "name": "Dotnet EF",
+    "id": "dotnet-ef",
+    "version": "1.0.0",
+    "description": "Installs the dotnet-ef global tool for Entity Framework Core CLI operations",
+    "documentationURL": "https://github.com/devcontainers/features/tree/main/src/dotnet-ef",
+    "options": {
+        "version": {
+            "type": "string",
+            "default": "latest",
+            "description": "Version of dotnet-ef to install (e.g. '8.0.0', 'latest')"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/dotnet"
+    ]
+}
