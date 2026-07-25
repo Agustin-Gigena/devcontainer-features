@@ -18,8 +18,16 @@
         }
     },
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/iyaki/devcontainer-features/oh-my-pi": {
+            "installZsh": true,
+            "installOhMyZsh": true,
+            "setDefaultShell": true
+        }
     },
+    "mounts": [
+        "source=${env:HOME}/.omp,target=/root/.omp,type=bind,consistency=cached"
+    ],
     "remoteUser": "node",
     "updateContentCommand": "npm install -g @devcontainers/cli"
 }
