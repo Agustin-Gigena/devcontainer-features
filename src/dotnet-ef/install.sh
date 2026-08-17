@@ -14,11 +14,7 @@ if ! command -v dotnet > /dev/null 2>&1; then
     wget -q https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh
     chmod +x /tmp/dotnet-install.sh
 
-    if [ "$DOTNET_SDK_VERSION" = "latest" ]; then
-        /tmp/dotnet-install.sh --channel latest
-    else
-        /tmp/dotnet-install.sh --version "$DOTNET_SDK_VERSION"
-    fi
+    /tmp/dotnet-install.sh --version "$DOTNET_SDK_VERSION"
     rm -f /tmp/dotnet-install.sh
 
     DOTNET_ROOT="$HOME/.dotnet"
