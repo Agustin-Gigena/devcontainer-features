@@ -11,15 +11,15 @@ if ! command -v dotnet > /dev/null 2>&1; then
     echo "dotnet SDK not found. Installing..."
 
     apt-get update
-    apt-get install -y wget libicu-dev libssl-dev
+    apt-get install -y wget libicu-dev
 
     wget -q https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh
     chmod +x /tmp/dotnet-install.sh
-    /tmp/dotnet-install.sh --channel 8.0
+    /tmp/dotnet-install.sh --channel 8.0 --install-dir /usr/share/dotnet
     rm -f /tmp/dotnet-install.sh
 
-    DOTNET_ROOT="$HOME/.dotnet"
-    export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
+    ln -sf /usr/share/dotnet/dotnet /usr/local/bin/dotnet
+    export DOTNET_ROOT=/usr/share/dotnet
 fi
 
 # Install dotnet-ef global tool
