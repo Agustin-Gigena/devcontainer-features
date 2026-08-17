@@ -6,10 +6,29 @@ echo "Activating feature 'dotnet-ef'"
 # Environment variables from options (set by dev container CLI)
 DOTNET_EF_VERSION=${VERSION:-latest}
 
-# Verify dotnet SDK is available
+# Install dotnet SDK if not present
 if ! command -v dotnet > /dev/null 2>&1; then
-    echo "Error: dotnet SDK not found. Install it first with the dotnet feature."
-    exit 1
+    echo "dotnet SDK not found. Installing..."
+    apt-get update && apt-get install -y wget
+    wget -q https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh
+    chmod +x /tmp/dotnet-install.sh
+    /tmp/dotnet-install.sh --channel 8.0
+    rm -f /tmp/dotnet-install.sh
+
+    DOTNET_ROOT="$HOME/.dotnet"
+    export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
+
+    PROFILE_FILE=""
+    if [ -f "$HOME/.bashrc" ]; then
+        PROFILE_FILE="$HOME/.bashrc"
+    elif [ -f "$HOME/.profile" ]; then
+        PROFILE_FILE="$HOME/.profile"
+    fi
+    if [ -n "$PROFILE_FILE" ]; then
+        if ! grep -q '.dotnet' "$PROFILE_FILE" 2>/dev/null; then
+            echo "export PATH=\"\$PATH:${DOTNET_ROOT}:${DOTNET_ROOT}/tools\"" >> "$PROFILE_FILE"
+        fi
+    fi
 fi
 
 # Install dotnet-ef global tool
@@ -41,11 +60,3 @@ fi
 
 # Also export for current session
 export PATH="$PATH:$TOOLS_DIR"
-
-# Verify installation
-if command -v dotnet-ef > /dev/null 2>&1; then
-    INSTALLED_VERSION=$(dotnet-ef --version 2>/dev/null || echo "unknown")
-    echo "dotnet-ef installed successfully! Version: ${INSTALLED_VERSION}"
-else
-    echo "dotnet-ef installed to ${TOOLS_DIR}. You may need to restart your shell."
-fi
