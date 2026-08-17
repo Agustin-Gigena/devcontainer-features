@@ -9,11 +9,17 @@ DOTNET_EF_VERSION=${VERSION:-latest}
 # Install dotnet SDK if not present
 if ! command -v dotnet > /dev/null 2>&1; then
     echo "dotnet SDK not found. Installing..."
-    apt-get update && apt-get install -y wget apt-transport-https
-    wget -q https://packages.microsoft.com/config/ubuntu/$(. /etc/os-release && echo "$VERSION_ID")/packages-microsoft-prod.deb -O /tmp/packages-microsoft-prod.deb
-    dpkg -i /tmp/packages-microsoft-prod.deb
-    apt-get update && apt-get install -y dotnet-sdk-8.0
-    rm -f /tmp/packages-microsoft-prod.deb
+
+    apt-get update
+    apt-get install -y wget libicu-dev
+
+    wget -q https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh
+    chmod +x /tmp/dotnet-install.sh
+    /tmp/dotnet-install.sh --channel 8.0
+    rm -f /tmp/dotnet-install.sh
+
+    DOTNET_ROOT="$HOME/.dotnet"
+    export PATH="$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools"
 fi
 
 # Install dotnet-ef global tool
