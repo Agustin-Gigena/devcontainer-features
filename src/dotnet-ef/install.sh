@@ -5,6 +5,7 @@ echo "Activating feature 'dotnet-ef'"
 
 # Environment variables from options (set by dev container CLI)
 DOTNET_EF_VERSION=${VERSION:-latest}
+DOTNET_SDK_VERSION=${DOTNETSDKVERSION:-latest}
 
 # Install dotnet SDK if not present
 if ! command -v dotnet > /dev/null 2>&1; then
@@ -12,7 +13,12 @@ if ! command -v dotnet > /dev/null 2>&1; then
     apt-get update && apt-get install -y wget
     wget -q https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh
     chmod +x /tmp/dotnet-install.sh
-    /tmp/dotnet-install.sh --channel 8.0
+
+    if [ "$DOTNET_SDK_VERSION" = "latest" ]; then
+        /tmp/dotnet-install.sh --channel latest
+    else
+        /tmp/dotnet-install.sh --version "$DOTNET_SDK_VERSION"
+    fi
     rm -f /tmp/dotnet-install.sh
 
     DOTNET_ROOT="$HOME/.dotnet"
