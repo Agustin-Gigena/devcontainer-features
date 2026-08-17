@@ -15,7 +15,7 @@ if ! command -v dotnet > /dev/null 2>&1; then
 
     wget -q https://dot.net/v1/dotnet-install.sh -O /tmp/dotnet-install.sh
     chmod +x /tmp/dotnet-install.sh
-    /tmp/dotnet-install.sh --channel 8.0 --install-dir /usr/share/dotnet
+    /tmp/dotnet-install.sh --channel 9.0 --install-dir /usr/share/dotnet
     rm -f /tmp/dotnet-install.sh
 
     ln -sf /usr/share/dotnet/dotnet /usr/local/bin/dotnet
