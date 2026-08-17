@@ -5,7 +5,6 @@ echo "Activating feature 'git-extended'"
 
 INSTALL_GCR_FUNCTION="${INSTALLGCRFUNCTION:-true}"
 INSTALL_GWR_FUNCTION="${INSTALLGWRFUNCTION:-true}"
-ENABLE_POST_CHECKOUT="${ENABLEPOSTCHECKOUT:-true}"
 
 GIT_EXTENDED_DIR="/usr/local/git-extended"
 mkdir -p "$GIT_EXTENDED_DIR/functions"
@@ -113,6 +112,12 @@ gwr() {
 GWR_EOF
 fi
 
+if [ -f "$GIT_EXTENDED_DIR/pm_detect.sh" ]; then
+    echo ">>> Running initial package detection..."
+    . "$GIT_EXTENDED_DIR/pm_detect.sh"
+    run_pm_check
+fi
+
 PROFILE_SCRIPT="/etc/profile.d/git-extended.sh"
 cat > "$PROFILE_SCRIPT" << 'PROFILE_EOF'
 # Git Extended Functions Loading
@@ -123,30 +128,6 @@ if [ -d "/usr/local/git-extended/functions" ]; then
 fi
 PROFILE_EOF
 chmod +x "$PROFILE_SCRIPT"
-
-if [ "$ENABLE_POST_CHECKOUT" = "true" ]; then
-    GLOBAL_HOOKS_DIR="$GIT_EXTENDED_DIR/hooks"
-    mkdir -p "$GLOBAL_HOOKS_DIR"
-
-    cat > "$GLOBAL_HOOKS_DIR/post-checkout" << 'HOOK_EOF'
-#!/bin/sh
-PREVIOUS_HEAD="$1"
-NEW_HEAD="$2"
-BRANCH_CHECKOUT="$3"
-
-[ "$BRANCH_CHECKOUT" != "1" ] && exit 0
-
-if [ -f /usr/local/git-extended/pm_detect.sh ]; then
-    echo ">>> git post-checkout: Detecting packages..."
-    . /usr/local/git-extended/pm_detect.sh
-    run_pm_check
-fi
-HOOK_EOF
-
-    chmod +x "$GLOBAL_HOOKS_DIR/post-checkout"
-
-    git config --system core.hooksPath "$GLOBAL_HOOKS_DIR" || true
-fi
 
 cat > "/usr/local/bin/pm_detect" << 'PM_DETECT_CLI_EOF'
 #!/bin/sh

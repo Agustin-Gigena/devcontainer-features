@@ -20,19 +20,10 @@ check "gcr function source file exists" test -f /usr/local/git-extended/function
 echo "--- Testing gwr function ---"
 check "gwr function source file exists" test -f /usr/local/git-extended/functions/gwr.sh
 
-# Test post-checkout hook
-echo "--- Testing post-checkout hook ---"
-check "post-checkout hook exists" test -f /usr/local/git-extended/hooks/post-checkout
-check "post-checkout hook is executable" test -x /usr/local/git-extended/hooks/post-checkout
-
 # Test profile.d loading (not user shell rc injection)
 echo "--- Testing profile.d loading ---"
 check "profile.d script exists" test -f /etc/profile.d/git-extended.sh
 check "profile.d script is executable" test -x /etc/profile.d/git-extended.sh
-
-# Test system git config for hooks
-echo "--- Testing git system config ---"
-check "git core.hooksPath is configured system-wide" git config --system --get core.hooksPath
 
 echo "=== All tests passed! ==="
 

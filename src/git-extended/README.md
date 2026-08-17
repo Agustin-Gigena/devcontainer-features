@@ -17,7 +17,6 @@ Git workflow extensions with automatic package manager detection and remote bran
 |-----|-----|-----|-----|
 | installGcrFunction | Install the gcr (Git Checkout Remote) shell function | boolean | true |
 | installGwrFunction | Install the gwr (Git Worktree Remote) shell function | boolean | true |
-| enablePostCheckout | Enable automatic package installation on git checkout | boolean | true |
 
 
 

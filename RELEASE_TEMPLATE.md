@@ -32,7 +32,7 @@ Automatically detects and installs dependencies for:
 - Cargo (`Cargo.toml`)
 
 ### Post-Checkout Hook
-Automatically install dependencies when switching branches.
+Use `gcr` or `gwr` functions which automatically install dependencies after checkout.
 
 ## Usage
 
@@ -41,8 +41,7 @@ Automatically install dependencies when switching branches.
     "features": {
         "ghcr.io/YOUR_USERNAME/devcontainer-features/git-extended:1": {
             "installGcrFunction": true,
-            "installGwrFunction": true,
-            "enablePostCheckout": true
+            "installGwrFunction": true
         }
     }
 }
@@ -54,7 +53,6 @@ Automatically install dependencies when switching branches.
 |--------|---------|-------------|
 | `installGcrFunction` | `true` | Install the `gcr` shell function |
 | `installGwrFunction` | `true` | Install the `gwr` shell function |
-| `enablePostCheckout` | `true` | Enable automatic package installation on git checkout |
 
 ## Tests Included
 

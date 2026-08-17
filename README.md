@@ -12,7 +12,6 @@ Git workflow enhancements with automatic package manager detection and dependenc
 - `gcr` - Git Checkout Remote: Checkout remote branches with automatic dependency installation
 - `gwr` - Git Worktree Remote: Create Git worktrees from remote branches with VS Code integration
 - `pm_detect` - Auto-detect and install dependencies for npm, Composer, .NET, Bundler, and Cargo
-- Post-checkout hook: Automatically install dependencies on every branch checkout
 
 **Example Usage:**
 ```jsonc
@@ -21,8 +20,7 @@ Git workflow enhancements with automatic package manager detection and dependenc
     "features": {
         "ghcr.io/Agustin-Gigena/devcontainer-features/git-extended:1": {
             "installGcrFunction": true,
-            "installGwrFunction": true,
-            "enablePostCheckout": true
+            "installGwrFunction": true
         }
     }
 }
@@ -34,7 +32,6 @@ Git workflow enhancements with automatic package manager detection and dependenc
 |--------|------|---------|-------------|
 | `installGcrFunction` | boolean | `true` | Install the `gcr` shell function |
 | `installGwrFunction` | boolean | `true` | Install the `gwr` shell function |
-| `enablePostCheckout` | boolean | `true` | Enable automatic package installation on git checkout |
 
 📚 [Full Documentation](src/git-extended/README.md)
 
