@@ -13,6 +13,9 @@ if ! command -v git > /dev/null 2>&1; then
     apt-get update && apt-get install -y git
 fi
 
+mkdir -p /tmp/.X11-unix
+chmod 1777 /tmp/.X11-unix
+
 cat > "$GIT_EXTENDED_DIR/pm_detect.sh" << 'PM_DETECT_EOF'
 #!/bin/sh
 # pm_detect.sh - Automatic Package Manager Detection
