@@ -10,6 +10,10 @@ ENABLE_POST_CHECKOUT="${ENABLEPOSTCHECKOUT:-true}"
 GIT_EXTENDED_DIR="/usr/local/git-extended"
 mkdir -p "$GIT_EXTENDED_DIR/functions"
 
+if ! command -v git > /dev/null 2>&1; then
+    apt-get update && apt-get install -y git
+fi
+
 cat > "$GIT_EXTENDED_DIR/pm_detect.sh" << 'PM_DETECT_EOF'
 #!/bin/sh
 # pm_detect.sh - Automatic Package Manager Detection
