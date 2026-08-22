@@ -1,0 +1,25 @@
+{
+    "id": "dotnet-tools",
+    "version": "1.0.0",
+    "name": ".NET Global Tools",
+    "description": "Instala herramientas de .NET (ej. dotnet-ef, dotnet-stryker) de forma global para todos los usuarios.",
+    "options": {
+        "tools": {
+            "type": "string",
+            "proposals": [
+                "dotnet-ef",
+                "dotnet-stryker",
+                "csharpier",
+                "dotnet-outdated-tool"
+            ],
+            "default": "",
+            "description": "Lista separada por comas de herramientas .NET a instalar."
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/dotnet"
+    ],
+    "containerEnv": {
+        "PATH": "${PATH}:/usr/local/share/dotnet-tools"
+    }
+}

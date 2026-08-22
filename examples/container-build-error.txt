@@ -1,0 +1,1837 @@
+[2026-08-17T21:46:16.508Z] Dev Containers 0.466.0 in VS Code 1.131.0 (e4c7e7b1d6d060162f4aa7f8225271b67ce1df75).
+[2026-08-17T21:46:16.508Z] Start: Resolving Remote
+[2026-08-17T21:46:16.521Z] Setting up container for folder or workspace: /hdd/Linux/agigena/Repositorios/Enigma
+[2026-08-17T21:46:16.522Z] Host: unix:///run/user/1000/podman/podman.sock
+[2026-08-17T21:46:16.537Z] Start: Check Docker is running
+[2026-08-17T21:46:16.538Z] Start: Run: docker version
+[2026-08-17T21:46:16.551Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+
+[2026-08-17T21:46:16.558Z] Client:       Podman Engine
+Version:      6.0.2
+API Version:  6.0.2
+Go Version:   go1.26.5-X:nodwarf5
+Git Commit:   b28edb9ad70ce4317dc762ee9ce0a6d081d154e9
+Built:        Fri Jul 31 16:15:04 2026
+OS/Arch:      linux/amd64
+[2026-08-17T21:46:16.561Z] Stop (23 ms): Run: docker version
+[2026-08-17T21:46:16.561Z] Stop (24 ms): Check Docker is running
+[2026-08-17T21:46:16.563Z] Start: Run: docker volume ls -q
+[2026-08-17T21:46:16.601Z] Stop (38 ms): Run: docker volume ls -q
+[2026-08-17T21:46:16.602Z] Start: Run: docker ps -q -a --filter label=vsch.local.folder=/hdd/Linux/agigena/Repositorios/Enigma --filter label=vsch.quality=stable
+[2026-08-17T21:46:16.635Z] Stop (33 ms): Run: docker ps -q -a --filter label=vsch.local.folder=/hdd/Linux/agigena/Repositorios/Enigma --filter label=vsch.quality=stable
+[2026-08-17T21:46:16.636Z] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --filter label=devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json
+[2026-08-17T21:46:16.672Z] Stop (36 ms): Run: docker ps -q -a --filter label=devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --filter label=devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json
+[2026-08-17T21:46:16.673Z] Start: Run: docker inspect --type container 01cf68c65772
+[2026-08-17T21:46:16.713Z] Stop (40 ms): Run: docker inspect --type container 01cf68c65772
+[2026-08-17T21:46:16.715Z] Running Dev Containers CLI:   up --user-data-folder /home/agigena/.config/Code/User/globalStorage/ms-vscode-remote.remote-containers/data --container-session-data-folder /tmp/devcontainers-d8c70bb7-3b6a-44bb-a811-760cf71674021787003175732 --workspace-folder /hdd/Linux/agigena/Repositorios/Enigma --workspace-mount-consistency cached --gpu-availability detect --id-label devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --id-label devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json --log-level debug --log-format json --config /hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json --default-user-env-probe loginInteractiveShell --build-no-cache --remove-existing-container --mount type=volume,source=vscode,target=/vscode,external=true --skip-post-create --update-remote-user-uid-default on --mount-workspace-git-root --include-configuration --include-merged-configuration
+[2026-08-17T21:46:16.717Z] Start: Run: /usr/share/code/code /home/agigena/.vscode/extensions/ms-vscode-remote.remote-containers-0.466.0/dist/spec-node/devContainersSpecCLI.js up --user-data-folder /home/agigena/.config/Code/User/globalStorage/ms-vscode-remote.remote-containers/data --container-session-data-folder /tmp/devcontainers-d8c70bb7-3b6a-44bb-a811-760cf71674021787003175732 --workspace-folder /hdd/Linux/agigena/Repositorios/Enigma --workspace-mount-consistency cached --gpu-availability detect --id-label devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --id-label devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json --log-level debug --log-format json --config /hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json --default-user-env-probe loginInteractiveShell --build-no-cache --remove-existing-container --mount type=volume,source=vscode,target=/vscode,external=true --skip-post-create --update-remote-user-uid-default on --mount-workspace-git-root --include-configuration --include-merged-configuration
+[2026-08-17T21:46:16.866Z] @devcontainers/cli 0.88.0. Node.js v24.18.0. linux 7.1.6-1-cachyos x64.
+[2026-08-17T21:46:16.866Z] Start: Run: docker buildx version
+[2026-08-17T21:46:16.914Z] Stop (48 ms): Run: docker buildx version
+[2026-08-17T21:46:16.914Z] buildah 1.44.1
+[2026-08-17T21:46:16.914Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+
+[2026-08-17T21:46:16.914Z] Start: Run: docker -v
+[2026-08-17T21:46:16.930Z] Stop (16 ms): Run: docker -v
+[2026-08-17T21:46:16.930Z] Start: Run: docker version --format {{.Server.Version}}
+[2026-08-17T21:46:16.947Z] Stop (17 ms): Run: docker version --format {{.Server.Version}}
+[2026-08-17T21:46:16.947Z] 6.0.2
+[2026-08-17T21:46:16.947Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+
+[2026-08-17T21:46:16.947Z] Start: Resolving Remote
+[2026-08-17T21:46:16.951Z] Start: Run: git rev-parse --show-cdup
+[2026-08-17T21:46:16.956Z] Stop (5 ms): Run: git rev-parse --show-cdup
+[2026-08-17T21:46:16.958Z] Running the initializeCommand from devcontainer.json...
+
+[2026-08-17T21:46:16.958Z] Start: Run: /bin/sh -c bash .devcontainer/setup.sh
+[2026-08-17T21:46:16.976Z] 
+[2026-08-17T21:46:16.979Z] [21:46:16] setup: ─── Ensuring bind-mount sources exist ───
+[2026-08-17T21:46:16.983Z] [21:46:16] setup: OK: /home/agigena/.omp, /home/agigena/.config/gh
+
+[2026-08-17T21:46:16.983Z] [21:46:16] setup: ─── Ensuring podman rootless socket ───
+[2026-08-17T21:46:17.001Z] [21:46:17] setup: OK: socket /run/user/1000/podman/podman.sock
+[2026-08-17T21:46:17.001Z] 
+[2026-08-17T21:46:17.002Z] [21:46:17] setup: ─── Ensuring podman network enigma-dev-net ───
+[2026-08-17T21:46:17.073Z] [21:46:17] setup: OK: network enigma-dev-net
+[2026-08-17T21:46:17.074Z] [21:46:17] setup: setup complete
+[2026-08-17T21:46:17.075Z] Stop (117 ms): Run: /bin/sh -c bash .devcontainer/setup.sh
+[2026-08-17T21:46:17.075Z] 
+[2026-08-17T21:46:17.075Z] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --filter label=devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json
+[2026-08-17T21:46:17.115Z] Stop (40 ms): Run: docker ps -q -a --filter label=devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --filter label=devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json
+[2026-08-17T21:46:17.116Z] Start: Run: docker inspect --type container 01cf68c65772
+[2026-08-17T21:46:17.153Z] Stop (37 ms): Run: docker inspect --type container 01cf68c65772
+[2026-08-17T21:46:17.154Z] Start: Removing Existing Container
+[2026-08-17T21:46:17.154Z] Start: Run: docker rm -f 01cf68c65772eec6ef20d8ebee3d20d25f17b8013c5ace668bc411b419c9ec09
+[2026-08-17T21:46:17.260Z] Stop (106 ms): Run: docker rm -f 01cf68c65772eec6ef20d8ebee3d20d25f17b8013c5ace668bc411b419c9ec09
+[2026-08-17T21:46:17.260Z] Stop (106 ms): Removing Existing Container
+[2026-08-17T21:46:17.262Z] Start: Run: docker inspect --type image mcr.microsoft.com/dotnet/sdk:10.0
+[2026-08-17T21:46:17.304Z] Stop (42 ms): Run: docker inspect --type image mcr.microsoft.com/dotnet/sdk:10.0
+[2026-08-17T21:46:17.305Z] Resolving Feature dependencies for 'ghcr.io/devcontainers/features/node:2.1.0'...
+[2026-08-17T21:46:17.305Z] * Processing feature: ghcr.io/devcontainers/features/node:2.1.0
+[2026-08-17T21:46:17.307Z] Loading 122 extra certificates from /etc/ssl/certs/ca-certificates.crt.
+[2026-08-17T21:46:17.322Z] (node:146603) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+[2026-08-17T21:46:17.322Z] (Use `code --trace-deprecation ...` to show where the warning was created)
+[2026-08-17T21:46:17.611Z] Start: Run: docker-credential-secret get
+[2026-08-17T21:46:17.613Z] Stop (2 ms): Run: docker-credential-secret get
+[2026-08-17T21:46:17.615Z] Stop (4 ms): Run: docker-credential-secret get
+[2026-08-17T21:46:18.209Z] * Processing feature: ghcr.io/devcontainers/features/common-utils
+[2026-08-17T21:46:18.512Z] Resolving Feature dependencies for 'ghcr.io/iyaki/devcontainer-features/oh-my-pi:1'...
+[2026-08-17T21:46:18.512Z] * Processing feature: ghcr.io/iyaki/devcontainer-features/oh-my-pi:1
+[2026-08-17T21:46:18.806Z] * Processing feature: ghcr.io/devcontainers-extra/features/gh-release
+[2026-08-17T21:46:19.110Z] Resolving Feature dependencies for 'ghcr.io/iyaki/devcontainer-features/lefthook:2.0.1'...
+[2026-08-17T21:46:19.110Z] * Processing feature: ghcr.io/iyaki/devcontainer-features/lefthook:2.0.1
+[2026-08-17T21:46:19.392Z] Resolving Feature dependencies for 'ghcr.io/shyim/devcontainers-features/bun:0'...
+[2026-08-17T21:46:19.392Z] * Processing feature: ghcr.io/shyim/devcontainers-features/bun:0
+[2026-08-17T21:46:19.682Z] Resolving Feature dependencies for 'ghcr.io/agustin-gigena/devcontainer-features/git-extended:1.0.6'...
+[2026-08-17T21:46:19.682Z] * Processing feature: ghcr.io/agustin-gigena/devcontainer-features/git-extended:1.0.6
+[2026-08-17T21:46:20.018Z] * Processing feature: ghcr.io/devcontainers/features/common-utils
+[2026-08-17T21:46:20.313Z] * Processing feature: ghcr.io/agustin-gigena/devcontainer-features/git-extended:1.0.6
+[2026-08-17T21:46:20.628Z] * Processing feature: ghcr.io/shyim/devcontainers-features/bun:0
+[2026-08-17T21:46:20.951Z] * Processing feature: ghcr.io/iyaki/devcontainer-features/lefthook:2.0.1
+[2026-08-17T21:46:21.274Z] * Processing feature: ghcr.io/iyaki/devcontainer-features/oh-my-pi:1
+[2026-08-17T21:46:21.574Z] * Processing feature: ghcr.io/devcontainers/features/node:2.1.0
+[2026-08-17T21:46:21.857Z] Soft-dependency 'ghcr.io/devcontainers/features/common-utils' is not required.  Removing from installation order...
+[2026-08-17T21:46:21.857Z] Soft-dependency 'ghcr.io/devcontainers-extra/features/gh-release' is not required.  Removing from installation order...
+[2026-08-17T21:46:21.857Z] Soft-dependency 'ghcr.io/devcontainers/features/common-utils' is not required.  Removing from installation order...
+[2026-08-17T21:46:21.857Z] * Fetching feature: node_0_oci
+[2026-08-17T21:46:22.359Z] Files to omit: ''
+[2026-08-17T21:46:22.365Z] * Fetched feature: node_0_oci version 2.1.0
+[2026-08-17T21:46:22.365Z] * Fetching feature: oh-my-pi_1_oci
+[2026-08-17T21:46:22.853Z] Files to omit: ''
+[2026-08-17T21:46:22.855Z] * Fetched feature: oh-my-pi_1_oci version 1.0.0
+[2026-08-17T21:46:22.855Z] * Fetching feature: lefthook_2_oci
+[2026-08-17T21:46:23.352Z] Files to omit: ''
+[2026-08-17T21:46:23.353Z] * Fetched feature: lefthook_2_oci version 2.0.1
+[2026-08-17T21:46:23.353Z] * Fetching feature: bun_3_oci
+[2026-08-17T21:46:23.934Z] Files to omit: ''
+[2026-08-17T21:46:23.935Z] * Fetched feature: bun_3_oci version 0.0.1
+[2026-08-17T21:46:23.935Z] * Fetching feature: git-extended_4_oci
+[2026-08-17T21:46:24.457Z] Files to omit: ''
+[2026-08-17T21:46:24.457Z] * Fetched feature: git-extended_4_oci version 1.0.6
+[2026-08-17T21:46:24.459Z] Start: Run: getenforce 
+[2026-08-17T21:46:24.463Z] Stop (4 ms): Run: getenforce 
+[2026-08-17T21:46:24.463Z] Stop (4 ms): Run: getenforce 
+[2026-08-17T21:46:24.468Z] Start: Run: docker buildx build --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /tmp/devcontainercli-agigena/container-features/0.88.0-1787003177304/Dockerfile-with-features -t vsc-enigma-3cab906ea54f449fe6de7af6634ed9530b19690f99f0e0e9efb87e43acb0b772 --target dev_containers_target_stage --no-cache --pull --build-context dev_containers_feature_content_source=/tmp/devcontainercli-agigena/container-features/0.88.0-1787003177304 --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label --build-arg _DEV_CONTAINERS_IMAGE_USER=dotnet --build-arg _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE=dev_container_feature_content_temp /hdd/Linux/agigena/Repositorios/Enigma/.devcontainer
+[2026-08-17T21:46:24.472Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+[2026-08-17T21:46:24.498Z] [1/3] STEP 1/6: FROM mcr.microsoft.com/dotnet/sdk:10.0 AS dev_container_auto_added_stage_label
+[2026-08-17T21:46:24.503Z] Trying to pull mcr.microsoft.com/dotnet/sdk:10.0...
+[2026-08-17T21:46:25.895Z] Getting image source signatures
+[2026-08-17T21:46:26.046Z] Copying blob 7bcbe6840c89 skipped: already exists  
+Copying blob fec4a809307e skipped: already exists  
+Copying blob 14db392b978e skipped: already exists  
+Copying blob 7c3556d7c0e3 skipped: already exists  
+Copying blob b54d236794e5 skipped: already exists  
+Copying blob a7f98f28a54a skipped: already exists  
+Copying blob 0473cde9c78f skipped: already exists  
+Copying blob d5aeeaa695b7 skipped: already exists  
+Copying blob 2a7132fbc825 skipped: already exists  
+Copying blob 0926a8eb0e60 skipped: already exists  
+[2026-08-17T21:46:26.195Z] Copying blob 7bcbe6840c89 skipped: already exists  
+Copying blob fec4a809307e skipped: already exists  
+Copying blob 14db392b978e skipped: already exists  
+Copying blob 7c3556d7c0e3 skipped: already exists  
+Copying blob b54d236794e5 skipped: already exists  
+Copying blob a7f98f28a54a skipped: already exists  
+Copying blob 0473cde9c78f skipped: already exists  
+Copying blob d5aeeaa695b7 skipped: already exists  
+Copying blob 2a7132fbc825 skipped: already exists  
+Copying blob 0926a8eb0e60 skipped: already exists  
+[2026-08-17T21:46:26.196Z] Copying config cf3e50b742 done   | 
+[2026-08-17T21:46:26.196Z] Copying config cf3e50b742 done   | 
+Copying config cf3e50b742 done   | 
+[2026-08-17T21:46:26.240Z] Writing manifest to image destination
+[2026-08-17T21:46:26.322Z] [1/3] STEP 2/6: RUN set -eux;     old_user="$(getent passwd 1000 | cut -d: -f1)";     if [ -n "$old_user" ] && [ "$old_user" != "dotnet" ]; then         usermod -l dotnet -d /home/dotnet "$old_user";         if [ -d "/home/$old_user" ]; then mv "/home/$old_user" /home/dotnet;         else mkdir -p /home/dotnet; fi;         old_group="$(getent group 1000 | cut -d: -f1)";         if [ "$old_group" != "dotnet" ]; then groupmod -n dotnet "$old_group"; fi;     elif [ -z "$old_user" ]; then         groupadd -g 1000 dotnet;         useradd -u 1000 -g 1000 -m -s /bin/bash dotnet;     fi;     chown -R 1000:1000 /home/dotnet;     install -d -o 1000 -g 1000 /home/dotnet/.config;     install -d -m 0755 /etc/sudoers.d;     echo 'dotnet ALL=(root) NOPASSWD:ALL' > /etc/sudoers.d/dotnet;     chmod 0440 /etc/sudoers.d/dotnet
+[2026-08-17T21:46:26.483Z] + getent passwd 1000
+[2026-08-17T21:46:26.483Z] + cut -d: -f1
+[2026-08-17T21:46:26.484Z] + old_user=ubuntu
++ [ -n ubuntu ]
++ [ ubuntu != dotnet ]
++ usermod -l dotnet -d /home/dotnet ubuntu
+[2026-08-17T21:46:26.499Z] + [ -d /home/ubuntu ]
++ mv /home/ubuntu /home/dotnet
+[2026-08-17T21:46:26.502Z] + getent group 1000
+[2026-08-17T21:46:26.502Z] + cut -d: -f1
+[2026-08-17T21:46:26.503Z] + old_group=ubuntu
++ [ ubuntu != dotnet ]
++ groupmod -n dotnet ubuntu
+[2026-08-17T21:46:26.506Z] + chown -R 1000:1000 /home/dotnet
+[2026-08-17T21:46:26.508Z] + install -d -o 1000 -g 1000 /home/dotnet/.config
+[2026-08-17T21:46:26.510Z] + install -d -m 0755 /etc/sudoers.d
+[2026-08-17T21:46:26.510Z] + echo dotnet ALL=(root) NOPASSWD:ALL
+[2026-08-17T21:46:26.510Z] + chmod 0440 /etc/sudoers.d/dotnet
+[2026-08-17T21:46:26.869Z] --> cfe04f77894c
+[2026-08-17T21:46:26.883Z] [1/3] STEP 3/6: RUN apt-get update  && apt-get install -y --no-install-recommends       podman unzip yamllint sudo       libnss3 libnspr4 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2       libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1       libxss1 libasound2t64 libpango-1.0-0 libcairo2 libatspi2.0-0  && rm -rf /var/lib/apt/lists/*
+[2026-08-17T21:46:27.626Z] Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+[2026-08-17T21:46:27.737Z] Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+[2026-08-17T21:46:28.769Z] Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+[2026-08-17T21:46:28.794Z] Get:4 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [50.0 kB]
+[2026-08-17T21:46:29.029Z] Get:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+[2026-08-17T21:46:29.125Z] Get:6 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1657 kB]
+[2026-08-17T21:46:29.283Z] Get:7 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+[2026-08-17T21:46:30.120Z] Get:8 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1524 kB]
+[2026-08-17T21:46:30.636Z] Get:9 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1153 kB]
+[2026-08-17T21:46:30.691Z] Get:10 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+[2026-08-17T21:46:30.702Z] Get:11 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+[2026-08-17T21:46:30.734Z] Get:12 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+[2026-08-17T21:46:30.735Z] Get:13 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2142 kB]
+[2026-08-17T21:46:30.764Z] Get:14 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [55.8 kB]
+[2026-08-17T21:46:30.765Z] Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1499 kB]
+[2026-08-17T21:46:30.778Z] Get:16 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1800 kB]
+[2026-08-17T21:46:30.869Z] Get:17 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [35.9 kB]
+[2026-08-17T21:46:30.870Z] Get:18 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [48.9 kB]
+[2026-08-17T21:46:30.870Z] Get:19 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [671 B]
+[2026-08-17T21:46:31.717Z] Fetched 32.2 MB in 5s (6972 kB/s)
+Reading package lists...
+[2026-08-17T21:46:32.298Z] 
+[2026-08-17T21:46:32.311Z] Reading package lists...
+[2026-08-17T21:46:32.895Z] 
+[2026-08-17T21:46:32.903Z] Building dependency tree...
+[2026-08-17T21:46:33.045Z] 
+Reading state information...
+[2026-08-17T21:46:33.045Z] 
+[2026-08-17T21:46:33.231Z] The following additional packages will be installed:
+[2026-08-17T21:46:33.231Z]   adduser at-spi2-common conmon containernetworking-plugins crun dirmngr
+  fontconfig fontconfig-config fonts-dejavu-core fonts-dejavu-mono gnupg
+  gnupg-utils golang-github-containers-common golang-github-containers-image
+[2026-08-17T21:46:33.231Z]   gpg gpg-agent gpgconf gpgsm iptables keyboxd libapparmor1 libasound2-data
+[2026-08-17T21:46:33.231Z]   libavahi-client3 libavahi-common-data libavahi-common3 libbsd0 libdatrie1
+  libdbus-1-3 libdevmapper1.02.1 libdrm-amdgpu1 libdrm-common libdrm-intel1
+[2026-08-17T21:46:33.231Z]   libedit2 libelf1t64 libfontconfig1 libfreetype6 libfribidi0 libglib2.0-0t64
+[2026-08-17T21:46:33.231Z]   libgpgme11t64 libgraphite2-3 libharfbuzz0b libip4tc2 libip6tc2 libksba8
+[2026-08-17T21:46:33.231Z]   libllvm20 libmnl0 libnetfilter-conntrack3 libnfnetlink0 libnftnl11
+[2026-08-17T21:46:33.231Z]   libpciaccess0 libpixman-1-0 libpng16-16t64 libpython3-stdlib
+[2026-08-17T21:46:33.231Z]   libpython3.12-minimal libpython3.12-stdlib libreadline8t64 libsensors-config
+[2026-08-17T21:46:33.231Z]   libsensors5 libsqlite3-0 libsubid4 libthai-data libthai0 libx11-6
+  libx11-data libx11-xcb1 libxau6 libxcb-dri3-0 libxcb-present0 libxcb-randr0
+  libxcb-render0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb1 libxdmcp6
+  libxext6 libxi6 libxml2 libxrender1 libxshmfence1 libxtables12 libyajl2
+[2026-08-17T21:46:33.232Z]   libyaml-0-2 media-types mesa-libgallium netbase pinentry-curses python3
+[2026-08-17T21:46:33.232Z]   python3-minimal python3-pathspec python3-pkg-resources python3-yaml
+[2026-08-17T21:46:33.232Z]   python3.12 python3.12-minimal readline-common x11-common xkb-data
+[2026-08-17T21:46:33.233Z] Suggested packages:
+  liblocale-gettext-perl cron quota ecryptfs-utils libwasmedge0
+  dbus-user-session libpam-systemd pinentry-gnome3 tor parcimonie xloadimage
+  gpg-wks-server scdaemon firewalld kmod alsa-utils libasound2-plugins
+  cups-common low-memory-monitor pciutils lm-sensors pinentry-doc
+  containers-storage docker-compose python3-doc python3-tk python3-venv
+  python3-setuptools python3.12-venv python3.12-doc binutils binfmt-support
+  readline-doc zip
+Recommended packages:
+  gnupg-l10n gpg-wks-client netavark nftables alsa-ucm-conf alsa-topology-conf
+  at-spi2-core dbus dmsetup libglib2.0-data shared-mime-info xdg-user-dirs
+  buildah catatonit | tini | dumb-init dbus-user-session passt slirp4netns
+  uidmap
+[2026-08-17T21:46:33.344Z] The following NEW packages will be installed:
+[2026-08-17T21:46:33.344Z]   adduser at-spi2-common conmon containernetworking-plugins crun dirmngr
+[2026-08-17T21:46:33.344Z]   fontconfig fontconfig-config fonts-dejavu-core fonts-dejavu-mono gnupg
+[2026-08-17T21:46:33.344Z]   gnupg-utils golang-github-containers-common golang-github-containers-image
+[2026-08-17T21:46:33.344Z]   gpg gpg-agent gpgconf gpgsm iptables keyboxd libapparmor1 libasound2-data
+  libasound2t64 libatk-bridge2.0-0t64 libatk1.0-0t64 libatspi2.0-0t64
+[2026-08-17T21:46:33.344Z]   libavahi-client3 libavahi-common-data libavahi-common3 libbsd0 libcairo2
+[2026-08-17T21:46:33.344Z]   libcups2t64 libdatrie1 libdbus-1-3 libdevmapper1.02.1 libdrm-amdgpu1
+[2026-08-17T21:46:33.344Z]   libdrm-common libdrm-intel1 libdrm2 libedit2 libelf1t64 libfontconfig1
+[2026-08-17T21:46:33.344Z]   libfreetype6 libfribidi0 libgbm1 libglib2.0-0t64 libgpgme11t64
+[2026-08-17T21:46:33.344Z]   libgraphite2-3 libharfbuzz0b libip4tc2 libip6tc2 libksba8 libllvm20 libmnl0
+[2026-08-17T21:46:33.344Z]   libnetfilter-conntrack3 libnfnetlink0 libnftnl11 libnspr4 libnss3
+[2026-08-17T21:46:33.344Z]   libpango-1.0-0 libpciaccess0 libpixman-1-0 libpng16-16t64 libpython3-stdlib
+[2026-08-17T21:46:33.344Z]   libpython3.12-minimal libpython3.12-stdlib libreadline8t64 libsensors-config
+[2026-08-17T21:46:33.344Z]   libsensors5 libsqlite3-0 libsubid4 libthai-data libthai0 libx11-6
+[2026-08-17T21:46:33.344Z]   libx11-data libx11-xcb1 libxau6 libxcb-dri3-0 libxcb-present0 libxcb-randr0
+  libxcb-render0 libxcb-shm0 libxcb-sync1 libxcb-xfixes0 libxcb1
+  libxcomposite1 libxdamage1 libxdmcp6 libxext6 libxfixes3 libxi6
+  libxkbcommon0 libxml2 libxrandr2 libxrender1 libxshmfence1 libxss1
+[2026-08-17T21:46:33.344Z]   libxtables12 libyajl2 libyaml-0-2 media-types mesa-libgallium netbase
+[2026-08-17T21:46:33.345Z]   pinentry-curses podman python3 python3-minimal python3-pathspec
+[2026-08-17T21:46:33.345Z]   python3-pkg-resources python3-yaml python3.12 python3.12-minimal
+[2026-08-17T21:46:33.345Z]   readline-common sudo unzip x11-common xkb-data yamllint
+[2026-08-17T21:46:33.927Z] 0 upgraded, 118 newly installed, 0 to remove and 0 not upgraded.
+Need to get 85.4 MB of archives.
+After this operation, 359 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-minimal amd64 3.12.3-1ubuntu0.15 [839 kB]
+[2026-08-17T21:46:35.980Z] Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-minimal amd64 3.12.3-1ubuntu0.15 [2334 kB]
+[2026-08-17T21:46:36.558Z] Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-minimal amd64 3.12.3-0ubuntu2.1 [27.4 kB]
+[2026-08-17T21:46:36.560Z] Get:4 http://archive.ubuntu.com/ubuntu noble/main amd64 media-types all 10.1.0 [27.5 kB]
+[2026-08-17T21:46:36.563Z] Get:5 http://archive.ubuntu.com/ubuntu noble/main amd64 netbase all 6.4 [13.1 kB]
+[2026-08-17T21:46:36.565Z] Get:6 http://archive.ubuntu.com/ubuntu noble/main amd64 readline-common all 8.2-4build1 [56.5 kB]
+[2026-08-17T21:46:36.571Z] Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 libreadline8t64 amd64 8.2-4build1 [153 kB]
+[2026-08-17T21:46:36.589Z] Get:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsqlite3-0 amd64 3.45.1-1ubuntu2.7 [701 kB]
+[2026-08-17T21:46:36.669Z] Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-stdlib amd64 3.12.3-1ubuntu0.15 [2071 kB]
+[2026-08-17T21:46:36.861Z] Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12 amd64 3.12.3-1ubuntu0.15 [651 kB]
+[2026-08-17T21:46:36.901Z] Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3-stdlib amd64 3.12.3-0ubuntu2.1 [10.1 kB]
+[2026-08-17T21:46:36.901Z] Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3 amd64 3.12.3-0ubuntu2.1 [23.0 kB]
+[2026-08-17T21:46:37.116Z] Get:13 http://archive.ubuntu.com/ubuntu noble/main amd64 adduser all 3.137ubuntu1 [101 kB]
+[2026-08-17T21:46:37.121Z] Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libapparmor1 amd64 4.0.1really4.0.1-0ubuntu0.24.04.7 [51.3 kB]
+[2026-08-17T21:46:37.121Z] Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbsd0 amd64 0.12.1-1build1.1 [41.2 kB]
+[2026-08-17T21:46:37.123Z] Get:16 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdbus-1-3 amd64 1.14.10-4ubuntu4.1 [210 kB]
+[2026-08-17T21:46:37.130Z] Get:17 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdevmapper1.02.1 amd64 2:1.02.185-3ubuntu3.2 [139 kB]
+[2026-08-17T21:46:37.135Z] Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libelf1t64 amd64 0.190-1.1ubuntu0.1 [57.8 kB]
+[2026-08-17T21:46:37.392Z] Get:19 http://archive.ubuntu.com/ubuntu noble/main amd64 libfribidi0 amd64 1.0.13-3build1 [26.1 kB]
+[2026-08-17T21:46:37.393Z] Get:20 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-0t64 amd64 2.80.0-6ubuntu3.8 [1545 kB]
+[2026-08-17T21:46:37.441Z] Get:21 http://archive.ubuntu.com/ubuntu noble/main amd64 libmnl0 amd64 1.0.5-2build1 [12.3 kB]
+[2026-08-17T21:46:37.441Z] Get:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libxml2 amd64 2.9.14+dfsg-1.3ubuntu3.8 [764 kB]
+[2026-08-17T21:46:37.670Z] Get:23 http://archive.ubuntu.com/ubuntu noble/main amd64 libxtables12 amd64 1.8.10-3ubuntu2 [35.7 kB]
+[2026-08-17T21:46:37.672Z] Get:24 http://archive.ubuntu.com/ubuntu noble/main amd64 libyaml-0-2 amd64 0.2.5-1build1 [51.5 kB]
+[2026-08-17T21:46:37.673Z] Get:25 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-pkg-resources all 68.1.2-2ubuntu1.2 [168 kB]
+[2026-08-17T21:46:37.677Z] Get:26 http://archive.ubuntu.com/ubuntu noble/main amd64 python3-yaml amd64 6.0.1-2build2 [123 kB]
+[2026-08-17T21:46:37.682Z] Get:27 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 sudo amd64 1.9.15p5-3ubuntu5.24.04.2 [948 kB]
+[2026-08-17T21:46:37.710Z] Get:28 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 xkb-data all 2.41-2ubuntu1.1 [397 kB]
+[2026-08-17T21:46:37.946Z] Get:29 http://archive.ubuntu.com/ubuntu noble/main amd64 libip4tc2 amd64 1.8.10-3ubuntu2 [23.3 kB]
+[2026-08-17T21:46:37.947Z] Get:30 http://archive.ubuntu.com/ubuntu noble/main amd64 libip6tc2 amd64 1.8.10-3ubuntu2 [23.7 kB]
+[2026-08-17T21:46:37.947Z] Get:31 http://archive.ubuntu.com/ubuntu noble/main amd64 libnfnetlink0 amd64 1.0.2-2build1 [14.8 kB]
+[2026-08-17T21:46:37.948Z] Get:32 http://archive.ubuntu.com/ubuntu noble/main amd64 libnetfilter-conntrack3 amd64 1.0.9-6build1 [45.2 kB]
+[2026-08-17T21:46:38.224Z] Get:33 http://archive.ubuntu.com/ubuntu noble/main amd64 libnftnl11 amd64 1.2.6-2build1 [66.0 kB]
+[2026-08-17T21:46:38.226Z] Get:34 http://archive.ubuntu.com/ubuntu noble/main amd64 iptables amd64 1.8.10-3ubuntu2 [381 kB]
+[2026-08-17T21:46:38.238Z] Get:35 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdrm-common all 2.4.125-1ubuntu0.1~24.04.2 [9250 B]
+[2026-08-17T21:46:38.238Z] Get:36 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdrm2 amd64 2.4.125-1ubuntu0.1~24.04.2 [41.4 kB]
+[2026-08-17T21:46:38.239Z] Get:37 http://archive.ubuntu.com/ubuntu noble/main amd64 libedit2 amd64 3.1-20230828-1build1 [97.6 kB]
+[2026-08-17T21:46:38.242Z] Get:38 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpng16-16t64 amd64 1.6.43-5ubuntu0.6 [189 kB]
+[2026-08-17T21:46:38.502Z] Get:39 http://archive.ubuntu.com/ubuntu noble/main amd64 libsensors-config all 1:3.6.0-9build1 [5546 B]
+[2026-08-17T21:46:38.502Z] Get:40 http://archive.ubuntu.com/ubuntu noble/main amd64 libsensors5 amd64 1:3.6.0-9build1 [26.6 kB]
+[2026-08-17T21:46:38.504Z] Get:41 http://archive.ubuntu.com/ubuntu noble/main amd64 libxau6 amd64 1:1.0.9-1build6 [7160 B]
+[2026-08-17T21:46:38.504Z] Get:42 http://archive.ubuntu.com/ubuntu noble/main amd64 libxdmcp6 amd64 1:1.1.3-0ubuntu6 [10.3 kB]
+[2026-08-17T21:46:38.779Z] Get:43 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb1 amd64 1.15-1ubuntu2 [47.7 kB]
+[2026-08-17T21:46:38.779Z] Get:44 http://archive.ubuntu.com/ubuntu noble/main amd64 libx11-data all 2:1.8.7-1build1 [115 kB]
+[2026-08-17T21:46:38.783Z] Get:45 http://archive.ubuntu.com/ubuntu noble/main amd64 libx11-6 amd64 2:1.8.7-1build1 [650 kB]
+[2026-08-17T21:46:38.805Z] Get:46 http://archive.ubuntu.com/ubuntu noble/main amd64 libxext6 amd64 2:1.3.4-1build2 [30.4 kB]
+[2026-08-17T21:46:38.806Z] Get:47 http://archive.ubuntu.com/ubuntu noble/main amd64 libxkbcommon0 amd64 1.6.0-1build1 [122 kB]
+[2026-08-17T21:46:38.808Z] Get:48 http://archive.ubuntu.com/ubuntu noble/main amd64 at-spi2-common all 2.52.0-1build1 [8674 B]
+[2026-08-17T21:46:39.056Z] Get:49 http://archive.ubuntu.com/ubuntu noble/universe amd64 conmon amd64 2.1.10+ds1-1build2 [35.2 kB]
+[2026-08-17T21:46:39.058Z] Get:50 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 containernetworking-plugins amd64 1.1.1+ds1-3ubuntu0.24.04.3 [7203 kB]
+[2026-08-17T21:46:39.281Z] Get:51 http://archive.ubuntu.com/ubuntu noble/main amd64 libyajl2 amd64 2.1.0-5build1 [20.2 kB]
+[2026-08-17T21:46:39.282Z] Get:52 http://archive.ubuntu.com/ubuntu noble/universe amd64 crun amd64 1.14.1-1 [406 kB]
+[2026-08-17T21:46:39.340Z] Get:53 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gpgconf amd64 2.4.4-2ubuntu17.4 [104 kB]
+[2026-08-17T21:46:39.342Z] Get:54 http://archive.ubuntu.com/ubuntu noble/main amd64 libksba8 amd64 1.6.6-1build1 [122 kB]
+[2026-08-17T21:46:39.346Z] Get:55 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 dirmngr amd64 2.4.4-2ubuntu17.4 [323 kB]
+[2026-08-17T21:46:39.356Z] Get:56 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libfreetype6 amd64 2.13.2+dfsg-1ubuntu0.1 [402 kB]
+[2026-08-17T21:46:39.369Z] Get:57 http://archive.ubuntu.com/ubuntu noble/main amd64 fonts-dejavu-mono all 2.37-8 [502 kB]
+[2026-08-17T21:46:39.385Z] Get:58 http://archive.ubuntu.com/ubuntu noble/main amd64 fonts-dejavu-core all 2.37-8 [835 kB]
+[2026-08-17T21:46:39.616Z] Get:59 http://archive.ubuntu.com/ubuntu noble/main amd64 fontconfig-config amd64 2.15.0-1.1ubuntu2 [37.3 kB]
+[2026-08-17T21:46:39.616Z] Get:60 http://archive.ubuntu.com/ubuntu noble/main amd64 libfontconfig1 amd64 2.15.0-1.1ubuntu2 [139 kB]
+[2026-08-17T21:46:39.619Z] Get:61 http://archive.ubuntu.com/ubuntu noble/main amd64 fontconfig amd64 2.15.0-1.1ubuntu2 [180 kB]
+[2026-08-17T21:46:39.624Z] Get:62 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gnupg-utils amd64 2.4.4-2ubuntu17.4 [109 kB]
+[2026-08-17T21:46:39.894Z] Get:63 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gpg amd64 2.4.4-2ubuntu17.4 [565 kB]
+[2026-08-17T21:46:39.909Z] Get:64 http://archive.ubuntu.com/ubuntu noble/main amd64 pinentry-curses amd64 1.2.1-3ubuntu5 [35.2 kB]
+[2026-08-17T21:46:39.910Z] Get:65 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gpg-agent amd64 2.4.4-2ubuntu17.4 [227 kB]
+[2026-08-17T21:46:39.916Z] Get:66 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gpgsm amd64 2.4.4-2ubuntu17.4 [232 kB]
+[2026-08-17T21:46:39.921Z] Get:67 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 keyboxd amd64 2.4.4-2ubuntu17.4 [78.3 kB]
+[2026-08-17T21:46:39.923Z] Get:68 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gnupg all 2.4.4-2ubuntu17.4 [359 kB]
+[2026-08-17T21:46:40.170Z] Get:69 http://archive.ubuntu.com/ubuntu noble/universe amd64 golang-github-containers-image all 5.29.2-2 [33.4 kB]
+[2026-08-17T21:46:40.171Z] Get:70 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 golang-github-containers-common all 0.57.4+ds1-2ubuntu0.2 [39.9 kB]
+[2026-08-17T21:46:40.171Z] Get:71 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libasound2-data all 1.2.11-1ubuntu0.3 [21.4 kB]
+[2026-08-17T21:46:40.172Z] Get:72 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libasound2t64 amd64 1.2.11-1ubuntu0.3 [398 kB]
+[2026-08-17T21:46:40.448Z] Get:73 http://archive.ubuntu.com/ubuntu noble/main amd64 libatk1.0-0t64 amd64 2.52.0-1build1 [55.3 kB]
+[2026-08-17T21:46:40.449Z] Get:74 http://archive.ubuntu.com/ubuntu noble/main amd64 libxi6 amd64 2:1.8.1-1build1 [32.4 kB]
+[2026-08-17T21:46:40.449Z] Get:75 http://archive.ubuntu.com/ubuntu noble/main amd64 libatspi2.0-0t64 amd64 2.52.0-1build1 [80.5 kB]
+[2026-08-17T21:46:40.452Z] Get:76 http://archive.ubuntu.com/ubuntu noble/main amd64 libatk-bridge2.0-0t64 amd64 2.52.0-1build1 [66.0 kB]
+[2026-08-17T21:46:40.454Z] Get:77 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libavahi-common-data amd64 0.8-13ubuntu6.2 [30.1 kB]
+[2026-08-17T21:46:40.454Z] Get:78 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libavahi-common3 amd64 0.8-13ubuntu6.2 [23.4 kB]
+[2026-08-17T21:46:40.724Z] Get:79 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libavahi-client3 amd64 0.8-13ubuntu6.2 [26.8 kB]
+[2026-08-17T21:46:40.725Z] Get:80 http://archive.ubuntu.com/ubuntu noble/main amd64 libpixman-1-0 amd64 0.42.2-1build1 [279 kB]
+[2026-08-17T21:46:40.732Z] Get:81 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-render0 amd64 1.15-1ubuntu2 [16.2 kB]
+[2026-08-17T21:46:40.732Z] Get:82 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-shm0 amd64 1.15-1ubuntu2 [5756 B]
+[2026-08-17T21:46:41.002Z] Get:83 http://archive.ubuntu.com/ubuntu noble/main amd64 libxrender1 amd64 1:0.9.10-1.1build1 [19.0 kB]
+[2026-08-17T21:46:41.002Z] Get:84 http://archive.ubuntu.com/ubuntu noble/main amd64 libcairo2 amd64 1.18.0-3build1 [566 kB]
+[2026-08-17T21:46:41.017Z] Get:85 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcups2t64 amd64 2.4.7-1.2ubuntu7.14 [274 kB]
+[2026-08-17T21:46:41.024Z] Get:86 http://archive.ubuntu.com/ubuntu noble/main amd64 libdatrie1 amd64 0.2.13-3build1 [19.0 kB]
+[2026-08-17T21:46:41.024Z] Get:87 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdrm-amdgpu1 amd64 2.4.125-1ubuntu0.1~24.04.2 [21.4 kB]
+[2026-08-17T21:46:41.024Z] Get:88 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libpciaccess0 amd64 0.17-3ubuntu0.24.04.2 [18.9 kB]
+[2026-08-17T21:46:41.286Z] Get:89 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libdrm-intel1 amd64 2.4.125-1ubuntu0.1~24.04.2 [63.9 kB]
+[2026-08-17T21:46:41.287Z] Get:90 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libllvm20 amd64 1:20.1.2-0ubuntu1~24.04.3 [30.6 MB]
+[2026-08-17T21:46:42.691Z] Get:91 http://archive.ubuntu.com/ubuntu noble/main amd64 libx11-xcb1 amd64 2:1.8.7-1build1 [7800 B]
+[2026-08-17T21:46:42.691Z] Get:92 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-dri3-0 amd64 1.15-1ubuntu2 [7142 B]
+[2026-08-17T21:46:42.691Z] Get:93 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-present0 amd64 1.15-1ubuntu2 [5676 B]
+[2026-08-17T21:46:42.691Z] Get:94 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-randr0 amd64 1.15-1ubuntu2 [17.9 kB]
+[2026-08-17T21:46:42.691Z] Get:95 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-sync1 amd64 1.15-1ubuntu2 [9312 B]
+[2026-08-17T21:46:42.691Z] Get:96 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcb-xfixes0 amd64 1.15-1ubuntu2 [10.2 kB]
+[2026-08-17T21:46:42.692Z] Get:97 http://archive.ubuntu.com/ubuntu noble/main amd64 libxshmfence1 amd64 1.3-1build5 [4764 B]
+[2026-08-17T21:46:42.692Z] Get:98 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 mesa-libgallium amd64 25.2.8-0ubuntu0.24.04.2 [10.8 MB]
+[2026-08-17T21:46:42.920Z] Get:99 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgbm1 amd64 25.2.8-0ubuntu0.24.04.2 [34.2 kB]
+[2026-08-17T21:46:42.962Z] Get:100 http://archive.ubuntu.com/ubuntu noble/main amd64 libgpgme11t64 amd64 1.18.0-4.1ubuntu4 [136 kB]
+[2026-08-17T21:46:42.966Z] Get:101 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgraphite2-3 amd64 1.3.14-2ubuntu0.24.04.1 [73.4 kB]
+[2026-08-17T21:46:43.351Z] Get:102 http://archive.ubuntu.com/ubuntu noble/main amd64 libharfbuzz0b amd64 8.3.0-2build2 [469 kB]
+[2026-08-17T21:46:45.932Z] Get:103 http://archive.ubuntu.com/ubuntu noble/main amd64 libnspr4 amd64 2:4.35-1.1build1 [117 kB]
+[2026-08-17T21:46:46.147Z] Get:104 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libnss3 amd64 2:3.98-1ubuntu0.2 [1445 kB]
+[2026-08-17T21:46:48.383Z] Get:105 http://archive.ubuntu.com/ubuntu noble/main amd64 libthai-data all 0.1.29-2build1 [158 kB]
+[2026-08-17T21:46:48.593Z] Get:106 http://archive.ubuntu.com/ubuntu noble/main amd64 libthai0 amd64 0.1.29-2build1 [18.9 kB]
+[2026-08-17T21:46:48.620Z] Get:107 http://archive.ubuntu.com/ubuntu noble/main amd64 libpango-1.0-0 amd64 1.52.1+ds-1build1 [231 kB]
+[2026-08-17T21:46:48.918Z] Get:108 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsubid4 amd64 1:4.13+dfsg1-4ubuntu3.2 [23.4 kB]
+[2026-08-17T21:46:48.943Z] Get:109 http://archive.ubuntu.com/ubuntu noble/main amd64 libxcomposite1 amd64 1:0.4.5-1build3 [6320 B]
+[2026-08-17T21:46:48.952Z] Get:110 http://archive.ubuntu.com/ubuntu noble/main amd64 libxdamage1 amd64 1:1.1.6-1build1 [6150 B]
+[2026-08-17T21:46:48.958Z] Get:111 http://archive.ubuntu.com/ubuntu noble/main amd64 libxfixes3 amd64 1:6.0.0-2build1 [10.8 kB]
+[2026-08-17T21:46:48.970Z] Get:112 http://archive.ubuntu.com/ubuntu noble/main amd64 libxrandr2 amd64 2:1.5.2-2build1 [19.7 kB]
+[2026-08-17T21:46:48.992Z] Get:113 http://archive.ubuntu.com/ubuntu noble/main amd64 x11-common all 1:7.7+23ubuntu3 [21.7 kB]
+[2026-08-17T21:46:49.013Z] Get:114 http://archive.ubuntu.com/ubuntu noble/main amd64 libxss1 amd64 1:1.2.3-1build3 [7204 B]
+[2026-08-17T21:46:49.024Z] Get:115 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 podman amd64 4.9.3+ds1-1ubuntu0.2 [13.4 MB]
+[2026-08-17T21:46:57.915Z] Get:116 http://archive.ubuntu.com/ubuntu noble/universe amd64 python3-pathspec all 0.12.1-1 [24.5 kB]
+[2026-08-17T21:46:57.924Z] Get:117 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 unzip amd64 6.0-28ubuntu4.1 [174 kB]
+[2026-08-17T21:46:57.985Z] Get:118 http://archive.ubuntu.com/ubuntu noble/universe amd64 yamllint all 1.33.0-1 [47.2 kB]
+[2026-08-17T21:46:58.139Z] debconf: delaying package configuration, since apt-utils is not installed
+[2026-08-17T21:46:58.162Z] Fetched 85.4 MB in 25s (3464 kB/s)
+[2026-08-17T21:46:58.178Z] Selecting previously unselected package libpython3.12-minimal:amd64.
+
+(Reading database ... 
+[2026-08-17T21:46:58.181Z] (Reading database ... 5%
+[2026-08-17T21:46:58.182Z] (Reading database ... 10%
+[2026-08-17T21:46:58.182Z] (Reading database ... 15%
+[2026-08-17T21:46:58.182Z] (Reading database ... 20%
+[2026-08-17T21:46:58.182Z] (Reading database ... 25%
+[2026-08-17T21:46:58.182Z] (Reading database ... 30%
+[2026-08-17T21:46:58.182Z] (Reading database ... 35%
+[2026-08-17T21:46:58.182Z] (Reading database ... 40%
+[2026-08-17T21:46:58.182Z] (Reading database ... 45%
+[2026-08-17T21:46:58.183Z] (Reading database ... 50%
+[2026-08-17T21:46:58.183Z] (Reading database ... 55%
+[2026-08-17T21:46:58.183Z] (Reading database ... 60%
+[2026-08-17T21:46:58.183Z] (Reading database ... 65%
+[2026-08-17T21:46:58.183Z] (Reading database ... 70%
+[2026-08-17T21:46:58.183Z] (Reading database ... 75%
+[2026-08-17T21:46:58.183Z] (Reading database ... 80%
+[2026-08-17T21:46:58.183Z] (Reading database ... 85%
+[2026-08-17T21:46:58.184Z] (Reading database ... 90%
+[2026-08-17T21:46:58.184Z] (Reading database ... 95%
+[2026-08-17T21:46:58.194Z] (Reading database ... 100%
+(Reading database ... 9345 files and directories currently installed.)
+[2026-08-17T21:46:58.194Z] Preparing to unpack .../libpython3.12-minimal_3.12.3-1ubuntu0.15_amd64.deb ...
+[2026-08-17T21:46:58.195Z] Unpacking libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.15) ...
+[2026-08-17T21:46:58.244Z] Selecting previously unselected package python3.12-minimal.
+[2026-08-17T21:46:58.247Z] Preparing to unpack .../python3.12-minimal_3.12.3-1ubuntu0.15_amd64.deb ...
+[2026-08-17T21:46:58.250Z] Unpacking python3.12-minimal (3.12.3-1ubuntu0.15) ...
+[2026-08-17T21:46:58.281Z] Setting up libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.15) ...
+[2026-08-17T21:46:58.283Z] Setting up python3.12-minimal (3.12.3-1ubuntu0.15) ...
+[2026-08-17T21:46:58.819Z] Selecting previously unselected package python3-minimal.
+
+(Reading database ... 
+[2026-08-17T21:46:58.821Z] (Reading database ... 5%
+[2026-08-17T21:46:58.821Z] (Reading database ... 10%
+[2026-08-17T21:46:58.821Z] (Reading database ... 15%
+[2026-08-17T21:46:58.821Z] (Reading database ... 20%
+[2026-08-17T21:46:58.821Z] (Reading database ... 25%
+[2026-08-17T21:46:58.821Z] (Reading database ... 30%
+[2026-08-17T21:46:58.821Z] (Reading database ... 35%
+[2026-08-17T21:46:58.821Z] (Reading database ... 40%
+[2026-08-17T21:46:58.821Z] (Reading database ... 45%
+[2026-08-17T21:46:58.821Z] (Reading database ... 50%
+[2026-08-17T21:46:58.821Z] (Reading database ... 55%
+[2026-08-17T21:46:58.821Z] (Reading database ... 60%
+[2026-08-17T21:46:58.822Z] (Reading database ... 65%
+[2026-08-17T21:46:58.822Z] (Reading database ... 70%
+[2026-08-17T21:46:58.822Z] (Reading database ... 75%
+[2026-08-17T21:46:58.822Z] (Reading database ... 80%
+[2026-08-17T21:46:58.822Z] (Reading database ... 85%
+[2026-08-17T21:46:58.822Z] (Reading database ... 90%
+[2026-08-17T21:46:58.822Z] (Reading database ... 95%
+[2026-08-17T21:46:58.824Z] (Reading database ... 100%
+(Reading database ... 9656 files and directories currently installed.)
+[2026-08-17T21:46:58.824Z] Preparing to unpack .../0-python3-minimal_3.12.3-0ubuntu2.1_amd64.deb ...
+[2026-08-17T21:46:58.825Z] Unpacking python3-minimal (3.12.3-0ubuntu2.1) ...
+[2026-08-17T21:46:58.834Z] Selecting previously unselected package media-types.
+[2026-08-17T21:46:58.836Z] Preparing to unpack .../1-media-types_10.1.0_all.deb ...
+[2026-08-17T21:46:58.836Z] Unpacking media-types (10.1.0) ...
+[2026-08-17T21:46:58.843Z] Selecting previously unselected package netbase.
+[2026-08-17T21:46:58.845Z] Preparing to unpack .../2-netbase_6.4_all.deb ...
+[2026-08-17T21:46:58.845Z] Unpacking netbase (6.4) ...
+[2026-08-17T21:46:58.851Z] Selecting previously unselected package readline-common.
+[2026-08-17T21:46:58.853Z] Preparing to unpack .../3-readline-common_8.2-4build1_all.deb ...
+[2026-08-17T21:46:58.854Z] Unpacking readline-common (8.2-4build1) ...
+[2026-08-17T21:46:58.861Z] Selecting previously unselected package libreadline8t64:amd64.
+[2026-08-17T21:46:58.863Z] Preparing to unpack .../4-libreadline8t64_8.2-4build1_amd64.deb ...
+[2026-08-17T21:46:58.902Z] Adding 'diversion of /lib/x86_64-linux-gnu/libhistory.so.8 to /lib/x86_64-linux-gnu/libhistory.so.8.usr-is-merged by libreadline8t64'
+[2026-08-17T21:46:58.904Z] Adding 'diversion of /lib/x86_64-linux-gnu/libhistory.so.8.2 to /lib/x86_64-linux-gnu/libhistory.so.8.2.usr-is-merged by libreadline8t64'
+[2026-08-17T21:46:58.907Z] Adding 'diversion of /lib/x86_64-linux-gnu/libreadline.so.8 to /lib/x86_64-linux-gnu/libreadline.so.8.usr-is-merged by libreadline8t64'
+[2026-08-17T21:46:58.910Z] Adding 'diversion of /lib/x86_64-linux-gnu/libreadline.so.8.2 to /lib/x86_64-linux-gnu/libreadline.so.8.2.usr-is-merged by libreadline8t64'
+[2026-08-17T21:46:58.911Z] Unpacking libreadline8t64:amd64 (8.2-4build1) ...
+[2026-08-17T21:46:58.920Z] Selecting previously unselected package libsqlite3-0:amd64.
+[2026-08-17T21:46:58.922Z] Preparing to unpack .../5-libsqlite3-0_3.45.1-1ubuntu2.7_amd64.deb ...
+[2026-08-17T21:46:58.922Z] Unpacking libsqlite3-0:amd64 (3.45.1-1ubuntu2.7) ...
+[2026-08-17T21:46:58.934Z] Selecting previously unselected package libpython3.12-stdlib:amd64.
+[2026-08-17T21:46:58.936Z] Preparing to unpack .../6-libpython3.12-stdlib_3.12.3-1ubuntu0.15_amd64.deb ...
+[2026-08-17T21:46:58.936Z] Unpacking libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.15) ...
+[2026-08-17T21:46:59.001Z] Selecting previously unselected package python3.12.
+[2026-08-17T21:46:59.024Z] Preparing to unpack .../7-python3.12_3.12.3-1ubuntu0.15_amd64.deb ...
+
+Unpacking python3.12 (3.12.3-1ubuntu0.15) ...
+
+Selecting previously unselected package libpython3-stdlib:amd64.
+
+Preparing to unpack .../8-libpython3-stdlib_3.12.3-0ubuntu2.1_amd64.deb ...
+
+Unpacking libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+[2026-08-17T21:46:59.029Z] Setting up python3-minimal (3.12.3-0ubuntu2.1) ...
+[2026-08-17T21:46:59.121Z] Selecting previously unselected package python3.
+
+(Reading database ... 
+[2026-08-17T21:46:59.123Z] (Reading database ... 5%
+[2026-08-17T21:46:59.123Z] (Reading database ... 10%
+[2026-08-17T21:46:59.123Z] (Reading database ... 15%
+[2026-08-17T21:46:59.123Z] (Reading database ... 20%
+[2026-08-17T21:46:59.123Z] (Reading database ... 25%
+[2026-08-17T21:46:59.123Z] (Reading database ... 30%
+[2026-08-17T21:46:59.123Z] (Reading database ... 35%
+[2026-08-17T21:46:59.123Z] (Reading database ... 40%
+[2026-08-17T21:46:59.123Z] (Reading database ... 45%
+[2026-08-17T21:46:59.123Z] (Reading database ... 50%
+[2026-08-17T21:46:59.123Z] (Reading database ... 55%
+[2026-08-17T21:46:59.124Z] (Reading database ... 60%
+[2026-08-17T21:46:59.124Z] (Reading database ... 65%
+[2026-08-17T21:46:59.124Z] (Reading database ... 70%
+[2026-08-17T21:46:59.124Z] (Reading database ... 75%
+[2026-08-17T21:46:59.124Z] (Reading database ... 80%
+[2026-08-17T21:46:59.124Z] (Reading database ... 85%
+[2026-08-17T21:46:59.124Z] (Reading database ... 90%
+[2026-08-17T21:46:59.124Z] (Reading database ... 95%
+[2026-08-17T21:46:59.126Z] (Reading database ... 100%
+(Reading database ... 10133 files and directories currently installed.)
+[2026-08-17T21:46:59.128Z] Preparing to unpack .../python3_3.12.3-0ubuntu2.1_amd64.deb ...
+[2026-08-17T21:46:59.168Z] Unpacking python3 (3.12.3-0ubuntu2.1) ...
+[2026-08-17T21:46:59.177Z] Selecting previously unselected package adduser.
+[2026-08-17T21:46:59.179Z] Preparing to unpack .../adduser_3.137ubuntu1_all.deb ...
+[2026-08-17T21:46:59.180Z] Unpacking adduser (3.137ubuntu1) ...
+[2026-08-17T21:46:59.192Z] Setting up adduser (3.137ubuntu1) ...
+[2026-08-17T21:46:59.205Z] Selecting previously unselected package libapparmor1:amd64.
+
+(Reading database ... 
+[2026-08-17T21:46:59.206Z] (Reading database ... 5%
+[2026-08-17T21:46:59.206Z] (Reading database ... 10%
+[2026-08-17T21:46:59.206Z] (Reading database ... 15%
+[2026-08-17T21:46:59.206Z] (Reading database ... 20%
+[2026-08-17T21:46:59.206Z] (Reading database ... 25%
+[2026-08-17T21:46:59.207Z] (Reading database ... 30%
+[2026-08-17T21:46:59.207Z] (Reading database ... 35%
+[2026-08-17T21:46:59.207Z] (Reading database ... 40%
+[2026-08-17T21:46:59.207Z] (Reading database ... 45%
+[2026-08-17T21:46:59.207Z] (Reading database ... 50%
+[2026-08-17T21:46:59.207Z] (Reading database ... 55%
+[2026-08-17T21:46:59.207Z] (Reading database ... 60%
+[2026-08-17T21:46:59.207Z] (Reading database ... 65%
+[2026-08-17T21:46:59.207Z] (Reading database ... 70%
+(Reading database ... 75%
+(Reading database ... 80%
+[2026-08-17T21:46:59.207Z] (Reading database ... 85%
+[2026-08-17T21:46:59.207Z] (Reading database ... 90%
+[2026-08-17T21:46:59.207Z] (Reading database ... 95%
+[2026-08-17T21:46:59.210Z] (Reading database ... 100%
+(Reading database ... 10202 files and directories currently installed.)
+[2026-08-17T21:46:59.211Z] Preparing to unpack .../000-libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.7_amd64.deb ...
+[2026-08-17T21:46:59.211Z] Unpacking libapparmor1:amd64 (4.0.1really4.0.1-0ubuntu0.24.04.7) ...
+[2026-08-17T21:46:59.219Z] Selecting previously unselected package libbsd0:amd64.
+[2026-08-17T21:46:59.221Z] Preparing to unpack .../001-libbsd0_0.12.1-1build1.1_amd64.deb ...
+[2026-08-17T21:46:59.221Z] Unpacking libbsd0:amd64 (0.12.1-1build1.1) ...
+[2026-08-17T21:46:59.228Z] Selecting previously unselected package libdbus-1-3:amd64.
+[2026-08-17T21:46:59.231Z] Preparing to unpack .../002-libdbus-1-3_1.14.10-4ubuntu4.1_amd64.deb ...
+[2026-08-17T21:46:59.231Z] Unpacking libdbus-1-3:amd64 (1.14.10-4ubuntu4.1) ...
+[2026-08-17T21:46:59.239Z] Selecting previously unselected package libdevmapper1.02.1:amd64.
+[2026-08-17T21:46:59.242Z] Preparing to unpack .../003-libdevmapper1.02.1_2%3a1.02.185-3ubuntu3.2_amd64.deb ...
+[2026-08-17T21:46:59.242Z] Unpacking libdevmapper1.02.1:amd64 (2:1.02.185-3ubuntu3.2) ...
+[2026-08-17T21:46:59.250Z] Selecting previously unselected package libelf1t64:amd64.
+[2026-08-17T21:46:59.252Z] Preparing to unpack .../004-libelf1t64_0.190-1.1ubuntu0.1_amd64.deb ...
+[2026-08-17T21:46:59.252Z] Unpacking libelf1t64:amd64 (0.190-1.1ubuntu0.1) ...
+[2026-08-17T21:46:59.260Z] Selecting previously unselected package libfribidi0:amd64.
+[2026-08-17T21:46:59.263Z] Preparing to unpack .../005-libfribidi0_1.0.13-3build1_amd64.deb ...
+[2026-08-17T21:46:59.263Z] Unpacking libfribidi0:amd64 (1.0.13-3build1) ...
+[2026-08-17T21:46:59.270Z] Selecting previously unselected package libglib2.0-0t64:amd64.
+[2026-08-17T21:46:59.272Z] Preparing to unpack .../006-libglib2.0-0t64_2.80.0-6ubuntu3.8_amd64.deb ...
+[2026-08-17T21:46:59.278Z] Unpacking libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.8) ...
+[2026-08-17T21:46:59.299Z] Selecting previously unselected package libmnl0:amd64.
+[2026-08-17T21:46:59.301Z] Preparing to unpack .../007-libmnl0_1.0.5-2build1_amd64.deb ...
+[2026-08-17T21:46:59.302Z] Unpacking libmnl0:amd64 (1.0.5-2build1) ...
+[2026-08-17T21:46:59.309Z] Selecting previously unselected package libxml2:amd64.
+[2026-08-17T21:46:59.311Z] Preparing to unpack .../008-libxml2_2.9.14+dfsg-1.3ubuntu3.8_amd64.deb ...
+[2026-08-17T21:46:59.311Z] Unpacking libxml2:amd64 (2.9.14+dfsg-1.3ubuntu3.8) ...
+[2026-08-17T21:46:59.325Z] Selecting previously unselected package libxtables12:amd64.
+[2026-08-17T21:46:59.327Z] Preparing to unpack .../009-libxtables12_1.8.10-3ubuntu2_amd64.deb ...
+[2026-08-17T21:46:59.328Z] Unpacking libxtables12:amd64 (1.8.10-3ubuntu2) ...
+[2026-08-17T21:46:59.335Z] Selecting previously unselected package libyaml-0-2:amd64.
+[2026-08-17T21:46:59.338Z] Preparing to unpack .../010-libyaml-0-2_0.2.5-1build1_amd64.deb ...
+[2026-08-17T21:46:59.338Z] Unpacking libyaml-0-2:amd64 (0.2.5-1build1) ...
+[2026-08-17T21:46:59.345Z] Selecting previously unselected package python3-pkg-resources.
+[2026-08-17T21:46:59.347Z] Preparing to unpack .../011-python3-pkg-resources_68.1.2-2ubuntu1.2_all.deb ...
+[2026-08-17T21:46:59.347Z] Unpacking python3-pkg-resources (68.1.2-2ubuntu1.2) ...
+[2026-08-17T21:46:59.361Z] Selecting previously unselected package python3-yaml.
+[2026-08-17T21:46:59.364Z] Preparing to unpack .../012-python3-yaml_6.0.1-2build2_amd64.deb ...
+[2026-08-17T21:46:59.364Z] Unpacking python3-yaml (6.0.1-2build2) ...
+[2026-08-17T21:46:59.375Z] Selecting previously unselected package sudo.
+[2026-08-17T21:46:59.378Z] Preparing to unpack .../013-sudo_1.9.15p5-3ubuntu5.24.04.2_amd64.deb ...
+[2026-08-17T21:46:59.379Z] Unpacking sudo (1.9.15p5-3ubuntu5.24.04.2) ...
+[2026-08-17T21:46:59.444Z] Selecting previously unselected package xkb-data.
+[2026-08-17T21:46:59.582Z] Preparing to unpack .../014-xkb-data_2.41-2ubuntu1.1_all.deb ...
+
+Unpacking xkb-data (2.41-2ubuntu1.1) ...
+
+Selecting previously unselected package libip4tc2:amd64.
+
+Preparing to unpack .../015-libip4tc2_1.8.10-3ubuntu2_amd64.deb ...
+
+Unpacking libip4tc2:amd64 (1.8.10-3ubuntu2) ...
+
+Selecting previously unselected package libip6tc2:amd64.
+
+Preparing to unpack .../016-libip6tc2_1.8.10-3ubuntu2_amd64.deb ...
+
+Unpacking libip6tc2:amd64 (1.8.10-3ubuntu2) ...
+
+Selecting previously unselected package libnfnetlink0:amd64.
+
+Preparing to unpack .../017-libnfnetlink0_1.0.2-2build1_amd64.deb ...
+
+Unpacking libnfnetlink0:amd64 (1.0.2-2build1) ...
+
+Selecting previously unselected package libnetfilter-conntrack3:amd64.
+
+Preparing to unpack .../018-libnetfilter-conntrack3_1.0.9-6build1_amd64.deb ...
+
+Unpacking libnetfilter-conntrack3:amd64 (1.0.9-6build1) ...
+
+Selecting previously unselected package libnftnl11:amd64.
+
+Preparing to unpack .../019-libnftnl11_1.2.6-2build1_amd64.deb ...
+
+Unpacking libnftnl11:amd64 (1.2.6-2buil
+[2026-08-17T21:46:59.582Z] d1) ...
+
+Selecting previously unselected package iptables.
+
+Preparing to unpack .../020-iptables_1.8.10-3ubuntu2_amd64.deb ...
+
+Unpacking iptables (1.8.10-3ubuntu2) ...
+
+Selecting previously unselected package libdrm-common.
+
+Preparing to unpack .../021-libdrm-common_2.4.125-1ubuntu0.1~24.04.2_all.deb ...
+
+Unpacking libdrm-common (2.4.125-1ubuntu0.1~24.04.2) ...
+[2026-08-17T21:46:59.586Z] Selecting previously unselected package libdrm2:amd64.
+[2026-08-17T21:46:59.588Z] Preparing to unpack .../022-libdrm2_2.4.125-1ubuntu0.1~24.04.2_amd64.deb ...
+[2026-08-17T21:46:59.589Z] Unpacking libdrm2:amd64 (2.4.125-1ubuntu0.1~24.04.2) ...
+[2026-08-17T21:46:59.595Z] Selecting previously unselected package libedit2:amd64.
+[2026-08-17T21:46:59.598Z] Preparing to unpack .../023-libedit2_3.1-20230828-1build1_amd64.deb ...
+[2026-08-17T21:46:59.598Z] Unpacking libedit2:amd64 (3.1-20230828-1build1) ...
+[2026-08-17T21:46:59.606Z] Selecting previously unselected package libpng16-16t64:amd64.
+[2026-08-17T21:46:59.610Z] Preparing to unpack .../024-libpng16-16t64_1.6.43-5ubuntu0.6_amd64.deb ...
+[2026-08-17T21:46:59.610Z] Unpacking libpng16-16t64:amd64 (1.6.43-5ubuntu0.6) ...
+[2026-08-17T21:46:59.618Z] Selecting previously unselected package libsensors-config.
+[2026-08-17T21:46:59.621Z] Preparing to unpack .../025-libsensors-config_1%3a3.6.0-9build1_all.deb ...
+[2026-08-17T21:46:59.621Z] Unpacking libsensors-config (1:3.6.0-9build1) ...
+[2026-08-17T21:46:59.628Z] Selecting previously unselected package libsensors5:amd64.
+[2026-08-17T21:46:59.630Z] Preparing to unpack .../026-libsensors5_1%3a3.6.0-9build1_amd64.deb ...
+[2026-08-17T21:46:59.672Z] Unpacking libsensors5:amd64 (1:3.6.0-9build1) ...
+[2026-08-17T21:46:59.679Z] Selecting previously unselected package libxau6:amd64.
+[2026-08-17T21:46:59.682Z] Preparing to unpack .../027-libxau6_1%3a1.0.9-1build6_amd64.deb ...
+[2026-08-17T21:46:59.682Z] Unpacking libxau6:amd64 (1:1.0.9-1build6) ...
+[2026-08-17T21:46:59.688Z] Selecting previously unselected package libxdmcp6:amd64.
+[2026-08-17T21:46:59.692Z] Preparing to unpack .../028-libxdmcp6_1%3a1.1.3-0ubuntu6_amd64.deb ...
+[2026-08-17T21:46:59.693Z] Unpacking libxdmcp6:amd64 (1:1.1.3-0ubuntu6) ...
+[2026-08-17T21:46:59.700Z] Selecting previously unselected package libxcb1:amd64.
+[2026-08-17T21:46:59.703Z] Preparing to unpack .../029-libxcb1_1.15-1ubuntu2_amd64.deb ...
+[2026-08-17T21:46:59.703Z] Unpacking libxcb1:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:46:59.711Z] Selecting previously unselected package libx11-data.
+[2026-08-17T21:46:59.714Z] Preparing to unpack .../030-libx11-data_2%3a1.8.7-1build1_all.deb ...
+[2026-08-17T21:46:59.714Z] Unpacking libx11-data (2:1.8.7-1build1) ...
+[2026-08-17T21:46:59.751Z] Selecting previously unselected package libx11-6:amd64.
+[2026-08-17T21:46:59.754Z] Preparing to unpack .../031-libx11-6_2%3a1.8.7-1build1_amd64.deb ...
+[2026-08-17T21:46:59.754Z] Unpacking libx11-6:amd64 (2:1.8.7-1build1) ...
+[2026-08-17T21:46:59.766Z] Selecting previously unselected package libxext6:amd64.
+[2026-08-17T21:46:59.769Z] Preparing to unpack .../032-libxext6_2%3a1.3.4-1build2_amd64.deb ...
+[2026-08-17T21:46:59.769Z] Unpacking libxext6:amd64 (2:1.3.4-1build2) ...
+[2026-08-17T21:46:59.777Z] Selecting previously unselected package libxkbcommon0:amd64.
+[2026-08-17T21:46:59.780Z] Preparing to unpack .../033-libxkbcommon0_1.6.0-1build1_amd64.deb ...
+[2026-08-17T21:46:59.781Z] Unpacking libxkbcommon0:amd64 (1.6.0-1build1) ...
+[2026-08-17T21:46:59.789Z] Selecting previously unselected package at-spi2-common.
+[2026-08-17T21:46:59.791Z] Preparing to unpack .../034-at-spi2-common_2.52.0-1build1_all.deb ...
+[2026-08-17T21:47:00.213Z] Unpacking at-spi2-common (2.52.0-1build1) ...
+
+Selecting previously unselected package conmon.
+
+Preparing to unpack .../035-conmon_2.1.10+ds1-1build2_amd64.deb ...
+[2026-08-17T21:47:00.240Z] Unpacking conmon (2.1.10+ds1-1build2) ...
+[2026-08-17T21:47:00.247Z] Selecting previously unselected package containernetworking-plugins.
+[2026-08-17T21:47:00.249Z] Preparing to unpack .../036-containernetworking-plugins_1.1.1+ds1-3ubuntu0.24.04.3_amd64.deb ...
+[2026-08-17T21:47:00.250Z] Unpacking containernetworking-plugins (1.1.1+ds1-3ubuntu0.24.04.3) ...
+[2026-08-17T21:47:00.365Z] Selecting previously unselected package libyajl2:amd64.
+[2026-08-17T21:47:00.367Z] Preparing to unpack .../037-libyajl2_2.1.0-5build1_amd64.deb ...
+[2026-08-17T21:47:00.368Z] Unpacking libyajl2:amd64 (2.1.0-5build1) ...
+[2026-08-17T21:47:00.375Z] Selecting previously unselected package crun.
+[2026-08-17T21:47:00.378Z] Preparing to unpack .../038-crun_1.14.1-1_amd64.deb ...
+[2026-08-17T21:47:00.378Z] Unpacking crun (1.14.1-1) ...
+[2026-08-17T21:47:00.390Z] Selecting previously unselected package gpgconf.
+[2026-08-17T21:47:00.393Z] Preparing to unpack .../039-gpgconf_2.4.4-2ubuntu17.4_amd64.deb ...
+[2026-08-17T21:47:00.393Z] Unpacking gpgconf (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:00.401Z] Selecting previously unselected package libksba8:amd64.
+[2026-08-17T21:47:00.404Z] Preparing to unpack .../040-libksba8_1.6.6-1build1_amd64.deb ...
+[2026-08-17T21:47:00.404Z] Unpacking libksba8:amd64 (1.6.6-1build1) ...
+[2026-08-17T21:47:00.412Z] Selecting previously unselected package dirmngr.
+[2026-08-17T21:47:00.415Z] Preparing to unpack .../041-dirmngr_2.4.4-2ubuntu17.4_amd64.deb ...
+[2026-08-17T21:47:00.423Z] Unpacking dirmngr (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:00.434Z] Selecting previously unselected package libfreetype6:amd64.
+[2026-08-17T21:47:00.437Z] Preparing to unpack .../042-libfreetype6_2.13.2+dfsg-1ubuntu0.1_amd64.deb ...
+[2026-08-17T21:47:00.437Z] Unpacking libfreetype6:amd64 (2.13.2+dfsg-1ubuntu0.1) ...
+[2026-08-17T21:47:00.450Z] Selecting previously unselected package fonts-dejavu-mono.
+[2026-08-17T21:47:00.453Z] Preparing to unpack .../043-fonts-dejavu-mono_2.37-8_all.deb ...
+[2026-08-17T21:47:00.453Z] Unpacking fonts-dejavu-mono (2.37-8) ...
+[2026-08-17T21:47:00.468Z] Selecting previously unselected package fonts-dejavu-core.
+[2026-08-17T21:47:00.472Z] Preparing to unpack .../044-fonts-dejavu-core_2.37-8_all.deb ...
+[2026-08-17T21:47:00.483Z] Unpacking fonts-dejavu-core (2.37-8) ...
+[2026-08-17T21:47:00.499Z] Selecting previously unselected package fontconfig-config.
+[2026-08-17T21:47:00.502Z] Preparing to unpack .../045-fontconfig-config_2.15.0-1.1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:00.592Z] Unpacking fontconfig-config (2.15.0-1.1ubuntu2) ...
+[2026-08-17T21:47:00.608Z] Selecting previously unselected package libfontconfig1:amd64.
+[2026-08-17T21:47:00.610Z] Preparing to unpack .../046-libfontconfig1_2.15.0-1.1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:00.611Z] Unpacking libfontconfig1:amd64 (2.15.0-1.1ubuntu2) ...
+[2026-08-17T21:47:00.619Z] Selecting previously unselected package fontconfig.
+[2026-08-17T21:47:00.621Z] Preparing to unpack .../047-fontconfig_2.15.0-1.1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:00.622Z] Unpacking fontconfig (2.15.0-1.1ubuntu2) ...
+[2026-08-17T21:47:00.632Z] Selecting previously unselected package gnupg-utils.
+[2026-08-17T21:47:00.636Z] Preparing to unpack .../048-gnupg-utils_2.4.4-2ubuntu17.4_amd64.deb ...
+[2026-08-17T21:47:00.636Z] Unpacking gnupg-utils (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:00.645Z] Selecting previously unselected package gpg.
+[2026-08-17T21:47:00.648Z] Preparing to unpack .../049-gpg_2.4.4-2ubuntu17.4_amd64.deb ...
+[2026-08-17T21:47:00.648Z] Unpacking gpg (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:00.659Z] Selecting previously unselected package pinentry-curses.
+[2026-08-17T21:47:00.662Z] Preparing to unpack .../050-pinentry-curses_1.2.1-3ubuntu5_amd64.deb ...
+[2026-08-17T21:47:00.662Z] Unpacking pinentry-curses (1.2.1-3ubuntu5) ...
+[2026-08-17T21:47:00.670Z] Selecting previously unselected package gpg-agent.
+[2026-08-17T21:47:00.672Z] Preparing to unpack .../051-gpg-agent_2.4.4-2ubuntu17.4_amd64.deb ...
+[2026-08-17T21:47:00.673Z] Unpacking gpg-agent (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:00.683Z] Selecting previously unselected package gpgsm.
+[2026-08-17T21:47:00.686Z] Preparing to unpack .../052-gpgsm_2.4.4-2ubuntu17.4_amd64.deb ...
+[2026-08-17T21:47:00.686Z] Unpacking gpgsm (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:00.695Z] Selecting previously unselected package keyboxd.
+[2026-08-17T21:47:00.698Z] Preparing to unpack .../053-keyboxd_2.4.4-2ubuntu17.4_amd64.deb ...
+[2026-08-17T21:47:00.698Z] Unpacking keyboxd (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:00.706Z] Selecting previously unselected package gnupg.
+[2026-08-17T21:47:00.708Z] Preparing to unpack .../054-gnupg_2.4.4-2ubuntu17.4_all.deb ...
+[2026-08-17T21:47:00.709Z] Unpacking gnupg (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:00.718Z] Selecting previously unselected package golang-github-containers-image.
+[2026-08-17T21:47:00.721Z] Preparing to unpack .../055-golang-github-containers-image_5.29.2-2_all.deb ...
+[2026-08-17T21:47:00.721Z] Unpacking golang-github-containers-image (5.29.2-2) ...
+[2026-08-17T21:47:00.729Z] Selecting previously unselected package golang-github-containers-common.
+[2026-08-17T21:47:00.732Z] Preparing to unpack .../056-golang-github-containers-common_0.57.4+ds1-2ubuntu0.2_all.deb ...
+[2026-08-17T21:47:00.732Z] Unpacking golang-github-containers-common (0.57.4+ds1-2ubuntu0.2) ...
+[2026-08-17T21:47:00.740Z] Selecting previously unselected package libasound2-data.
+[2026-08-17T21:47:00.743Z] Preparing to unpack .../057-libasound2-data_1.2.11-1ubuntu0.3_all.deb ...
+[2026-08-17T21:47:00.743Z] Unpacking libasound2-data (1.2.11-1ubuntu0.3) ...
+[2026-08-17T21:47:00.758Z] Selecting previously unselected package libasound2t64:amd64.
+[2026-08-17T21:47:00.761Z] Preparing to unpack .../058-libasound2t64_1.2.11-1ubuntu0.3_amd64.deb ...
+[2026-08-17T21:47:00.762Z] Unpacking libasound2t64:amd64 (1.2.11-1ubuntu0.3) ...
+[2026-08-17T21:47:00.773Z] Selecting previously unselected package libatk1.0-0t64:amd64.
+[2026-08-17T21:47:00.776Z] Preparing to unpack .../059-libatk1.0-0t64_2.52.0-1build1_amd64.deb ...
+[2026-08-17T21:47:00.776Z] Unpacking libatk1.0-0t64:amd64 (2.52.0-1build1) ...
+[2026-08-17T21:47:00.784Z] Selecting previously unselected package libxi6:amd64.
+[2026-08-17T21:47:00.787Z] Preparing to unpack .../060-libxi6_2%3a1.8.1-1build1_amd64.deb ...
+[2026-08-17T21:47:00.787Z] Unpacking libxi6:amd64 (2:1.8.1-1build1) ...
+[2026-08-17T21:47:00.795Z] Selecting previously unselected package libatspi2.0-0t64:amd64.
+[2026-08-17T21:47:00.797Z] Preparing to unpack .../061-libatspi2.0-0t64_2.52.0-1build1_amd64.deb ...
+[2026-08-17T21:47:00.798Z] Unpacking libatspi2.0-0t64:amd64 (2.52.0-1build1) ...
+[2026-08-17T21:47:00.805Z] Selecting previously unselected package libatk-bridge2.0-0t64:amd64.
+[2026-08-17T21:47:00.808Z] Preparing to unpack .../062-libatk-bridge2.0-0t64_2.52.0-1build1_amd64.deb ...
+[2026-08-17T21:47:00.808Z] Unpacking libatk-bridge2.0-0t64:amd64 (2.52.0-1build1) ...
+[2026-08-17T21:47:00.816Z] Selecting previously unselected package libavahi-common-data:amd64.
+[2026-08-17T21:47:00.819Z] Preparing to unpack .../063-libavahi-common-data_0.8-13ubuntu6.2_amd64.deb ...
+[2026-08-17T21:47:00.819Z] Unpacking libavahi-common-data:amd64 (0.8-13ubuntu6.2) ...
+[2026-08-17T21:47:00.826Z] Selecting previously unselected package libavahi-common3:amd64.
+[2026-08-17T21:47:00.829Z] Preparing to unpack .../064-libavahi-common3_0.8-13ubuntu6.2_amd64.deb ...
+[2026-08-17T21:47:00.829Z] Unpacking libavahi-common3:amd64 (0.8-13ubuntu6.2) ...
+[2026-08-17T21:47:00.837Z] Selecting previously unselected package libavahi-client3:amd64.
+[2026-08-17T21:47:00.840Z] Preparing to unpack .../065-libavahi-client3_0.8-13ubuntu6.2_amd64.deb ...
+[2026-08-17T21:47:00.840Z] Unpacking libavahi-client3:amd64 (0.8-13ubuntu6.2) ...
+[2026-08-17T21:47:00.848Z] Selecting previously unselected package libpixman-1-0:amd64.
+[2026-08-17T21:47:00.851Z] Preparing to unpack .../066-libpixman-1-0_0.42.2-1build1_amd64.deb ...
+[2026-08-17T21:47:00.851Z] Unpacking libpixman-1-0:amd64 (0.42.2-1build1) ...
+[2026-08-17T21:47:00.862Z] Selecting previously unselected package libxcb-render0:amd64.
+[2026-08-17T21:47:00.865Z] Preparing to unpack .../067-libxcb-render0_1.15-1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:00.865Z] Unpacking libxcb-render0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:00.873Z] Selecting previously unselected package libxcb-shm0:amd64.
+[2026-08-17T21:47:00.876Z] Preparing to unpack .../068-libxcb-shm0_1.15-1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:00.876Z] Unpacking libxcb-shm0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:00.882Z] Selecting previously unselected package libxrender1:amd64.
+[2026-08-17T21:47:00.885Z] Preparing to unpack .../069-libxrender1_1%3a0.9.10-1.1build1_amd64.deb ...
+[2026-08-17T21:47:00.886Z] Unpacking libxrender1:amd64 (1:0.9.10-1.1build1) ...
+[2026-08-17T21:47:00.893Z] Selecting previously unselected package libcairo2:amd64.
+[2026-08-17T21:47:00.898Z] Preparing to unpack .../070-libcairo2_1.18.0-3build1_amd64.deb ...
+[2026-08-17T21:47:00.898Z] Unpacking libcairo2:amd64 (1.18.0-3build1) ...
+[2026-08-17T21:47:00.911Z] Selecting previously unselected package libcups2t64:amd64.
+[2026-08-17T21:47:00.914Z] Preparing to unpack .../071-libcups2t64_2.4.7-1.2ubuntu7.14_amd64.deb ...
+[2026-08-17T21:47:00.914Z] Unpacking libcups2t64:amd64 (2.4.7-1.2ubuntu7.14) ...
+[2026-08-17T21:47:00.924Z] Selecting previously unselected package libdatrie1:amd64.
+[2026-08-17T21:47:00.927Z] Preparing to unpack .../072-libdatrie1_0.2.13-3build1_amd64.deb ...
+[2026-08-17T21:47:00.927Z] Unpacking libdatrie1:amd64 (0.2.13-3build1) ...
+[2026-08-17T21:47:00.934Z] Selecting previously unselected package libdrm-amdgpu1:amd64.
+[2026-08-17T21:47:00.937Z] Preparing to unpack .../073-libdrm-amdgpu1_2.4.125-1ubuntu0.1~24.04.2_amd64.deb ...
+[2026-08-17T21:47:00.938Z] Unpacking libdrm-amdgpu1:amd64 (2.4.125-1ubuntu0.1~24.04.2) ...
+[2026-08-17T21:47:00.945Z] Selecting previously unselected package libpciaccess0:amd64.
+[2026-08-17T21:47:00.948Z] Preparing to unpack .../074-libpciaccess0_0.17-3ubuntu0.24.04.2_amd64.deb ...
+[2026-08-17T21:47:00.948Z] Unpacking libpciaccess0:amd64 (0.17-3ubuntu0.24.04.2) ...
+[2026-08-17T21:47:00.955Z] Selecting previously unselected package libdrm-intel1:amd64.
+[2026-08-17T21:47:00.958Z] Preparing to unpack .../075-libdrm-intel1_2.4.125-1ubuntu0.1~24.04.2_amd64.deb ...
+[2026-08-17T21:47:00.958Z] Unpacking libdrm-intel1:amd64 (2.4.125-1ubuntu0.1~24.04.2) ...
+[2026-08-17T21:47:00.966Z] Selecting previously unselected package libllvm20:amd64.
+[2026-08-17T21:47:00.969Z] Preparing to unpack .../076-libllvm20_1%3a20.1.2-0ubuntu1~24.04.3_amd64.deb ...
+[2026-08-17T21:47:00.969Z] Unpacking libllvm20:amd64 (1:20.1.2-0ubuntu1~24.04.3) ...
+[2026-08-17T21:47:01.528Z] Selecting previously unselected package libx11-xcb1:amd64.
+[2026-08-17T21:47:01.531Z] Preparing to unpack .../077-libx11-xcb1_2%3a1.8.7-1build1_amd64.deb ...
+[2026-08-17T21:47:01.531Z] Unpacking libx11-xcb1:amd64 (2:1.8.7-1build1) ...
+[2026-08-17T21:47:01.538Z] Selecting previously unselected package libxcb-dri3-0:amd64.
+[2026-08-17T21:47:01.542Z] Preparing to unpack .../078-libxcb-dri3-0_1.15-1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:01.542Z] Unpacking libxcb-dri3-0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:01.549Z] Selecting previously unselected package libxcb-present0:amd64.
+[2026-08-17T21:47:01.552Z] Preparing to unpack .../079-libxcb-present0_1.15-1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:01.552Z] Unpacking libxcb-present0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:01.559Z] Selecting previously unselected package libxcb-randr0:amd64.
+[2026-08-17T21:47:01.562Z] Preparing to unpack .../080-libxcb-randr0_1.15-1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:01.562Z] Unpacking libxcb-randr0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:01.569Z] Selecting previously unselected package libxcb-sync1:amd64.
+[2026-08-17T21:47:01.572Z] Preparing to unpack .../081-libxcb-sync1_1.15-1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:01.573Z] Unpacking libxcb-sync1:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:01.580Z] Selecting previously unselected package libxcb-xfixes0:amd64.
+[2026-08-17T21:47:01.583Z] Preparing to unpack .../082-libxcb-xfixes0_1.15-1ubuntu2_amd64.deb ...
+[2026-08-17T21:47:01.583Z] Unpacking libxcb-xfixes0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:01.590Z] Selecting previously unselected package libxshmfence1:amd64.
+[2026-08-17T21:47:01.593Z] Preparing to unpack .../083-libxshmfence1_1.3-1build5_amd64.deb ...
+[2026-08-17T21:47:01.593Z] Unpacking libxshmfence1:amd64 (1.3-1build5) ...
+[2026-08-17T21:47:01.612Z] Selecting previously unselected package mesa-libgallium:amd64.
+[2026-08-17T21:47:01.615Z] Preparing to unpack .../084-mesa-libgallium_25.2.8-0ubuntu0.24.04.2_amd64.deb ...
+[2026-08-17T21:47:01.615Z] Unpacking mesa-libgallium:amd64 (25.2.8-0ubuntu0.24.04.2) ...
+[2026-08-17T21:47:02.605Z] Selecting previously unselected package libgbm1:amd64.
+[2026-08-17T21:47:02.609Z] Preparing to unpack .../085-libgbm1_25.2.8-0ubuntu0.24.04.2_amd64.deb ...
+[2026-08-17T21:47:02.609Z] Unpacking libgbm1:amd64 (25.2.8-0ubuntu0.24.04.2) ...
+[2026-08-17T21:47:02.618Z] Selecting previously unselected package libgpgme11t64:amd64.
+[2026-08-17T21:47:02.621Z] Preparing to unpack .../086-libgpgme11t64_1.18.0-4.1ubuntu4_amd64.deb ...
+[2026-08-17T21:47:02.621Z] Unpacking libgpgme11t64:amd64 (1.18.0-4.1ubuntu4) ...
+[2026-08-17T21:47:02.630Z] Selecting previously unselected package libgraphite2-3:amd64.
+[2026-08-17T21:47:02.634Z] Preparing to unpack .../087-libgraphite2-3_1.3.14-2ubuntu0.24.04.1_amd64.deb ...
+[2026-08-17T21:47:02.634Z] Unpacking libgraphite2-3:amd64 (1.3.14-2ubuntu0.24.04.1) ...
+[2026-08-17T21:47:02.641Z] Selecting previously unselected package libharfbuzz0b:amd64.
+[2026-08-17T21:47:02.645Z] Preparing to unpack .../088-libharfbuzz0b_8.3.0-2build2_amd64.deb ...
+[2026-08-17T21:47:02.645Z] Unpacking libharfbuzz0b:amd64 (8.3.0-2build2) ...
+[2026-08-17T21:47:02.656Z] Selecting previously unselected package libnspr4:amd64.
+[2026-08-17T21:47:02.659Z] Preparing to unpack .../089-libnspr4_2%3a4.35-1.1build1_amd64.deb ...
+[2026-08-17T21:47:02.659Z] Unpacking libnspr4:amd64 (2:4.35-1.1build1) ...
+[2026-08-17T21:47:02.668Z] Selecting previously unselected package libnss3:amd64.
+[2026-08-17T21:47:02.671Z] Preparing to unpack .../090-libnss3_2%3a3.98-1ubuntu0.2_amd64.deb ...
+[2026-08-17T21:47:02.671Z] Unpacking libnss3:amd64 (2:3.98-1ubuntu0.2) ...
+[2026-08-17T21:47:02.691Z] Selecting previously unselected package libthai-data.
+[2026-08-17T21:47:02.694Z] Preparing to unpack .../091-libthai-data_0.1.29-2build1_all.deb ...
+[2026-08-17T21:47:02.694Z] Unpacking libthai-data (0.1.29-2build1) ...
+[2026-08-17T21:47:02.703Z] Selecting previously unselected package libthai0:amd64.
+[2026-08-17T21:47:02.706Z] Preparing to unpack .../092-libthai0_0.1.29-2build1_amd64.deb ...
+[2026-08-17T21:47:02.730Z] Unpacking libthai0:amd64 (0.1.29-2build1) ...
+[2026-08-17T21:47:02.749Z] Selecting previously unselected package libpango-1.0-0:amd64.
+[2026-08-17T21:47:02.752Z] Preparing to unpack .../093-libpango-1.0-0_1.52.1+ds-1build1_amd64.deb ...
+[2026-08-17T21:47:02.752Z] Unpacking libpango-1.0-0:amd64 (1.52.1+ds-1build1) ...
+[2026-08-17T21:47:02.761Z] Selecting previously unselected package libsubid4:amd64.
+[2026-08-17T21:47:02.765Z] Preparing to unpack .../094-libsubid4_1%3a4.13+dfsg1-4ubuntu3.2_amd64.deb ...
+[2026-08-17T21:47:02.765Z] Unpacking libsubid4:amd64 (1:4.13+dfsg1-4ubuntu3.2) ...
+[2026-08-17T21:47:02.773Z] Selecting previously unselected package libxcomposite1:amd64.
+[2026-08-17T21:47:02.776Z] Preparing to unpack .../095-libxcomposite1_1%3a0.4.5-1build3_amd64.deb ...
+[2026-08-17T21:47:02.776Z] Unpacking libxcomposite1:amd64 (1:0.4.5-1build3) ...
+[2026-08-17T21:47:02.783Z] Selecting previously unselected package libxdamage1:amd64.
+[2026-08-17T21:47:02.786Z] Preparing to unpack .../096-libxdamage1_1%3a1.1.6-1build1_amd64.deb ...
+[2026-08-17T21:47:02.789Z] Unpacking libxdamage1:amd64 (1:1.1.6-1build1) ...
+[2026-08-17T21:47:02.796Z] Selecting previously unselected package libxfixes3:amd64.
+[2026-08-17T21:47:02.799Z] Preparing to unpack .../097-libxfixes3_1%3a6.0.0-2build1_amd64.deb ...
+[2026-08-17T21:47:02.800Z] Unpacking libxfixes3:amd64 (1:6.0.0-2build1) ...
+[2026-08-17T21:47:02.807Z] Selecting previously unselected package libxrandr2:amd64.
+[2026-08-17T21:47:02.810Z] Preparing to unpack .../098-libxrandr2_2%3a1.5.2-2build1_amd64.deb ...
+[2026-08-17T21:47:02.810Z] Unpacking libxrandr2:amd64 (2:1.5.2-2build1) ...
+[2026-08-17T21:47:02.818Z] Selecting previously unselected package x11-common.
+[2026-08-17T21:47:02.821Z] Preparing to unpack .../099-x11-common_1%3a7.7+23ubuntu3_all.deb ...
+[2026-08-17T21:47:02.822Z] Unpacking x11-common (1:7.7+23ubuntu3) ...
+[2026-08-17T21:47:02.831Z] Selecting previously unselected package libxss1:amd64.
+[2026-08-17T21:47:02.835Z] Preparing to unpack .../100-libxss1_1%3a1.2.3-1build3_amd64.deb ...
+[2026-08-17T21:47:02.835Z] Unpacking libxss1:amd64 (1:1.2.3-1build3) ...
+[2026-08-17T21:47:02.842Z] Selecting previously unselected package podman.
+[2026-08-17T21:47:02.845Z] Preparing to unpack .../101-podman_4.9.3+ds1-1ubuntu0.2_amd64.deb ...
+[2026-08-17T21:47:02.845Z] Unpacking podman (4.9.3+ds1-1ubuntu0.2) ...
+[2026-08-17T21:47:02.982Z] Selecting previously unselected package python3-pathspec.
+[2026-08-17T21:47:02.985Z] Preparing to unpack .../102-python3-pathspec_0.12.1-1_all.deb ...
+[2026-08-17T21:47:02.985Z] Unpacking python3-pathspec (0.12.1-1) ...
+[2026-08-17T21:47:02.999Z] Selecting previously unselected package unzip.
+[2026-08-17T21:47:03.005Z] Preparing to unpack .../103-unzip_6.0-28ubuntu4.1_amd64.deb ...
+[2026-08-17T21:47:03.005Z] Unpacking unzip (6.0-28ubuntu4.1) ...
+[2026-08-17T21:47:03.016Z] Selecting previously unselected package yamllint.
+[2026-08-17T21:47:03.020Z] Preparing to unpack .../104-yamllint_1.33.0-1_all.deb ...
+[2026-08-17T21:47:03.020Z] Unpacking yamllint (1.33.0-1) ...
+[2026-08-17T21:47:03.045Z] Setting up libip4tc2:amd64 (1.8.10-3ubuntu2) ...
+[2026-08-17T21:47:03.046Z] Setting up libksba8:amd64 (1.6.6-1build1) ...
+[2026-08-17T21:47:03.046Z] Setting up pinentry-curses (1.2.1-3ubuntu5) ...
+[2026-08-17T21:47:03.963Z] Setting up media-types (10.1.0) ...
+[2026-08-17T21:47:03.965Z] Setting up libgraphite2-3:amd64 (1.3.14-2ubuntu0.24.04.1) ...
+[2026-08-17T21:47:03.965Z] Setting up libpixman-1-0:amd64 (0.42.2-1build1) ...
+[2026-08-17T21:47:03.966Z] Setting up libpciaccess0:amd64 (0.17-3ubuntu0.24.04.2) ...
+[2026-08-17T21:47:03.967Z] Setting up libxau6:amd64 (1:1.0.9-1build6) ...
+[2026-08-17T21:47:03.967Z] Setting up libapparmor1:amd64 (4.0.1really4.0.1-0ubuntu0.24.04.7) ...
+[2026-08-17T21:47:03.968Z] Setting up libdatrie1:amd64 (0.2.13-3build1) ...
+[2026-08-17T21:47:03.969Z] Setting up libyaml-0-2:amd64 (0.2.5-1build1) ...
+[2026-08-17T21:47:03.969Z] Setting up libip6tc2:amd64 (1.8.10-3ubuntu2) ...
+[2026-08-17T21:47:03.970Z] Setting up unzip (6.0-28ubuntu4.1) ...
+[2026-08-17T21:47:03.972Z] Setting up libsqlite3-0:amd64 (3.45.1-1ubuntu2.7) ...
+[2026-08-17T21:47:03.972Z] Setting up libyajl2:amd64 (2.1.0-5build1) ...
+[2026-08-17T21:47:03.973Z] Setting up x11-common (1:7.7+23ubuntu3) ...
+[2026-08-17T21:47:04.431Z] debconf: unable to initialize frontend: Dialog
+
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+
+debconf: falling back to frontend: Readline
+[2026-08-17T21:47:04.473Z] debconf: unable to initialize frontend: Readline
+
+debconf: (This frontend requires a controlling tty.)
+
+debconf: falling back to frontend: Teletype
+[2026-08-17T21:47:04.673Z] invoke-rc.d: could not determine current runlevel
+[2026-08-17T21:47:04.675Z] invoke-rc.d: policy-rc.d denied execution of start.
+[2026-08-17T21:47:04.678Z] Setting up libsensors-config (1:3.6.0-9build1) ...
+[2026-08-17T21:47:04.679Z] Setting up xkb-data (2.41-2ubuntu1.1) ...
+[2026-08-17T21:47:04.679Z] Setting up libelf1t64:amd64 (0.190-1.1ubuntu0.1) ...
+[2026-08-17T21:47:04.680Z] Setting up libsubid4:amd64 (1:4.13+dfsg1-4ubuntu3.2) ...
+[2026-08-17T21:47:04.680Z] Setting up libasound2-data (1.2.11-1ubuntu0.3) ...
+[2026-08-17T21:47:04.681Z] Setting up libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.8) ...
+[2026-08-17T21:47:04.883Z] No schema files found: doing nothing.
+[2026-08-17T21:47:04.886Z] Setting up golang-github-containers-image (5.29.2-2) ...
+[2026-08-17T21:47:04.887Z] Setting up libasound2t64:amd64 (1.2.11-1ubuntu0.3) ...
+[2026-08-17T21:47:04.888Z] Setting up libx11-data (2:1.8.7-1build1) ...
+[2026-08-17T21:47:04.888Z] Setting up libnspr4:amd64 (2:4.35-1.1build1) ...
+[2026-08-17T21:47:04.889Z] Setting up conmon (2.1.10+ds1-1build2) ...
+[2026-08-17T21:47:04.889Z] Setting up libavahi-common-data:amd64 (0.8-13ubuntu6.2) ...
+[2026-08-17T21:47:04.890Z] Setting up libdbus-1-3:amd64 (1.14.10-4ubuntu4.1) ...
+[2026-08-17T21:47:04.890Z] Setting up libfribidi0:amd64 (1.0.13-3build1) ...
+[2026-08-17T21:47:04.891Z] Setting up fonts-dejavu-mono (2.37-8) ...
+[2026-08-17T21:47:04.893Z] Setting up libpng16-16t64:amd64 (1.6.43-5ubuntu0.6) ...
+[2026-08-17T21:47:04.893Z] Setting up libmnl0:amd64 (1.0.5-2build1) ...
+[2026-08-17T21:47:04.894Z] Setting up sudo (1.9.15p5-3ubuntu5.24.04.2) ...
+[2026-08-17T21:47:04.902Z] Setting up fonts-dejavu-core (2.37-8) ...
+[2026-08-17T21:47:04.915Z] Setting up libsensors5:amd64 (1:3.6.0-9build1) ...
+[2026-08-17T21:47:04.916Z] Setting up libxtables12:amd64 (1.8.10-3ubuntu2) ...
+[2026-08-17T21:47:04.916Z] Setting up libdevmapper1.02.1:amd64 (2:1.02.185-3ubuntu3.2) ...
+[2026-08-17T21:47:04.917Z] Setting up libxshmfence1:amd64 (1.3-1build5) ...
+[2026-08-17T21:47:04.918Z] Setting up at-spi2-common (2.52.0-1build1) ...
+[2026-08-17T21:47:04.918Z] Setting up libnfnetlink0:amd64 (1.0.2-2build1) ...
+[2026-08-17T21:47:04.918Z] Setting up libthai-data (0.1.29-2build1) ...
+[2026-08-17T21:47:04.919Z] Setting up netbase (6.4) ...
+[2026-08-17T21:47:04.921Z] Setting up libbsd0:amd64 (0.12.1-1build1.1) ...
+[2026-08-17T21:47:04.922Z] Setting up libdrm-common (2.4.125-1ubuntu0.1~24.04.2) ...
+[2026-08-17T21:47:04.922Z] Setting up readline-common (8.2-4build1) ...
+[2026-08-17T21:47:04.927Z] Setting up libxml2:amd64 (2.9.14+dfsg-1.3ubuntu3.8) ...
+[2026-08-17T21:47:04.927Z] Setting up gnupg-utils (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:04.928Z] Setting up libxkbcommon0:amd64 (1.6.0-1build1) ...
+[2026-08-17T21:47:04.928Z] Setting up libxdmcp6:amd64 (1:1.1.3-0ubuntu6) ...
+[2026-08-17T21:47:04.929Z] Setting up libxcb1:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:04.929Z] Setting up libxcb-xfixes0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:04.930Z] Setting up libatk1.0-0t64:amd64 (2.52.0-1build1) ...
+[2026-08-17T21:47:04.930Z] Setting up libxcb-render0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:04.931Z] Setting up fontconfig-config (2.15.0-1.1ubuntu2) ...
+[2026-08-17T21:47:05.026Z] Setting up crun (1.14.1-1) ...
+[2026-08-17T21:47:05.026Z] Setting up libedit2:amd64 (3.1-20230828-1build1) ...
+[2026-08-17T21:47:05.027Z] Setting up libavahi-common3:amd64 (0.8-13ubuntu6.2) ...
+[2026-08-17T21:47:05.027Z] Setting up libnftnl11:amd64 (1.2.6-2build1) ...
+[2026-08-17T21:47:05.027Z] Setting up libnss3:amd64 (2:3.98-1ubuntu0.2) ...
+[2026-08-17T21:47:05.028Z] Setting up libxcb-shm0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:05.028Z] Setting up libxcb-present0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:05.029Z] Setting up libthai0:amd64 (0.1.29-2build1) ...
+[2026-08-17T21:47:05.029Z] Setting up libfreetype6:amd64 (2.13.2+dfsg-1ubuntu0.1) ...
+[2026-08-17T21:47:05.030Z] Setting up libxcb-sync1:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:05.030Z] Setting up libllvm20:amd64 (1:20.1.2-0ubuntu1~24.04.3) ...
+[2026-08-17T21:47:05.031Z] Setting up libreadline8t64:amd64 (8.2-4build1) ...
+[2026-08-17T21:47:05.031Z] Setting up libdrm2:amd64 (2.4.125-1ubuntu0.1~24.04.2) ...
+[2026-08-17T21:47:05.032Z] Setting up libnetfilter-conntrack3:amd64 (1.0.9-6build1) ...
+[2026-08-17T21:47:05.032Z] Setting up libxcb-randr0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:05.042Z] Setting up gpgconf (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:05.043Z] Setting up libx11-6:amd64 (2:1.8.7-1build1) ...
+[2026-08-17T21:47:05.043Z] Setting up libharfbuzz0b:amd64 (8.3.0-2build2) ...
+[2026-08-17T21:47:05.043Z] Setting up libfontconfig1:amd64 (2.15.0-1.1ubuntu2) ...
+[2026-08-17T21:47:05.044Z] Setting up libxcomposite1:amd64 (1:0.4.5-1build3) ...
+[2026-08-17T21:47:05.044Z] Setting up libavahi-client3:amd64 (0.8-13ubuntu6.2) ...
+[2026-08-17T21:47:05.045Z] Setting up gpg (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:05.045Z] Setting up libdrm-amdgpu1:amd64 (2.4.125-1ubuntu0.1~24.04.2) ...
+[2026-08-17T21:47:05.045Z] Setting up libxcb-dri3-0:amd64 (1.15-1ubuntu2) ...
+[2026-08-17T21:47:05.046Z] Setting up libx11-xcb1:amd64 (2:1.8.7-1build1) ...
+[2026-08-17T21:47:05.046Z] Setting up fontconfig (2.15.0-1.1ubuntu2) ...
+[2026-08-17T21:47:05.048Z] Regenerating fonts cache... 
+[2026-08-17T21:47:07.060Z] done.
+[2026-08-17T21:47:07.060Z] Setting up libxdamage1:amd64 (1:1.1.6-1build1) ...
+[2026-08-17T21:47:07.061Z] Setting up gpg-agent (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:07.381Z] Setting up libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.15) ...
+[2026-08-17T21:47:07.382Z] Setting up libxrender1:amd64 (1:0.9.10-1.1build1) ...
+[2026-08-17T21:47:07.382Z] Setting up iptables (1.8.10-3ubuntu2) ...
+[2026-08-17T21:47:07.385Z] update-alternatives: using /usr/sbin/iptables-legacy to provide /usr/sbin/iptables (iptables) in auto mode
+[2026-08-17T21:47:07.386Z] update-alternatives: using /usr/sbin/ip6tables-legacy to provide /usr/sbin/ip6tables (ip6tables) in auto mode
+[2026-08-17T21:47:07.387Z] update-alternatives: using /usr/sbin/iptables-nft to provide /usr/sbin/iptables (iptables) in auto mode
+[2026-08-17T21:47:07.388Z] update-alternatives: using /usr/sbin/ip6tables-nft to provide /usr/sbin/ip6tables (ip6tables) in auto mode
+[2026-08-17T21:47:07.389Z] update-alternatives: using /usr/sbin/arptables-nft to provide /usr/sbin/arptables (arptables) in auto mode
+[2026-08-17T21:47:07.390Z] update-alternatives: using /usr/sbin/ebtables-nft to provide /usr/sbin/ebtables (ebtables) in auto mode
+[2026-08-17T21:47:07.391Z] Setting up python3.12 (3.12.3-1ubuntu0.15) ...
+[2026-08-17T21:47:08.028Z] Setting up gpgsm (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:08.029Z] Setting up libpango-1.0-0:amd64 (1.52.1+ds-1build1) ...
+[2026-08-17T21:47:08.029Z] Setting up libdrm-intel1:amd64 (2.4.125-1ubuntu0.1~24.04.2) ...
+[2026-08-17T21:47:08.029Z] Setting up libxext6:amd64 (2:1.3.4-1build2) ...
+[2026-08-17T21:47:08.030Z] Setting up libcairo2:amd64 (1.18.0-3build1) ...
+[2026-08-17T21:47:08.030Z] Setting up dirmngr (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:08.115Z] Setting up libxfixes3:amd64 (1:6.0.0-2build1) ...
+[2026-08-17T21:47:08.116Z] Setting up containernetworking-plugins (1.1.1+ds1-3ubuntu0.24.04.3) ...
+[2026-08-17T21:47:08.225Z] Setting up libxrandr2:amd64 (2:1.5.2-2build1) ...
+[2026-08-17T21:47:08.225Z] Setting up keyboxd (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:08.303Z] Setting up gnupg (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:08.303Z] Setting up libgpgme11t64:amd64 (1.18.0-4.1ubuntu4) ...
+[2026-08-17T21:47:08.303Z] Setting up libxss1:amd64 (1:1.2.3-1build3) ...
+[2026-08-17T21:47:08.304Z] Setting up golang-github-containers-common (0.57.4+ds1-2ubuntu0.2) ...
+[2026-08-17T21:47:08.305Z] Setting up libcups2t64:amd64 (2.4.7-1.2ubuntu7.14) ...
+[2026-08-17T21:47:08.305Z] Setting up libpython3-stdlib:amd64 (3.12.3-0ubuntu2.1) ...
+[2026-08-17T21:47:08.305Z] Setting up mesa-libgallium:amd64 (25.2.8-0ubuntu0.24.04.2) ...
+[2026-08-17T21:47:08.306Z] Setting up libxi6:amd64 (2:1.8.1-1build1) ...
+[2026-08-17T21:47:08.306Z] Setting up libgbm1:amd64 (25.2.8-0ubuntu0.24.04.2) ...
+[2026-08-17T21:47:08.307Z] Setting up podman (4.9.3+ds1-1ubuntu0.2) ...
+[2026-08-17T21:47:09.004Z] Setting up python3 (3.12.3-0ubuntu2.1) ...
+[2026-08-17T21:47:09.007Z] running python rtupdate hooks for python3.12...
+[2026-08-17T21:47:09.007Z] running python post-rtupdate hooks for python3.12...
+[2026-08-17T21:47:09.067Z] Setting up libatspi2.0-0t64:amd64 (2.52.0-1build1) ...
+[2026-08-17T21:47:09.067Z] Setting up python3-pathspec (0.12.1-1) ...
+[2026-08-17T21:47:09.141Z] Setting up python3-pkg-resources (68.1.2-2ubuntu1.2) ...
+[2026-08-17T21:47:09.279Z] Setting up libatk-bridge2.0-0t64:amd64 (2.52.0-1build1) ...
+[2026-08-17T21:47:09.280Z] Setting up python3-yaml (6.0.1-2build2) ...
+[2026-08-17T21:47:09.371Z] Setting up yamllint (1.33.0-1) ...
+[2026-08-17T21:47:09.453Z] Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+[2026-08-17T21:47:23.259Z] --> a0eb4edd4a12
+[2026-08-17T21:47:23.289Z] [1/3] STEP 4/6: RUN dotnet tool install --tool-path /usr/local/share/dotnet-tools dotnet-ef  && ln -s /usr/local/share/dotnet-tools/dotnet-ef /usr/local/bin/dotnet-ef
+[2026-08-17T21:47:27.943Z] You can invoke the tool using the following command: dotnet-ef
+Tool 'dotnet-ef' (version '10.0.11') was successfully installed.
+[2026-08-17T21:47:28.315Z] --> a0904c394f8e
+[2026-08-17T21:47:28.326Z] [1/3] STEP 5/6: ENV PATH="${PATH}:/usr/local/share/dotnet-tools"
+[2026-08-17T21:47:28.547Z] --> 302f13ee0444
+[2026-08-17T21:47:28.561Z] [1/3] STEP 6/6: USER dotnet
+[2026-08-17T21:47:28.738Z] --> 510bb5656e43
+[2026-08-17T21:47:28.738Z] [2/3] STEP 1/4: FROM 510bb5656e439a146af6a99e567a2eeebf7383087105e1c45a6ee5d52d9b2a2b AS dev_containers_feature_content_normalize
+[2026-08-17T21:47:28.749Z] [2/3] STEP 2/4: USER root
+[2026-08-17T21:47:28.901Z] --> fcaed99b1054
+[2026-08-17T21:47:28.916Z] [2/3] STEP 3/4: COPY --from=dev_containers_feature_content_source devcontainer-features.builtin.env /tmp/build-features/
+[2026-08-17T21:47:29.213Z] --> a76feee0d8c1
+[2026-08-17T21:47:29.221Z] [2/3] STEP 4/4: RUN chmod -R 0755 /tmp/build-features/
+[2026-08-17T21:47:29.665Z] --> 3148766a27ce
+[2026-08-17T21:47:29.674Z] [3/3] STEP 1/16: FROM 510bb5656e439a146af6a99e567a2eeebf7383087105e1c45a6ee5d52d9b2a2b AS dev_containers_target_stage
+[2026-08-17T21:47:29.682Z] [3/3] STEP 2/16: USER root
+[2026-08-17T21:47:29.830Z] --> 5fa050f8cd17
+[2026-08-17T21:47:29.839Z] [3/3] STEP 3/16: RUN mkdir -p /tmp/dev-container-features
+[2026-08-17T21:47:30.211Z] --> 41bf780c897d
+[2026-08-17T21:47:30.222Z] [3/3] STEP 4/16: COPY --from=dev_containers_feature_content_normalize /tmp/build-features/ /tmp/dev-container-features
+[2026-08-17T21:47:30.490Z] --> eb3831bc3491
+[2026-08-17T21:47:30.499Z] [3/3] STEP 5/16: RUN echo "_CONTAINER_USER_HOME=$( (command -v getent >/dev/null 2>&1 && getent passwd 'dotnet' || grep -E '^dotnet|^[^:]*:[^:]*:dotnet:' /etc/passwd || true) | cut -d: -f6)" >> /tmp/dev-container-features/devcontainer-features.builtin.env && echo "_REMOTE_USER_HOME=$( (command -v getent >/dev/null 2>&1 && getent passwd 'dotnet' || grep -E '^dotnet|^[^:]*:[^:]*:dotnet:' /etc/passwd || true) | cut -d: -f6)" >> /tmp/dev-container-features/devcontainer-features.builtin.env
+[2026-08-17T21:47:30.865Z] --> 1ac30a183155
+[2026-08-17T21:47:30.873Z] [3/3] STEP 6/16: ENV NVM_DIR="/usr/local/share/nvm"
+[2026-08-17T21:47:31.008Z] --> 41263f4aa688
+[2026-08-17T21:47:31.017Z] [3/3] STEP 7/16: ENV NVM_SYMLINK_CURRENT="true"
+[2026-08-17T21:47:31.158Z] --> 20501d565597
+[2026-08-17T21:47:31.168Z] [3/3] STEP 8/16: ENV PATH="/usr/local/share/nvm/current/bin:${PATH}"
+[2026-08-17T21:47:31.289Z] --> 0ace1c598d8e
+[2026-08-17T21:47:31.305Z] [3/3] STEP 9/16: RUN --mount=type=bind,from=dev_containers_feature_content_source,source=node_0,target=/tmp/build-features-src/node_0     cp -ar /tmp/build-features-src/node_0 /tmp/dev-container-features  && chmod -R 0755 /tmp/dev-container-features/node_0  && cd /tmp/dev-container-features/node_0  && chmod +x ./devcontainer-features-install.sh  && ./devcontainer-features-install.sh  && rm -rf /tmp/dev-container-features/node_0
+[2026-08-17T21:47:31.474Z] ===========================================================================
+Feature       : Node.js (via nvm), yarn and pnpm.
+Description   : Installs Node.js, nvm, yarn, pnpm, and needed dependencies.
+Id            : ghcr.io/devcontainers/features/node
+Version       : 2.1.0
+Documentation : https://github.com/devcontainers/features/tree/main/src/node
+Options       :
+    VERSION="lts"
+    NODEGYPDEPENDENCIES="true"
+    NVMINSTALLPATH="/usr/local/share/nvm"
+    NPMVERSION="none"
+    PNPMVERSION="latest"
+    NVMVERSION="latest"
+    INSTALLYARNUSINGAPT="false"
+===========================================================================
+[2026-08-17T21:47:31.500Z] Running apt-get update...
+[2026-08-17T21:47:31.985Z] Get:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+[2026-08-17T21:47:32.354Z] Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+[2026-08-17T21:47:33.153Z] Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+[2026-08-17T21:47:33.446Z] Get:4 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+[2026-08-17T21:47:33.671Z] Get:5 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [1657 kB]
+[2026-08-17T21:47:33.738Z] Get:6 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+[2026-08-17T21:47:35.356Z] Get:7 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+[2026-08-17T21:47:35.361Z] Get:8 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+[2026-08-17T21:47:35.388Z] Get:9 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+[2026-08-17T21:47:35.389Z] Get:10 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [1800 kB]
+[2026-08-17T21:47:35.410Z] Get:11 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [50.0 kB]
+[2026-08-17T21:47:35.414Z] Get:12 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [55.8 kB]
+[2026-08-17T21:47:35.414Z] Get:13 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2142 kB]
+[2026-08-17T21:47:35.418Z] Get:14 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1524 kB]
+[2026-08-17T21:47:35.449Z] Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1499 kB]
+[2026-08-17T21:47:35.536Z] Get:16 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1153 kB]
+[2026-08-17T21:47:35.567Z] Get:17 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [48.9 kB]
+[2026-08-17T21:47:35.568Z] Get:18 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [35.9 kB]
+[2026-08-17T21:47:35.569Z] Get:19 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [671 B]
+[2026-08-17T21:47:36.233Z] Fetched 32.2 MB in 5s (6824 kB/s)
+Reading package lists...
+[2026-08-17T21:47:36.810Z] 
+[2026-08-17T21:47:36.823Z] Reading package lists...
+[2026-08-17T21:47:37.411Z] 
+[2026-08-17T21:47:37.418Z] Building dependency tree...
+[2026-08-17T21:47:37.567Z] 
+Reading state information...
+[2026-08-17T21:47:37.567Z] 
+[2026-08-17T21:47:37.828Z] curl is already the newest version (8.5.0-2ubuntu10.11).
+ca-certificates is already the newest version (20260601~24.04.1).
+tar is already the newest version (1.35+dfsg-3ubuntu0.4).
+dirmngr is already the newest version (2.4.4-2ubuntu17.4).
+dirmngr set to manually installed.
+The following NEW packages will be installed:
+[2026-08-17T21:47:37.828Z]   apt-transport-https gnupg2
+[2026-08-17T21:47:38.597Z] 0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
+Need to get 8722 B of archives.
+After this operation, 69.6 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 apt-transport-https all 2.8.3 [3970 B]
+[2026-08-17T21:47:38.848Z] Get:2 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 gnupg2 all 2.4.4-2ubuntu17.4 [4752 B]
+[2026-08-17T21:47:38.944Z] debconf: delaying package configuration, since apt-utils is not installed
+[2026-08-17T21:47:38.969Z] Fetched 8722 B in 1s (8646 B/s)
+[2026-08-17T21:47:38.978Z] Selecting previously unselected package apt-transport-https.
+
+(Reading database ... 
+[2026-08-17T21:47:38.982Z] (Reading database ... 5%
+[2026-08-17T21:47:38.982Z] (Reading database ... 10%
+[2026-08-17T21:47:38.982Z] (Reading database ... 15%
+[2026-08-17T21:47:38.982Z] (Reading database ... 20%
+[2026-08-17T21:47:38.982Z] (Reading database ... 25%
+[2026-08-17T21:47:38.983Z] (Reading database ... 30%
+[2026-08-17T21:47:38.983Z] (Reading database ... 35%
+[2026-08-17T21:47:38.983Z] (Reading database ... 40%
+[2026-08-17T21:47:38.983Z] (Reading database ... 45%
+[2026-08-17T21:47:38.984Z] (Reading database ... 50%
+[2026-08-17T21:47:38.984Z] (Reading database ... 55%
+[2026-08-17T21:47:38.984Z] (Reading database ... 60%
+[2026-08-17T21:47:38.984Z] (Reading database ... 65%
+[2026-08-17T21:47:38.984Z] (Reading database ... 70%
+[2026-08-17T21:47:38.984Z] (Reading database ... 75%
+[2026-08-17T21:47:38.985Z] (Reading database ... 80%
+[2026-08-17T21:47:38.985Z] (Reading database ... 85%
+[2026-08-17T21:47:38.985Z] (Reading database ... 90%
+[2026-08-17T21:47:38.985Z] (Reading database ... 95%
+[2026-08-17T21:47:38.998Z] (Reading database ... 100%
+(Reading database ... 12474 files and directories currently installed.)
+[2026-08-17T21:47:38.999Z] Preparing to unpack .../apt-transport-https_2.8.3_all.deb ...
+[2026-08-17T21:47:38.999Z] Unpacking apt-transport-https (2.8.3) ...
+[2026-08-17T21:47:39.006Z] Selecting previously unselected package gnupg2.
+[2026-08-17T21:47:39.010Z] Preparing to unpack .../gnupg2_2.4.4-2ubuntu17.4_all.deb ...
+[2026-08-17T21:47:39.010Z] Unpacking gnupg2 (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:39.022Z] Setting up gnupg2 (2.4.4-2ubuntu17.4) ...
+[2026-08-17T21:47:39.023Z] Setting up apt-transport-https (2.8.3) ...
+[2026-08-17T21:47:39.763Z] NVM_VERSION=0.40.6
+[2026-08-17T21:47:40.555Z] => Downloading nvm from git to '/usr/local/share/nvm'
+
+=> 
+[2026-08-17T21:47:40.560Z] Cloning into '/usr/local/share/nvm'...
+[2026-08-17T21:47:42.900Z] * (HEAD detached at FETCH_HEAD)
+  master
+[2026-08-17T21:47:42.902Z] => Compressing and cleaning up git repository
+[2026-08-17T21:47:42.905Z] 
+[2026-08-17T21:47:42.907Z] 
+[2026-08-17T21:47:42.923Z] => Installing Node.js version lts/*
+[2026-08-17T21:47:43.262Z] Downloading and installing node v24.19.0...
+[2026-08-17T21:47:43.397Z] Downloading https://nodejs.org/dist/v24.19.0/node-v24.19.0-linux-x64.tar.gz...
+[2026-08-17T21:47:43.517Z] 
+                                                                        
+[2026-08-17T21:47:43.517Z]    0.2%
+[2026-08-17T21:47:43.617Z] 
+####                                                                       6.3%
+[2026-08-17T21:47:43.717Z] 
+#########                                                                
+[2026-08-17T21:47:43.717Z]  13.1%
+[2026-08-17T21:47:43.818Z] 
+##############                                                           
+[2026-08-17T21:47:43.818Z]  19.9%
+[2026-08-17T21:47:43.918Z] 
+###################                                                      
+[2026-08-17T21:47:43.918Z]  27.0%
+[2026-08-17T21:47:44.018Z] 
+########################                                                  33.7%
+[2026-08-17T21:47:44.118Z] 
+#############################                                             40.7%
+[2026-08-17T21:47:44.219Z] 
+##################################                                        47.6%
+[2026-08-17T21:47:44.319Z] 
+#######################################                                   54.4%
+[2026-08-17T21:47:44.419Z] 
+############################################                    
+[2026-08-17T21:47:44.419Z]           61.3%
+[2026-08-17T21:47:44.518Z] 
+#################################################                         68.2
+[2026-08-17T21:47:44.518Z] %
+[2026-08-17T21:47:44.618Z] 
+######################################################                   
+[2026-08-17T21:47:44.619Z]  75.2%
+[2026-08-17T21:47:44.719Z] 
+###########################################################               82.2%
+[2026-08-17T21:47:44.819Z] 
+###############################################################          
+[2026-08-17T21:47:44.819Z]  88.2%
+[2026-08-17T21:47:44.919Z] 
+##########################################
+[2026-08-17T21:47:44.920Z] ##########################      95.2%
+[2026-08-17T21:47:44.988Z] 
+######################################################################## 100.0%
+[2026-08-17T21:47:45.010Z] Computing checksum with sha256sum
+[2026-08-17T21:47:45.045Z] Checksums matched!
+[2026-08-17T21:47:57.132Z] Now using node v24.19.0 (npm v11.17.0)
+[2026-08-17T21:47:57.276Z] Creating default alias: default -> lts/* (-> v24.19.0 *)
+[2026-08-17T21:47:57.350Z] => Node.js version lts/* has been successfully installed
+[2026-08-17T21:47:57.350Z] => Close and reopen your terminal to start using nvm or run the following to use it now:
+[2026-08-17T21:47:57.350Z] 
+export NVM_DIR="/usr/local/share/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[2026-08-17T21:47:57.564Z] default -> lts/* (-> v24.19.0 *)
+[2026-08-17T21:47:57.566Z] Updating /etc/bash.bashrc and /etc/zsh/zshrc...
+[2026-08-17T21:47:58.012Z] Now using node v24.19.0 (npm v11.17.0)
+[2026-08-17T21:47:58.390Z] Now using node v24.19.0 (npm v11.17.0)
+[2026-08-17T21:47:58.715Z] Now using node v24.19.0 (npm v11.17.0)
+[2026-08-17T21:47:59.147Z] Now using node v24.19.0 (npm v11.17.0)
+[2026-08-17T21:47:59.148Z] Ignoring NPM version update
+[2026-08-17T21:47:59.385Z] npm warn using --force Recommended protections disabled.
+[2026-08-17T21:48:00.640Z] 
+added 1 package in 1s
+[2026-08-17T21:48:00.640Z] 
+1 package is looking for funding
+[2026-08-17T21:48:00.640Z]   run `npm fund` for details
+[2026-08-17T21:48:00.641Z] npm notice
+npm notice New major version of npm available! 11.17.0 -> 12.0.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.0.2
+npm notice To update run: npm install -g npm@12.0.2
+npm notice
+[2026-08-17T21:48:00.682Z] Verifying node-gyp OS requirements...
+[2026-08-17T21:48:00.717Z] Reading package lists...
+[2026-08-17T21:48:01.374Z] 
+[2026-08-17T21:48:01.383Z] Building dependency tree...
+[2026-08-17T21:48:01.535Z] 
+Reading state information...
+[2026-08-17T21:48:01.535Z] 
+[2026-08-17T21:48:01.735Z] The following additional packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu cpp cpp-13
+[2026-08-17T21:48:01.735Z]   cpp-13-x86-64-linux-gnu cpp-x86-64-linux-gnu g++-13 g++-13-x86-64-linux-gnu
+  g++-x86-64-linux-gnu gcc-13 gcc-13-base gcc-13-x86-64-linux-gnu
+[2026-08-17T21:48:01.735Z]   gcc-x86-64-linux-gnu libasan8 libbinutils libc-dev-bin libc6-dev libcc1-0
+[2026-08-17T21:48:01.735Z]   libcrypt-dev libctf-nobfd0 libctf0 libgcc-13-dev libgomp1 libgprofng0
+[2026-08-17T21:48:01.735Z]   libhwasan0 libisl23 libitm1 libjansson4 liblsan0 libmpc3 libmpfr6
+[2026-08-17T21:48:01.736Z]   libquadmath0 libsframe1 libstdc++-13-dev libtsan2 libubsan1 linux-libc-dev
+[2026-08-17T21:48:01.736Z]   rpcsvc-proto
+[2026-08-17T21:48:01.737Z] Suggested packages:
+  binutils-doc gprofng-gui cpp-doc gcc-13-locales cpp-13-doc g++-multilib
+  g++-13-multilib gcc-13-doc gcc-multilib manpages-dev autoconf automake
+  libtool flex bison gdb gcc-doc gcc-13-multilib gdb-x86-64-linux-gnu
+  glibc-doc libstdc++-13-doc make-doc
+Recommended packages:
+  manpages manpages-dev libc-devtools
+[2026-08-17T21:48:01.784Z] The following NEW packages will be installed:
+  binutils binutils-common binutils-x86-64-linux-gnu cpp cpp-13
+[2026-08-17T21:48:01.784Z]   cpp-13-x86-64-linux-gnu cpp-x86-64-linux-gnu g++ g++-13
+[2026-08-17T21:48:01.784Z]   g++-13-x86-64-linux-gnu g++-x86-64-linux-gnu gcc gcc-13 gcc-13-base
+[2026-08-17T21:48:01.784Z]   gcc-13-x86-64-linux-gnu gcc-x86-64-linux-gnu libasan8 libbinutils
+[2026-08-17T21:48:01.785Z]   libc-dev-bin libc6-dev libcc1-0 libcrypt-dev libctf-nobfd0 libctf0
+[2026-08-17T21:48:01.785Z]   libgcc-13-dev libgomp1 libgprofng0 libhwasan0 libisl23 libitm1 libjansson4
+[2026-08-17T21:48:01.785Z]   liblsan0 libmpc3 libmpfr6 libquadmath0 libsframe1 libstdc++-13-dev libtsan2
+[2026-08-17T21:48:01.786Z]   libubsan1 linux-libc-dev make rpcsvc-proto
+[2026-08-17T21:48:02.340Z] 0 upgraded, 42 newly installed, 0 to remove and 0 not upgraded.
+Need to get 69.5 MB of archives.
+After this operation, 247 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble/main amd64 libjansson4 amd64 2.14-2build2 [32.8 kB]
+[2026-08-17T21:48:02.973Z] Get:2 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-common amd64 2.42-4ubuntu2.10 [240 kB]
+[2026-08-17T21:48:03.856Z] Get:3 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libsframe1 amd64 2.42-4ubuntu2.10 [15.7 kB]
+[2026-08-17T21:48:03.884Z] Get:4 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libbinutils amd64 2.42-4ubuntu2.10 [577 kB]
+[2026-08-17T21:48:04.324Z] Get:5 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libctf-nobfd0 amd64 2.42-4ubuntu2.10 [98.0 kB]
+[2026-08-17T21:48:04.366Z] Get:6 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libctf0 amd64 2.42-4ubuntu2.10 [94.5 kB]
+[2026-08-17T21:48:04.401Z] Get:7 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgprofng0 amd64 2.42-4ubuntu2.10 [849 kB]
+[2026-08-17T21:48:04.627Z] Get:8 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils-x86-64-linux-gnu amd64 2.42-4ubuntu2.10 [2463 kB]
+[2026-08-17T21:48:04.944Z] Get:9 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 binutils amd64 2.42-4ubuntu2.10 [18.2 kB]
+[2026-08-17T21:48:04.945Z] Get:10 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13-base amd64 13.3.0-6ubuntu2~24.04.1 [51.6 kB]
+[2026-08-17T21:48:04.950Z] Get:11 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libisl23 amd64 0.26-3build1.1 [680 kB]
+[2026-08-17T21:48:05.004Z] Get:12 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpfr6 amd64 4.2.1-1build1.1 [353 kB]
+[2026-08-17T21:48:05.028Z] Get:13 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libmpc3 amd64 1.3.1-1build1.1 [54.6 kB]
+[2026-08-17T21:48:05.032Z] Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 cpp-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [10.7 MB]
+[2026-08-17T21:48:05.449Z] Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 cpp-13 amd64 13.3.0-6ubuntu2~24.04.1 [1042 B]
+[2026-08-17T21:48:05.449Z] Get:16 http://archive.ubuntu.com/ubuntu noble/main amd64 cpp-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [5326 B]
+[2026-08-17T21:48:05.449Z] Get:17 http://archive.ubuntu.com/ubuntu noble/main amd64 cpp amd64 4:13.2.0-7ubuntu1 [22.4 kB]
+[2026-08-17T21:48:05.450Z] Get:18 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libcc1-0 amd64 14.2.0-4ubuntu2~24.04.1 [48.0 kB]
+[2026-08-17T21:48:05.479Z] Get:19 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgomp1 amd64 14.2.0-4ubuntu2~24.04.1 [148 kB]
+[2026-08-17T21:48:05.482Z] Get:20 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libitm1 amd64 14.2.0-4ubuntu2~24.04.1 [29.7 kB]
+[2026-08-17T21:48:05.483Z] Get:21 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libasan8 amd64 14.2.0-4ubuntu2~24.04.1 [3027 kB]
+[2026-08-17T21:48:06.395Z] Get:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 liblsan0 amd64 14.2.0-4ubuntu2~24.04.1 [1322 kB]
+[2026-08-17T21:48:06.400Z] Get:23 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libtsan2 amd64 14.2.0-4ubuntu2~24.04.1 [2772 kB]
+[2026-08-17T21:48:06.453Z] Get:24 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libubsan1 amd64 14.2.0-4ubuntu2~24.04.1 [1184 kB]
+[2026-08-17T21:48:06.458Z] Get:25 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libhwasan0 amd64 14.2.0-4ubuntu2~24.04.1 [1641 kB]
+[2026-08-17T21:48:06.464Z] Get:26 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libquadmath0 amd64 14.2.0-4ubuntu2~24.04.1 [153 kB]
+[2026-08-17T21:48:06.465Z] Get:27 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libgcc-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2681 kB]
+[2026-08-17T21:48:06.475Z] Get:28 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [21.1 MB]
+[2026-08-17T21:48:07.150Z] Get:29 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-13 amd64 13.3.0-6ubuntu2~24.04.1 [494 kB]
+[2026-08-17T21:48:07.189Z] Get:30 http://archive.ubuntu.com/ubuntu noble/main amd64 gcc-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [1212 B]
+[2026-08-17T21:48:07.189Z] Get:31 http://archive.ubuntu.com/ubuntu noble/main amd64 gcc amd64 4:13.2.0-7ubuntu1 [5018 B]
+[2026-08-17T21:48:07.190Z] Get:32 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-dev-bin amd64 2.39-0ubuntu8.8 [20.4 kB]
+[2026-08-17T21:48:07.190Z] Get:33 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-libc-dev amd64 6.8.0-138.138 [1523 kB]
+[2026-08-17T21:48:07.233Z] Get:34 http://archive.ubuntu.com/ubuntu noble/main amd64 libcrypt-dev amd64 1:4.4.36-4build1 [112 kB]
+[2026-08-17T21:48:07.235Z] Get:35 http://archive.ubuntu.com/ubuntu noble/main amd64 rpcsvc-proto amd64 1.4.2-0ubuntu7 [67.4 kB]
+[2026-08-17T21:48:07.236Z] Get:36 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libc6-dev amd64 2.39-0ubuntu8.8 [2125 kB]
+[2026-08-17T21:48:07.268Z] Get:37 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libstdc++-13-dev amd64 13.3.0-6ubuntu2~24.04.1 [2420 kB]
+[2026-08-17T21:48:07.574Z] Get:38 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13-x86-64-linux-gnu amd64 13.3.0-6ubuntu2~24.04.1 [12.2 MB]
+[2026-08-17T21:48:08.106Z] Get:39 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 g++-13 amd64 13.3.0-6ubuntu2~24.04.1 [16.0 kB]
+[2026-08-17T21:48:08.106Z] Get:40 http://archive.ubuntu.com/ubuntu noble/main amd64 g++-x86-64-linux-gnu amd64 4:13.2.0-7ubuntu1 [964 B]
+[2026-08-17T21:48:08.106Z] Get:41 http://archive.ubuntu.com/ubuntu noble/main amd64 g++ amd64 4:13.2.0-7ubuntu1 [1100 B]
+[2026-08-17T21:48:08.106Z] Get:42 http://archive.ubuntu.com/ubuntu noble/main amd64 make amd64 4.3-4.1build2 [180 kB]
+[2026-08-17T21:48:08.203Z] debconf: delaying package configuration, since apt-utils is not installed
+[2026-08-17T21:48:08.227Z] Fetched 69.5 MB in 6s (11.0 MB/s)
+[2026-08-17T21:48:08.236Z] Selecting previously unselected package libjansson4:amd64.
+
+(Reading database ... 
+[2026-08-17T21:48:08.238Z] (Reading database ... 5%
+[2026-08-17T21:48:08.239Z] (Reading database ... 10%
+[2026-08-17T21:48:08.239Z] (Reading database ... 15%
+[2026-08-17T21:48:08.239Z] (Reading database ... 20%
+[2026-08-17T21:48:08.239Z] (Reading database ... 25%
+[2026-08-17T21:48:08.239Z] (Reading database ... 30%
+[2026-08-17T21:48:08.239Z] (Reading database ... 35%
+[2026-08-17T21:48:08.239Z] (Reading database ... 40%
+[2026-08-17T21:48:08.240Z] (Reading database ... 45%
+[2026-08-17T21:48:08.240Z] (Reading database ... 50%
+[2026-08-17T21:48:08.240Z] (Reading database ... 55%
+[2026-08-17T21:48:08.240Z] (Reading database ... 60%
+[2026-08-17T21:48:08.240Z] (Reading database ... 65%
+[2026-08-17T21:48:08.240Z] (Reading database ... 70%
+[2026-08-17T21:48:08.240Z] (Reading database ... 75%
+[2026-08-17T21:48:08.240Z] (Reading database ... 80%
+[2026-08-17T21:48:08.240Z] (Reading database ... 85%
+[2026-08-17T21:48:08.240Z] (Reading database ... 90%
+[2026-08-17T21:48:08.241Z] (Reading database ... 95%
+[2026-08-17T21:48:08.243Z] (Reading database ... 100%
+(Reading database ... 12484 files and directories currently installed.)
+[2026-08-17T21:48:08.244Z] Preparing to unpack .../00-libjansson4_2.14-2build2_amd64.deb ...
+[2026-08-17T21:48:08.244Z] Unpacking libjansson4:amd64 (2.14-2build2) ...
+[2026-08-17T21:48:08.252Z] Selecting previously unselected package binutils-common:amd64.
+[2026-08-17T21:48:08.256Z] Preparing to unpack .../01-binutils-common_2.42-4ubuntu2.10_amd64.deb ...
+[2026-08-17T21:48:08.256Z] Unpacking binutils-common:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:08.266Z] Selecting previously unselected package libsframe1:amd64.
+[2026-08-17T21:48:08.270Z] Preparing to unpack .../02-libsframe1_2.42-4ubuntu2.10_amd64.deb ...
+[2026-08-17T21:48:08.270Z] Unpacking libsframe1:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:08.277Z] Selecting previously unselected package libbinutils:amd64.
+[2026-08-17T21:48:08.281Z] Preparing to unpack .../03-libbinutils_2.42-4ubuntu2.10_amd64.deb ...
+[2026-08-17T21:48:08.281Z] Unpacking libbinutils:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:08.294Z] Selecting previously unselected package libctf-nobfd0:amd64.
+[2026-08-17T21:48:08.298Z] Preparing to unpack .../04-libctf-nobfd0_2.42-4ubuntu2.10_amd64.deb ...
+[2026-08-17T21:48:08.299Z] Unpacking libctf-nobfd0:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:08.307Z] Selecting previously unselected package libctf0:amd64.
+[2026-08-17T21:48:08.311Z] Preparing to unpack .../05-libctf0_2.42-4ubuntu2.10_amd64.deb ...
+[2026-08-17T21:48:08.311Z] Unpacking libctf0:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:08.320Z] Selecting previously unselected package libgprofng0:amd64.
+[2026-08-17T21:48:08.323Z] Preparing to unpack .../06-libgprofng0_2.42-4ubuntu2.10_amd64.deb ...
+[2026-08-17T21:48:08.323Z] Unpacking libgprofng0:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:08.341Z] Selecting previously unselected package binutils-x86-64-linux-gnu.
+[2026-08-17T21:48:08.345Z] Preparing to unpack .../07-binutils-x86-64-linux-gnu_2.42-4ubuntu2.10_amd64.deb ...
+[2026-08-17T21:48:08.345Z] Unpacking binutils-x86-64-linux-gnu (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:08.395Z] Selecting previously unselected package binutils.
+[2026-08-17T21:48:08.398Z] Preparing to unpack .../08-binutils_2.42-4ubuntu2.10_amd64.deb ...
+[2026-08-17T21:48:08.399Z] Unpacking binutils (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:08.410Z] Selecting previously unselected package gcc-13-base:amd64.
+[2026-08-17T21:48:08.414Z] Preparing to unpack .../09-gcc-13-base_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:08.414Z] Unpacking gcc-13-base:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:08.421Z] Selecting previously unselected package libisl23:amd64.
+[2026-08-17T21:48:08.424Z] Preparing to unpack .../10-libisl23_0.26-3build1.1_amd64.deb ...
+[2026-08-17T21:48:08.425Z] Unpacking libisl23:amd64 (0.26-3build1.1) ...
+[2026-08-17T21:48:08.438Z] Selecting previously unselected package libmpfr6:amd64.
+[2026-08-17T21:48:08.441Z] Preparing to unpack .../11-libmpfr6_4.2.1-1build1.1_amd64.deb ...
+[2026-08-17T21:48:08.441Z] Unpacking libmpfr6:amd64 (4.2.1-1build1.1) ...
+[2026-08-17T21:48:08.453Z] Selecting previously unselected package libmpc3:amd64.
+[2026-08-17T21:48:08.456Z] Preparing to unpack .../12-libmpc3_1.3.1-1build1.1_amd64.deb ...
+[2026-08-17T21:48:08.456Z] Unpacking libmpc3:amd64 (1.3.1-1build1.1) ...
+[2026-08-17T21:48:08.465Z] Selecting previously unselected package cpp-13-x86-64-linux-gnu.
+[2026-08-17T21:48:08.469Z] Preparing to unpack .../13-cpp-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:08.469Z] Unpacking cpp-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:08.721Z] Selecting previously unselected package cpp-13.
+[2026-08-17T21:48:08.724Z] Preparing to unpack .../14-cpp-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:08.725Z] Unpacking cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:08.732Z] Selecting previously unselected package cpp-x86-64-linux-gnu.
+[2026-08-17T21:48:08.736Z] Preparing to unpack .../15-cpp-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+[2026-08-17T21:48:08.736Z] Unpacking cpp-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:08.743Z] Selecting previously unselected package cpp.
+[2026-08-17T21:48:08.747Z] Preparing to unpack .../16-cpp_4%3a13.2.0-7ubuntu1_amd64.deb ...
+[2026-08-17T21:48:08.920Z] Unpacking cpp (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:08.928Z] Selecting previously unselected package libcc1-0:amd64.
+[2026-08-17T21:48:08.931Z] Preparing to unpack .../17-libcc1-0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:08.932Z] Unpacking libcc1-0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:08.939Z] Selecting previously unselected package libgomp1:amd64.
+[2026-08-17T21:48:08.943Z] Preparing to unpack .../18-libgomp1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:08.943Z] Unpacking libgomp1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:08.952Z] Selecting previously unselected package libitm1:amd64.
+[2026-08-17T21:48:08.955Z] Preparing to unpack .../19-libitm1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:08.955Z] Unpacking libitm1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:08.963Z] Selecting previously unselected package libasan8:amd64.
+[2026-08-17T21:48:08.967Z] Preparing to unpack .../20-libasan8_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:08.967Z] Unpacking libasan8:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:09.006Z] Selecting previously unselected package liblsan0:amd64.
+[2026-08-17T21:48:09.010Z] Preparing to unpack .../21-liblsan0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:09.010Z] Unpacking liblsan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:09.029Z] Selecting previously unselected package libtsan2:amd64.
+[2026-08-17T21:48:09.032Z] Preparing to unpack .../22-libtsan2_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:09.032Z] Unpacking libtsan2:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:09.067Z] Selecting previously unselected package libubsan1:amd64.
+[2026-08-17T21:48:09.070Z] Preparing to unpack .../23-libubsan1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:09.071Z] Unpacking libubsan1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:09.089Z] Selecting previously unselected package libhwasan0:amd64.
+[2026-08-17T21:48:09.092Z] Preparing to unpack .../24-libhwasan0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:09.093Z] Unpacking libhwasan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:09.115Z] Selecting previously unselected package libquadmath0:amd64.
+[2026-08-17T21:48:09.119Z] Preparing to unpack .../25-libquadmath0_14.2.0-4ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:09.119Z] Unpacking libquadmath0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:09.127Z] Selecting previously unselected package libgcc-13-dev:amd64.
+[2026-08-17T21:48:09.130Z] Preparing to unpack .../26-libgcc-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:09.131Z] Unpacking libgcc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:09.190Z] Selecting previously unselected package gcc-13-x86-64-linux-gnu.
+[2026-08-17T21:48:09.194Z] Preparing to unpack .../27-gcc-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:09.194Z] Unpacking gcc-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.255Z] Selecting previously unselected package gcc-13.
+[2026-08-17T21:48:19.259Z] Preparing to unpack .../28-gcc-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:19.260Z] Unpacking gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.270Z] Selecting previously unselected package gcc-x86-64-linux-gnu.
+[2026-08-17T21:48:19.274Z] Preparing to unpack .../29-gcc-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+[2026-08-17T21:48:19.274Z] Unpacking gcc-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.282Z] Selecting previously unselected package gcc.
+[2026-08-17T21:48:19.286Z] Preparing to unpack .../30-gcc_4%3a13.2.0-7ubuntu1_amd64.deb ...
+[2026-08-17T21:48:19.286Z] Unpacking gcc (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.295Z] Selecting previously unselected package libc-dev-bin.
+[2026-08-17T21:48:19.299Z] Preparing to unpack .../31-libc-dev-bin_2.39-0ubuntu8.8_amd64.deb ...
+[2026-08-17T21:48:19.299Z] Unpacking libc-dev-bin (2.39-0ubuntu8.8) ...
+[2026-08-17T21:48:19.307Z] Selecting previously unselected package linux-libc-dev:amd64.
+[2026-08-17T21:48:19.310Z] Preparing to unpack .../32-linux-libc-dev_6.8.0-138.138_amd64.deb ...
+[2026-08-17T21:48:19.310Z] Unpacking linux-libc-dev:amd64 (6.8.0-138.138) ...
+[2026-08-17T21:48:19.442Z] Selecting previously unselected package libcrypt-dev:amd64.
+[2026-08-17T21:48:19.446Z] Preparing to unpack .../33-libcrypt-dev_1%3a4.4.36-4build1_amd64.deb ...
+[2026-08-17T21:48:19.450Z] Unpacking libcrypt-dev:amd64 (1:4.4.36-4build1) ...
+[2026-08-17T21:48:19.459Z] Selecting previously unselected package rpcsvc-proto.
+[2026-08-17T21:48:19.463Z] Preparing to unpack .../34-rpcsvc-proto_1.4.2-0ubuntu7_amd64.deb ...
+[2026-08-17T21:48:19.463Z] Unpacking rpcsvc-proto (1.4.2-0ubuntu7) ...
+[2026-08-17T21:48:19.475Z] Selecting previously unselected package libc6-dev:amd64.
+[2026-08-17T21:48:19.479Z] Preparing to unpack .../35-libc6-dev_2.39-0ubuntu8.8_amd64.deb ...
+[2026-08-17T21:48:19.479Z] Unpacking libc6-dev:amd64 (2.39-0ubuntu8.8) ...
+[2026-08-17T21:48:19.576Z] Selecting previously unselected package libstdc++-13-dev:amd64.
+[2026-08-17T21:48:19.580Z] Preparing to unpack .../36-libstdc++-13-dev_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:19.580Z] Unpacking libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.721Z] Selecting previously unselected package g++-13-x86-64-linux-gnu.
+[2026-08-17T21:48:19.725Z] Preparing to unpack .../37-g++-13-x86-64-linux-gnu_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:19.726Z] Unpacking g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.834Z] Selecting previously unselected package g++-13.
+[2026-08-17T21:48:19.838Z] Preparing to unpack .../38-g++-13_13.3.0-6ubuntu2~24.04.1_amd64.deb ...
+[2026-08-17T21:48:19.838Z] Unpacking g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.845Z] Selecting previously unselected package g++-x86-64-linux-gnu.
+[2026-08-17T21:48:19.849Z] Preparing to unpack .../39-g++-x86-64-linux-gnu_4%3a13.2.0-7ubuntu1_amd64.deb ...
+[2026-08-17T21:48:19.849Z] Unpacking g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.857Z] Selecting previously unselected package g++.
+[2026-08-17T21:48:19.861Z] Preparing to unpack .../40-g++_4%3a13.2.0-7ubuntu1_amd64.deb ...
+[2026-08-17T21:48:19.861Z] Unpacking g++ (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.869Z] Selecting previously unselected package make.
+[2026-08-17T21:48:19.873Z] Preparing to unpack .../41-make_4.3-4.1build2_amd64.deb ...
+[2026-08-17T21:48:19.873Z] Unpacking make (4.3-4.1build2) ...
+[2026-08-17T21:48:19.893Z] Setting up binutils-common:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:19.894Z] Setting up linux-libc-dev:amd64 (6.8.0-138.138) ...
+[2026-08-17T21:48:19.894Z] Setting up libctf-nobfd0:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:19.895Z] Setting up libgomp1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.895Z] Setting up libsframe1:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:19.895Z] Setting up libjansson4:amd64 (2.14-2build2) ...
+[2026-08-17T21:48:19.896Z] Setting up rpcsvc-proto (1.4.2-0ubuntu7) ...
+[2026-08-17T21:48:19.896Z] Setting up gcc-13-base:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.897Z] Setting up make (4.3-4.1build2) ...
+[2026-08-17T21:48:19.897Z] Setting up libmpfr6:amd64 (4.2.1-1build1.1) ...
+[2026-08-17T21:48:19.897Z] Setting up libquadmath0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.898Z] Setting up libmpc3:amd64 (1.3.1-1build1.1) ...
+[2026-08-17T21:48:19.898Z] Setting up libubsan1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.899Z] Setting up libhwasan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.899Z] Setting up libcrypt-dev:amd64 (1:4.4.36-4build1) ...
+[2026-08-17T21:48:19.903Z] Setting up libasan8:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.903Z] Setting up libtsan2:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.904Z] Setting up libbinutils:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:19.904Z] Setting up libisl23:amd64 (0.26-3build1.1) ...
+[2026-08-17T21:48:19.905Z] Setting up libc-dev-bin (2.39-0ubuntu8.8) ...
+[2026-08-17T21:48:19.905Z] Setting up libcc1-0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.906Z] Setting up liblsan0:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.906Z] Setting up libitm1:amd64 (14.2.0-4ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.906Z] Setting up libctf0:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:19.907Z] Setting up cpp-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.907Z] Setting up libgprofng0:amd64 (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:19.908Z] Setting up libgcc-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.908Z] Setting up libc6-dev:amd64 (2.39-0ubuntu8.8) ...
+[2026-08-17T21:48:19.908Z] Setting up libstdc++-13-dev:amd64 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.909Z] Setting up binutils-x86-64-linux-gnu (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:19.909Z] Setting up cpp-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.910Z] Setting up cpp-13 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.911Z] Setting up gcc-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.911Z] Setting up binutils (2.42-4ubuntu2.10) ...
+[2026-08-17T21:48:19.912Z] Setting up gcc-13 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.912Z] Setting up cpp (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.918Z] Setting up g++-13-x86-64-linux-gnu (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.918Z] Setting up gcc-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.919Z] Setting up gcc (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.923Z] Setting up g++-x86-64-linux-gnu (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.923Z] Setting up g++-13 (13.3.0-6ubuntu2~24.04.1) ...
+[2026-08-17T21:48:19.924Z] Setting up g++ (4:13.2.0-7ubuntu1) ...
+[2026-08-17T21:48:19.925Z] update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+[2026-08-17T21:48:19.926Z] update-alternatives: warning: skip creation of /usr/share/man/man1/c++.1.gz because associated file /usr/share/man/man1/g++.1.gz (of link group c++) doesn't exist
+[2026-08-17T21:48:19.926Z] Processing triggers for libc-bin (2.39-0ubuntu8.8) ...
+[2026-08-17T21:48:20.261Z] nvm cache cleared.
+[2026-08-17T21:48:20.316Z] Done!
+[2026-08-17T21:48:39.072Z] --> 1743a382b478
+[2026-08-17T21:48:39.082Z] [3/3] STEP 10/16: RUN --mount=type=bind,from=dev_containers_feature_content_source,source=oh-my-pi_1,target=/tmp/build-features-src/oh-my-pi_1     cp -ar /tmp/build-features-src/oh-my-pi_1 /tmp/dev-container-features  && chmod -R 0755 /tmp/dev-container-features/oh-my-pi_1  && cd /tmp/dev-container-features/oh-my-pi_1  && chmod +x ./devcontainer-features-install.sh  && ./devcontainer-features-install.sh  && rm -rf /tmp/dev-container-features/oh-my-pi_1
+[2026-08-17T21:48:39.260Z] ===========================================================================
+Feature       : Oh My Pi
+Description   : Oh My Pi AI coding agent toolkit for terminal-based development.
+Id            : ghcr.io/iyaki/devcontainer-features/oh-my-pi
+Version       : 1.0.0
+Documentation : 
+Options       :
+    VERSION="latest"
+===========================================================================
+[2026-08-17T21:48:40.353Z] nanolayer
+[2026-08-17T21:48:44.541Z] cd /tmp/tmp7nt735ee && chmod +x -R . && _REMOTE_USER="dotnet" _REMOTE_USER_HOME="/home/dotnet" REPO="can1357/oh-my-pi" BINARYNAMES="omp" ASSETREGEX="omp-linux-x64$" VERSION="latest" RELEASETAGREGEX="" BINLOCATION="/usr/local/bin" LIBNAME="" LIBLOCATION="/usr/local/lib" ADDITIONALFLAGS="" NANOLAYER_VERBOSE="" NANOLAYER_FORCE_CLI_INSTALLATION="" NANOLAYER_PROPAGATE_CLI_LOCATION="1" NANOLAYER_CLI_LOCATION="/tmp/nanolayer-O1YzLqWc4I/nanolayer" bash  -i  +H ./install.sh
+Found a pre-existing nanolayer which were given in env variable: /tmp/nanolayer-O1YzLqWc4I/nanolayer
+[2026-08-17T21:48:44.685Z] skipping usage of pre-existing nanolayer. (required version v0.5.6 does not match existing version 0.5.6)
+[2026-08-17T21:48:45.551Z] nanolayer
+[2026-08-17T21:48:49.107Z] 'omp-browser-relay-extension.zip' filtered by 'omp-linux-x64$' 
+
+'omp-darwin-arm64' filtered by 'omp-linux-x64$' 
+
+'omp-darwin-x64' filtered by 'omp-linux-x64$' 
+
+'omp-linux-arm64' filtered by 'omp-linux-x64$' 
+
+'omp-linux-musl-arm64' filtered by 'omp-linux-x64$' 
+
+'omp-linux-musl-x64' filtered by 'omp-linux-x64$' 
+
+'omp-windows-x64.exe' filtered by 'omp-linux-x64$' 
+
+'SHA256SUMS.txt' filtered by 'omp-linux-x64$' 
+[2026-08-17T21:48:49.108Z] resolved asset: omp-linux-x64
+[2026-08-17T21:48:54.694Z] asset recognized as a binary
+[2026-08-17T21:48:59.962Z] --> 4d45093e4b33
+[2026-08-17T21:48:59.971Z] [3/3] STEP 11/16: RUN --mount=type=bind,from=dev_containers_feature_content_source,source=lefthook_2,target=/tmp/build-features-src/lefthook_2     cp -ar /tmp/build-features-src/lefthook_2 /tmp/dev-container-features  && chmod -R 0755 /tmp/dev-container-features/lefthook_2  && cd /tmp/dev-container-features/lefthook_2  && chmod +x ./devcontainer-features-install.sh  && ./devcontainer-features-install.sh  && rm -rf /tmp/dev-container-features/lefthook_2
+[2026-08-17T21:49:00.143Z] ===========================================================================
+Feature       : Lefthook
+Description   : Fast and powerful Git hooks manager for any type of projects.
+Id            : ghcr.io/iyaki/devcontainer-features/lefthook
+Version       : 2.0.1
+Documentation : 
+Options       :
+    VERSION="latest"
+===========================================================================
+[2026-08-17T21:49:01.062Z] nanolayer
+[2026-08-17T21:49:05.147Z] cd /tmp/tmpi4zzj7sv && chmod +x -R . && _REMOTE_USER="dotnet" _REMOTE_USER_HOME="/home/dotnet" REPO="evilmartians/lefthook" BINARYNAMES="lefthook" ASSETREGEX=".*_Linux_x86_64$" VERSION="latest" RELEASETAGREGEX="" BINLOCATION="/usr/local/bin" LIBNAME="" LIBLOCATION="/usr/local/lib" ADDITIONALFLAGS="" NANOLAYER_VERBOSE="" NANOLAYER_FORCE_CLI_INSTALLATION="" NANOLAYER_PROPAGATE_CLI_LOCATION="1" NANOLAYER_CLI_LOCATION="/tmp/nanolayer-TglW2ANsnC/nanolayer" bash  -i  +H ./install.sh
+Found a pre-existing nanolayer which were given in env variable: /tmp/nanolayer-TglW2ANsnC/nanolayer
+[2026-08-17T21:49:05.295Z] skipping usage of pre-existing nanolayer. (required version v0.5.6 does not match existing version 0.5.6)
+[2026-08-17T21:49:06.246Z] nanolayer
+[2026-08-17T21:49:08.057Z] 'lefthook_2.1.10_amd64.apk' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_amd64.deb' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_amd64.rpm' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_arm64.apk' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_arm64.deb' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_arm64.rpm' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Freebsd_arm64' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Freebsd_arm64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Freebsd_x86_64' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Freebsd_x86_64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Linux_aarch64' filtered by '.*_Linux_x86_64$' 
+[2026-08-17T21:49:08.057Z] 'lefthook_2.1.10_Linux_aarch64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Linux_arm64' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Linux_arm64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Linux_x86_64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_MacOS_arm64' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_MacOS_arm64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_MacOS_x86_64' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_MacOS_x86_64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Openbsd_arm64' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Openbsd_arm64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Openbsd_x86_64' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Openbsd_x86_64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Windows_arm64.exe' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Windows_arm64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Windows_i386.exe' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Windows_i386.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_2.1.10_Windows_x86_64.exe' filtered by '.*_Linux_x86_64$' 
+[2026-08-17T21:49:08.057Z] 'lefthook_2.1.10_Windows_x86_64.gz' filtered by '.*_Linux_x86_64$' 
+
+'lefthook_checksums.txt' filtered by '.*_Linux_x86_64$' 
+[2026-08-17T21:49:08.057Z] resolved asset: lefthook_2.1.10_Linux_x86_64
+[2026-08-17T21:49:08.880Z] asset recognized as a binary
+[2026-08-17T21:49:09.593Z] --> 7700fd81ffea
+[2026-08-17T21:49:09.610Z] [3/3] STEP 12/16: RUN --mount=type=bind,from=dev_containers_feature_content_source,source=bun_3,target=/tmp/build-features-src/bun_3     cp -ar /tmp/build-features-src/bun_3 /tmp/dev-container-features  && chmod -R 0755 /tmp/dev-container-features/bun_3  && cd /tmp/dev-container-features/bun_3  && chmod +x ./devcontainer-features-install.sh  && ./devcontainer-features-install.sh  && rm -rf /tmp/dev-container-features/bun_3
+[2026-08-17T21:49:09.806Z] ===========================================================================
+Feature       : bun
+Description   : Bun is an all-in-one toolkit for JavaScript and TypeScript apps.
+Id            : ghcr.io/shyim/devcontainers-features/bun
+Version       : 0.0.1
+Documentation : https://github.com/shyim/devcontainers-features/tree/main/src/bun
+Options       :
+
+===========================================================================
+[2026-08-17T21:49:09.810Z] No packages to install
+[2026-08-17T21:49:10.122Z] #=#=#                                                                          
+[2026-08-17T21:49:10.223Z] ##O#-#                                                                         
+[2026-08-17T21:49:10.325Z] 
+                                                             
+[2026-08-17T21:49:10.325Z]               0.5%
+[2026-08-17T21:49:10.428Z] 
+######                                                                     8.4%
+[2026-08-17T21:49:10.527Z] 
+#############                                                
+[2026-08-17T21:49:10.527Z]              18.3%
+[2026-08-17T21:49:10.627Z] 
+######################                                                   
+[2026-08-17T21:49:10.627Z]  31.9%
+[2026-08-17T21:49:10.727Z] 
+##############################                                            42.5%
+[2026-08-17T21:49:10.827Z] 
+######################################                                    53.1%
+[2026-08-17T21:49:10.927Z] 
+##############################################                            64.0%
+[2026-08-17T21:49:11.027Z] 
+#####################################################                     74.7%
+[2026-08-17T21:49:11.128Z] 
+#############################################################             85.9%
+[2026-08-17T21:49:11.228Z] 
+#####################################################################    
+[2026-08-17T21:49:11.228Z]  96.9%
+[2026-08-17T21:49:11.256Z] 
+######################################################################## 100.
+[2026-08-17T21:49:11.256Z] 0%
+[2026-08-17T21:49:11.992Z] bun was installed successfully to /usr/local/bin/bun 
+[2026-08-17T21:49:12.024Z] Run 'bun --help' to get started
+[2026-08-17T21:49:13.726Z] --> 3138a94f7f2d
+[2026-08-17T21:49:13.746Z] [3/3] STEP 13/16: RUN --mount=type=bind,from=dev_containers_feature_content_source,source=git-extended_4,target=/tmp/build-features-src/git-extended_4     cp -ar /tmp/build-features-src/git-extended_4 /tmp/dev-container-features  && chmod -R 0755 /tmp/dev-container-features/git-extended_4  && cd /tmp/dev-container-features/git-extended_4  && chmod +x ./devcontainer-features-install.sh  && ./devcontainer-features-install.sh  && rm -rf /tmp/dev-container-features/git-extended_4
+[2026-08-17T21:49:13.939Z] ===========================================================================
+Feature       : Git Extended
+Description   : Git workflow extensions with automatic package manager detection and remote branch checkout helpers
+Id            : ghcr.io/agustin-gigena/devcontainer-features/git-extended
+Version       : 1.0.6
+Documentation : https://github.com/devcontainers/features/tree/main/src/git-extended
+Options       :
+    INSTALLGCRFUNCTION="true"
+    INSTALLGWRFUNCTION="true"
+===========================================================================
+[2026-08-17T21:49:13.939Z] Activating feature 'git-extended'
+[2026-08-17T21:49:13.943Z] >>> Running initial package detection...
+[2026-08-17T21:49:13.944Z] [WARN] Not a git repository, skipping package detection
+[2026-08-17T21:49:13.945Z] git-extended feature installed successfully!
+[2026-08-17T21:49:14.265Z] --> 580b0664279b
+[2026-08-17T21:49:14.278Z] [3/3] STEP 14/16: ARG _DEV_CONTAINERS_IMAGE_USER=root
+[2026-08-17T21:49:14.449Z] --> 6fa133b6f18a
+[2026-08-17T21:49:14.467Z] [3/3] STEP 15/16: USER $_DEV_CONTAINERS_IMAGE_USER
+[2026-08-17T21:49:15.132Z] --> 2c38600e443b
+[2026-08-17T21:49:15.162Z] [3/3] STEP 16/16: LABEL devcontainer.metadata="[ {\"id\":\"ghcr.io/devcontainers/features/node:2.1.0\",\"customizations\":{\"vscode\":{\"extensions\":[\"dbaeumer.vscode-eslint\"],\"settings\":{\"github.copilot.chat.codeGeneration.instructions\":[{\"text\":\"This dev container includes `node`, `npm` and `eslint` pre-installed and available on the `PATH` for Node.js and JavaScript development.\"}]}}}}, {\"id\":\"ghcr.io/iyaki/devcontainer-features/oh-my-pi:1\"}, {\"id\":\"ghcr.io/iyaki/devcontainer-features/lefthook:2.0.1\"}, {\"id\":\"ghcr.io/shyim/devcontainers-features/bun:0\"}, {\"id\":\"ghcr.io/agustin-gigena/devcontainer-features/git-extended:1.0.6\"}, {\"postCreateCommand\":{\"Install agent-browser\":\"npm install -g agent-browser && agent-browser install --with-deps\",\"Configure git identity\":\"bash .devcontainer/configure-git-identity.sh\"},\"postStartCommand\":\"DEV_START_DETACHED=1 bash .devcontainer/start-dev.sh\",\"customizations\":{\"vscode\":{\"settings\":{\"terminal.integrated.defaultProfile.linux\":\"bash\",\"remote.autoForwardPorts\":false,\"remote.restoreForwardedPorts\":false,\"remote.autoForwardPortSource\":\"process\"},\"extensions\":[\"ms-dotnettools.csharp\",\"ms-dotnettools.csdevkit\",\"patcx.vscode-nuget-gallery\",\"ms-azuretools.vscode-containers\"]}},\"mounts\":[{\"source\":\"\${localEnv:HOME}/.omp\",\"target\":\"/home/dotnet/.omp\",\"type\":\"bind\"},{\"type\":\"bind\",\"source\":\"\${localEnv:HOME}/.config/gh/\",\"target\":\"/home/dotnet/.config/gh/\"},{\"type\":\"bind\",\"source\":\"\${localEnv:XDG_RUNTIME_DIR}/podman/podman.sock\",\"target\":\"/run/podman.sock\"}],\"containerUser\":\"dotnet\",\"remoteUser\":\"dotnet\",\"remoteEnv\":{\"PODMAN_SOCKET\":\"/run/podman.sock\",\"DB_IMAGE_REPO\":\"ghcr.io/agustin-gigena/enigma-dev-db\",\"MYSQL_HOST\":\"enigma-dev-db\",\"MYSQL_PORT\":\"3306\",\"MYSQL_DATABASE\":\"enigma_db\",\"MYSQL_USER\":\"root\",\"MYSQL_PASSWORD\":\"root_password\",\"MYSQL_ROOT_PASSWORD\":\"root_password\"},\"portsAttributes\":{\"*\":{\"onAutoForward\":\"ignore\"}},\"otherPortsAttributes\":{\"onAutoForward\":\"ignore\"},\"updateRemoteUserUID\":false} ]"
+[3/3] COMMIT vsc-enigma-3cab906ea54f449fe6de7af6634ed9530b19690f99f0e0e9efb87e43acb0b772
+[2026-08-17T21:49:15.392Z] --> 31aa8dbf1ccf
+[2026-08-17T21:49:15.392Z] [Warning] one or more build args were not consumed: [BUILDKIT_INLINE_CACHE _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE]
+[2026-08-17T21:49:15.392Z] Successfully tagged localhost/vsc-enigma-3cab906ea54f449fe6de7af6634ed9530b19690f99f0e0e9efb87e43acb0b772:latest
+[2026-08-17T21:49:16.311Z] 31aa8dbf1ccf78d554580748fd1fb3930a8e90a602cb72f4e124870f82e09807
+[2026-08-17T21:49:16.835Z] Stop (172367 ms): Run: docker buildx build --load --build-arg BUILDKIT_INLINE_CACHE=1 -f /tmp/devcontainercli-agigena/container-features/0.88.0-1787003177304/Dockerfile-with-features -t vsc-enigma-3cab906ea54f449fe6de7af6634ed9530b19690f99f0e0e9efb87e43acb0b772 --target dev_containers_target_stage --no-cache --pull --build-context dev_containers_feature_content_source=/tmp/devcontainercli-agigena/container-features/0.88.0-1787003177304 --build-arg _DEV_CONTAINERS_BASE_IMAGE=dev_container_auto_added_stage_label --build-arg _DEV_CONTAINERS_IMAGE_USER=dotnet --build-arg _DEV_CONTAINERS_FEATURE_CONTENT_SOURCE=dev_container_feature_content_temp /hdd/Linux/agigena/Repositorios/Enigma/.devcontainer
+[2026-08-17T21:49:16.837Z] Start: Run: docker events --format json --filter event=start
+[2026-08-17T21:49:16.839Z] Start: Starting container
+[2026-08-17T21:49:16.839Z] Start: Run: docker run --sig-proxy=false -a STDOUT -a STDERR --mount type=bind,source=/hdd/Linux/agigena/Repositorios/Enigma,target=/workspaces/Enigma --mount type=bind,src=/home/agigena/.omp,dst=/home/dotnet/.omp --mount type=bind,src=/home/agigena/.config/gh/,dst=/home/dotnet/.config/gh/ --mount type=bind,src=/run/user/1000/podman/podman.sock,dst=/run/podman.sock --mount type=volume,src=vscode,dst=/vscode -l devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma -l devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json -u dotnet --security-opt label=disable --userns=keep-id --memory=3g --cpus=2 --userns=keep-id --name enigma-devcontainer --network enigma-dev-net --publish 127.0.0.1:8080:8080 --publish 127.0.0.1:8081:8081 --entrypoint /bin/sh vsc-enigma-3cab906ea54f449fe6de7af6634ed9530b19690f99f0e0e9efb87e43acb0b772 -c echo Container started
+[2026-08-17T21:49:16.842Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+[2026-08-17T21:49:18.958Z] Container started
+[2026-08-17T21:49:18.978Z] Start: Run: docker inspect --type container b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b
+[2026-08-17T21:49:19.013Z] Stop (35 ms): Run: docker inspect --type container b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b
+[2026-08-17T21:49:19.014Z] Stop (2175 ms): Starting container
+[2026-08-17T21:49:19.014Z] Start: Run: docker ps -q -a --filter label=devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --filter label=devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json
+[2026-08-17T21:49:19.018Z] Stop (2181 ms): Run: docker events --format json --filter event=start
+[2026-08-17T21:49:19.018Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+
+[2026-08-17T21:49:19.049Z] Stop (35 ms): Run: docker ps -q -a --filter label=devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --filter label=devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json
+[2026-08-17T21:49:19.049Z] Start: Run: docker inspect --type container b3715d4762c1
+[2026-08-17T21:49:19.085Z] Stop (36 ms): Run: docker inspect --type container b3715d4762c1
+[2026-08-17T21:49:19.085Z] Start: Inspecting container
+[2026-08-17T21:49:19.085Z] Start: Run: docker inspect --type container b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b
+[2026-08-17T21:49:19.120Z] Stop (35 ms): Run: docker inspect --type container b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b
+[2026-08-17T21:49:19.120Z] Stop (35 ms): Inspecting container
+[2026-08-17T21:49:19.121Z] Start: Run in container: /bin/sh
+[2026-08-17T21:49:19.124Z] Start: Run in container: uname -m
+[2026-08-17T21:49:19.182Z] x86_64
+[2026-08-17T21:49:19.182Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+[2026-08-17T21:49:19.182Z] Stop (58 ms): Run in container: uname -m
+[2026-08-17T21:49:19.182Z] Start: Run in container: (cat /etc/os-release || cat /usr/lib/os-release) 2>/dev/null
+[2026-08-17T21:49:19.184Z] PRETTY_NAME="Ubuntu 24.04.4 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.4 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+[2026-08-17T21:49:19.184Z] 
+[2026-08-17T21:49:19.184Z] Stop (2 ms): Run in container: (cat /etc/os-release || cat /usr/lib/os-release) 2>/dev/null
+[2026-08-17T21:49:19.184Z] Start: Run in container:  (command -v getent >/dev/null 2>&1 && getent passwd 'dotnet' || grep -E '^dotnet|^[^:]*:[^:]*:dotnet:' /etc/passwd || true)
+[2026-08-17T21:49:19.186Z] Stop (2 ms): Run in container:  (command -v getent >/dev/null 2>&1 && getent passwd 'dotnet' || grep -E '^dotnet|^[^:]*:[^:]*:dotnet:' /etc/passwd || true)
+[2026-08-17T21:49:19.187Z] Start: Run in container: test -f '/var/devcontainer/.patchEtcEnvironmentMarker'
+[2026-08-17T21:49:19.187Z] 
+[2026-08-17T21:49:19.187Z] 
+[2026-08-17T21:49:19.187Z] Exit code 1
+[2026-08-17T21:49:19.187Z] Stop (0 ms): Run in container: test -f '/var/devcontainer/.patchEtcEnvironmentMarker'
+[2026-08-17T21:49:19.187Z] Start: Run in container: /bin/sh
+[2026-08-17T21:49:19.190Z] Start: Run in container: test ! -f '/var/devcontainer/.patchEtcEnvironmentMarker' && set -o noclobber && mkdir -p '/var/devcontainer' && { > '/var/devcontainer/.patchEtcEnvironmentMarker' ; } 2> /dev/null
+[2026-08-17T21:49:19.256Z] 
+[2026-08-17T21:49:19.256Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+[2026-08-17T21:49:19.256Z] Stop (66 ms): Run in container: test ! -f '/var/devcontainer/.patchEtcEnvironmentMarker' && set -o noclobber && mkdir -p '/var/devcontainer' && { > '/var/devcontainer/.patchEtcEnvironmentMarker' ; } 2> /dev/null
+[2026-08-17T21:49:19.256Z] Start: Run in container: cat >> /etc/environment <<'etcEnvironmentEOF'
+[2026-08-17T21:49:19.257Z] 
+[2026-08-17T21:49:19.257Z] 
+[2026-08-17T21:49:19.257Z] Stop (1 ms): Run in container: cat >> /etc/environment <<'etcEnvironmentEOF'
+[2026-08-17T21:49:19.257Z] Start: Run in container: test -f '/var/devcontainer/.patchEtcProfileMarker'
+[2026-08-17T21:49:19.257Z] 
+[2026-08-17T21:49:19.257Z] 
+[2026-08-17T21:49:19.257Z] Exit code 1
+[2026-08-17T21:49:19.257Z] Stop (0 ms): Run in container: test -f '/var/devcontainer/.patchEtcProfileMarker'
+[2026-08-17T21:49:19.257Z] Start: Run in container: test ! -f '/var/devcontainer/.patchEtcProfileMarker' && set -o noclobber && mkdir -p '/var/devcontainer' && { > '/var/devcontainer/.patchEtcProfileMarker' ; } 2> /dev/null
+[2026-08-17T21:49:19.258Z] 
+[2026-08-17T21:49:19.258Z] 
+[2026-08-17T21:49:19.258Z] Stop (1 ms): Run in container: test ! -f '/var/devcontainer/.patchEtcProfileMarker' && set -o noclobber && mkdir -p '/var/devcontainer' && { > '/var/devcontainer/.patchEtcProfileMarker' ; } 2> /dev/null
+[2026-08-17T21:49:19.258Z] Start: Run in container: sed -i -E 's/((^|\s)PATH=)([^\$]*)$/\1${PATH:-\3}/g' /etc/profile || true
+[2026-08-17T21:49:19.262Z] 
+[2026-08-17T21:49:19.262Z] 
+[2026-08-17T21:49:19.262Z] Stop (4 ms): Run in container: sed -i -E 's/((^|\s)PATH=)([^\$]*)$/\1${PATH:-\3}/g' /etc/profile || true
+[2026-08-17T21:49:19.262Z] Stop (182315 ms): Resolving Remote
+[2026-08-17T21:49:19.270Z] Stop (182553 ms): Run: /usr/share/code/code /home/agigena/.vscode/extensions/ms-vscode-remote.remote-containers-0.466.0/dist/spec-node/devContainersSpecCLI.js up --user-data-folder /home/agigena/.config/Code/User/globalStorage/ms-vscode-remote.remote-containers/data --container-session-data-folder /tmp/devcontainers-d8c70bb7-3b6a-44bb-a811-760cf71674021787003175732 --workspace-folder /hdd/Linux/agigena/Repositorios/Enigma --workspace-mount-consistency cached --gpu-availability detect --id-label devcontainer.local_folder=/hdd/Linux/agigena/Repositorios/Enigma --id-label devcontainer.config_file=/hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json --log-level debug --log-format json --config /hdd/Linux/agigena/Repositorios/Enigma/.devcontainer/devcontainer.json --default-user-env-probe loginInteractiveShell --build-no-cache --remove-existing-container --mount type=volume,source=vscode,target=/vscode,external=true --skip-post-create --update-remote-user-uid-default on --mount-workspace-git-root --include-configuration --include-merged-configuration
+[2026-08-17T21:49:19.272Z] Start: Run: docker inspect --type container b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b
+[2026-08-17T21:49:19.373Z] Stop (101 ms): Run: docker inspect --type container b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b
+[2026-08-17T21:49:19.375Z] Start: Run: docker exec -i -u root b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b /bin/sh -c echo "New container started. Keep-alive process started." ; export VSCODE_REMOTE_CONTAINERS_SESSION=d8c70bb7-3b6a-44bb-a811-760cf71674021787003175732 ; /bin/sh
+[2026-08-17T21:49:19.376Z] Start: Inspecting container
+[2026-08-17T21:49:19.377Z] Start: Run: docker inspect --type container b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b
+[2026-08-17T21:49:19.385Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+
+[2026-08-17T21:49:19.508Z] New container started. Keep-alive process started.
+[2026-08-17T21:49:19.531Z] Stop (154 ms): Run: docker inspect --type container b3715d4762c17f627d40aefdefc787550540ba18a2ece9ef6c88835946ce3c5b
+[2026-08-17T21:49:19.532Z] Stop (156 ms): Inspecting container
+[2026-08-17T21:49:19.533Z] Start: Run in container: /bin/sh
+[2026-08-17T21:49:19.537Z] Start: Run in container: uname -m
+[2026-08-17T21:49:19.595Z] x86_64
+[2026-08-17T21:49:19.597Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+[2026-08-17T21:49:19.597Z] Stop (60 ms): Run in container: uname -m
+[2026-08-17T21:49:19.598Z] Start: Run in container: (cat /etc/os-release || cat /usr/lib/os-release) 2>/dev/null
+[2026-08-17T21:49:19.600Z] PRETTY_NAME="Ubuntu 24.04.4 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.4 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+[2026-08-17T21:49:19.600Z] 
+[2026-08-17T21:49:19.601Z] Stop (3 ms): Run in container: (cat /etc/os-release || cat /usr/lib/os-release) 2>/dev/null
+[2026-08-17T21:49:19.602Z] Start: Run in container:  (command -v getent >/dev/null 2>&1 && getent passwd 'dotnet' || grep -E '^dotnet|^[^:]*:[^:]*:dotnet:' /etc/passwd || true)
+[2026-08-17T21:49:19.603Z] Stop (1 ms): Run in container:  (command -v getent >/dev/null 2>&1 && getent passwd 'dotnet' || grep -E '^dotnet|^[^:]*:[^:]*:dotnet:' /etc/passwd || true)
+[2026-08-17T21:49:19.605Z] safe.directory: Looking up root folder for workspace folder '/workspaces/Enigma'.
+[2026-08-17T21:49:19.605Z] Start: Run in container: command -v git >/dev/null 2>&1 && ROOT_FOLDER="$(git -C '/workspaces/Enigma' rev-parse --show-toplevel)" && test "$(stat -c %u "$ROOT_FOLDER")" != "$(id -u)" && echo -n "$ROOT_FOLDER"
+[2026-08-17T21:49:19.620Z] 
+[2026-08-17T21:49:19.621Z] 
+[2026-08-17T21:49:19.622Z] Exit code 1
+[2026-08-17T21:49:19.623Z] Stop (18 ms): Run in container: command -v git >/dev/null 2>&1 && ROOT_FOLDER="$(git -C '/workspaces/Enigma' rev-parse --show-toplevel)" && test "$(stat -c %u "$ROOT_FOLDER")" != "$(id -u)" && echo -n "$ROOT_FOLDER"
+[2026-08-17T21:49:19.623Z] safe.directory: Checking host ownership of root folder at mount point '/workspaces/Enigma' skipped.
+[2026-08-17T21:49:19.624Z] Start: Updating configuration state
+[2026-08-17T21:49:19.639Z] Stop (15 ms): Updating configuration state
+[2026-08-17T21:49:19.640Z] Start: Setup shutdown monitor
+[2026-08-17T21:49:19.641Z] Forking shutdown monitor: /home/agigena/.vscode/extensions/ms-vscode-remote.remote-containers-0.466.0/dist/shutdown/shutdownMonitorProcess /run/user/1000/vscode-rc-9e522791-54a0-4f5d-ab47-5b202c195633.sock singleContainer Debug /home/agigena/.config/Code/logs/20260817T170551/window1/exthost/ms-vscode-remote.remote-containers 1787003176398
+[2026-08-17T21:49:19.673Z] Stop (33 ms): Setup shutdown monitor
+[2026-08-17T21:49:19.675Z] Start: Run in container: test -d '/home/dotnet/.vscode-server'
+[2026-08-17T21:49:19.676Z] 
+[2026-08-17T21:49:19.676Z] 
+[2026-08-17T21:49:19.677Z] Exit code 1
+[2026-08-17T21:49:19.678Z] Stop (3 ms): Run in container: test -d '/home/dotnet/.vscode-server'
+[2026-08-17T21:49:19.678Z] Start: Run in container: test -d '/home/dotnet/.vscode-remote'
+[2026-08-17T21:49:19.679Z] 
+[2026-08-17T21:49:19.680Z] 
+[2026-08-17T21:49:19.681Z] Exit code 1
+[2026-08-17T21:49:19.681Z] Stop (3 ms): Run in container: test -d '/home/dotnet/.vscode-remote'
+[2026-08-17T21:49:19.682Z] Start: Run in container: test ! -f '/home/dotnet/.vscode-server/data/Machine/.writeMachineSettingsMarker' && set -o noclobber && mkdir -p '/home/dotnet/.vscode-server/data/Machine' && { > '/home/dotnet/.vscode-server/data/Machine/.writeMachineSettingsMarker' ; } 2> /dev/null
+[2026-08-17T21:49:19.684Z] 
+[2026-08-17T21:49:19.685Z] 
+[2026-08-17T21:49:19.685Z] Stop (3 ms): Run in container: test ! -f '/home/dotnet/.vscode-server/data/Machine/.writeMachineSettingsMarker' && set -o noclobber && mkdir -p '/home/dotnet/.vscode-server/data/Machine' && { > '/home/dotnet/.vscode-server/data/Machine/.writeMachineSettingsMarker' ; } 2> /dev/null
+[2026-08-17T21:49:19.686Z] Start: Run in container: test -f '/home/dotnet/.vscode-server/data/Machine/settings.json'
+[2026-08-17T21:49:19.687Z] 
+[2026-08-17T21:49:19.687Z] 
+[2026-08-17T21:49:19.688Z] Exit code 1
+[2026-08-17T21:49:19.688Z] Stop (2 ms): Run in container: test -f '/home/dotnet/.vscode-server/data/Machine/settings.json'
+[2026-08-17T21:49:19.689Z] Start: Run in container: which apt dpkg snap dnf yum rpm apk docker git gh kubectl podman curl wget ssh scp rsync gpg ps lsof netstat top tree find grep zip unzip tar gzip bzip2 xz || true
+[2026-08-17T21:49:19.693Z] Stop (4 ms): Run in container: which apt dpkg snap dnf yum rpm apk docker git gh kubectl podman curl wget ssh scp rsync gpg ps lsof netstat top tree find grep zip unzip tar gzip bzip2 xz || true
+[2026-08-17T21:49:19.695Z] Start: Run in container: mkdir -p '/home/dotnet/.vscode-server/data/Machine' && cat >'/home/dotnet/.vscode-server/data/Machine/settings.json' <<'settingsJSON'
+[2026-08-17T21:49:19.697Z] 
+[2026-08-17T21:49:19.698Z] 
+[2026-08-17T21:49:19.699Z] Stop (4 ms): Run in container: mkdir -p '/home/dotnet/.vscode-server/data/Machine' && cat >'/home/dotnet/.vscode-server/data/Machine/settings.json' <<'settingsJSON'
+[2026-08-17T21:49:19.700Z] Start: Run in container: test ! -f '/home/dotnet/.vscode-server/data/Machine/.writeMachineMCPConfigMarker' && set -o noclobber && mkdir -p '/home/dotnet/.vscode-server/data/Machine' && { > '/home/dotnet/.vscode-server/data/Machine/.writeMachineMCPConfigMarker' ; } 2> /dev/null
+[2026-08-17T21:49:19.702Z] 
+[2026-08-17T21:49:19.703Z] 
+[2026-08-17T21:49:19.703Z] Stop (3 ms): Run in container: test ! -f '/home/dotnet/.vscode-server/data/Machine/.writeMachineMCPConfigMarker' && set -o noclobber && mkdir -p '/home/dotnet/.vscode-server/data/Machine' && { > '/home/dotnet/.vscode-server/data/Machine/.writeMachineMCPConfigMarker' ; } 2> /dev/null
+[2026-08-17T21:49:19.704Z] Start: Run in container: test -f '/home/dotnet/.vscode-server/data/User/mcp.json'
+[2026-08-17T21:49:19.705Z] 
+[2026-08-17T21:49:19.705Z] 
+[2026-08-17T21:49:19.706Z] Exit code 1
+[2026-08-17T21:49:19.707Z] Stop (3 ms): Run in container: test -f '/home/dotnet/.vscode-server/data/User/mcp.json'
+[2026-08-17T21:49:19.708Z] Start: Run in container: test -d '/home/dotnet/.vscode-server/bin/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75'
+[2026-08-17T21:49:19.709Z] 
+[2026-08-17T21:49:19.709Z] 
+[2026-08-17T21:49:19.710Z] Exit code 1
+[2026-08-17T21:49:19.711Z] Stop (3 ms): Run in container: test -d '/home/dotnet/.vscode-server/bin/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75'
+[2026-08-17T21:49:19.711Z] Start: Run in container: test -d '/vscode/vscode-server/bin/linux-x64/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75'
+[2026-08-17T21:49:19.712Z] 
+[2026-08-17T21:49:19.713Z] 
+[2026-08-17T21:49:19.714Z] Stop (3 ms): Run in container: test -d '/vscode/vscode-server/bin/linux-x64/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75'
+[2026-08-17T21:49:19.715Z] Start: Run in container: mkdir -p '/home/dotnet/.vscode-server/bin' && ln -snf '/vscode/vscode-server/bin/linux-x64/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75' '/home/dotnet/.vscode-server/bin/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75'
+[2026-08-17T21:49:19.718Z] 
+[2026-08-17T21:49:19.719Z] 
+[2026-08-17T21:49:19.720Z] Stop (5 ms): Run in container: mkdir -p '/home/dotnet/.vscode-server/bin' && ln -snf '/vscode/vscode-server/bin/linux-x64/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75' '/home/dotnet/.vscode-server/bin/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75'
+[2026-08-17T21:49:19.720Z] Start: Run in container: /bin/sh
+[2026-08-17T21:49:19.725Z] Start: Run in container: test -x '/home/dotnet/.vscode-server/bin/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75/bin/helpers/check-requirements.sh'
+[2026-08-17T21:49:19.726Z] Start: Run in container: touch '/vscode/vscode-server/bin/linux-x64/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75'
+[2026-08-17T21:49:19.726Z] 
+[2026-08-17T21:49:19.727Z] 
+[2026-08-17T21:49:19.728Z] Stop (3 ms): Run in container: test -x '/home/dotnet/.vscode-server/bin/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75/bin/helpers/check-requirements.sh'
+[2026-08-17T21:49:19.729Z] Start: Run in container: '/home/dotnet/.vscode-server/bin/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75/bin/helpers/check-requirements.sh'
+[2026-08-17T21:49:19.836Z] 
+[2026-08-17T21:49:19.837Z] 
+[2026-08-17T21:49:19.838Z] Stop (109 ms): Run in container: '/home/dotnet/.vscode-server/bin/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75/bin/helpers/check-requirements.sh'
+[2026-08-17T21:49:19.839Z] Start: Launching Dev Containers helper.
+[2026-08-17T21:49:19.839Z] ssh-agent: SSH_AUTH_SOCK not set on local host.
+[2026-08-17T21:49:19.840Z] Start: Run in container: test -e /tmp/.X11-unix/X0
+[2026-08-17T21:49:19.842Z] 
+[2026-08-17T21:49:19.843Z] 
+[2026-08-17T21:49:19.844Z] Exit code 1
+[2026-08-17T21:49:19.844Z] Stop (4 ms): Run in container: test -e /tmp/.X11-unix/X0
+[2026-08-17T21:49:19.845Z] Start: Run in container: mkdir -p '/tmp/.X11-unix'
+[2026-08-17T21:49:19.847Z] 
+[2026-08-17T21:49:19.847Z] mkdir: cannot create directory '/tmp/.X11-unix': Permission denied
+[2026-08-17T21:49:19.848Z] Exit code 1
+[2026-08-17T21:49:19.848Z] Stop (3 ms): Run in container: mkdir -p '/tmp/.X11-unix'
+[2026-08-17T21:49:19.851Z] Command in container failed: mkdir -p '/tmp/.X11-unix'
+[2026-08-17T21:49:19.852Z] mkdir: cannot create directory '/tmp/.X11-unix': Permission denied
+[2026-08-17T21:49:19.853Z] Exit code 1
+[2026-08-17T21:49:19.854Z] 
+[2026-08-17T21:49:19.854Z] Emulate Docker CLI using podman. Create /etc/containers/nodocker to quiet msg.
+[2026-08-17T21:49:19.855Z] Stop (129 ms): Run in container: touch '/vscode/vscode-server/bin/linux-x64/e4c7e7b1d6d060162f4aa7f8225271b67ce1df75'

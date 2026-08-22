@@ -13,12 +13,14 @@
                 ]
             },
             "extensions": [
-                "mads-hartmann.bash-ide-vscode"
+                "mads-hartmann.bash-ide-vscode",
+                "agustin-gigena.opencode-sidebar-web"
             ]
         }
     },
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {},
         "ghcr.io/iyaki/devcontainer-features/oh-my-pi": {
             "installZsh": true,
             "installOhMyZsh": true,

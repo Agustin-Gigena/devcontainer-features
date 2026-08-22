@@ -1,0 +1,10 @@
+{
+    "install_multiple": {
+        "image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
+        "features": {
+            "dotnet-tools": {
+                "tools": "dotnet-ef, dotnet-stryker"
+            }
+        }
+    }
+}
