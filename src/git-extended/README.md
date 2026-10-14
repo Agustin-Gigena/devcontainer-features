@@ -1,25 +1,57 @@
-
 # Git Extended (git-extended)
 
-Git workflow extensions with automatic package manager detection and remote branch checkout helpers
+Git workflow helpers for working with remote branches and worktrees, plus automatic dependency detection for common project ecosystems.
 
-## Example Usage
+This feature installs shell helpers that make it easier to check out remote branches, create worktrees from remote branches, and detect whether the repository contains dependencies that should be installed automatically.
 
-```json
-"features": {
-    "ghcr.io/Agustin-Gigena/devcontainer-features/git-extended:1": {}
+## Included functionality
+
+- `gcr` — checkout a remote branch and create a local tracking branch from it
+- `gwr` — create a git worktree from a remote branch and optionally open it in VS Code
+- `pm_detect` — detect project manifests such as `package.json`, `composer.json`, `*.csproj`, `Gemfile`, and `Cargo.toml`, then run the corresponding install command
+
+## Example usage
+
+```jsonc
+{
+  "features": {
+    "ghcr.io/Agustin-Gigena/devcontainer-features/git-extended:1": {
+      "installGcrFunction": true,
+      "installGwrFunction": true
+    }
+  }
 }
 ```
 
 ## Options
 
-| Options Id | Description | Type | Default Value |
-|-----|-----|-----|-----|
-| installGcrFunction | Install the gcr (Git Checkout Remote) shell function | boolean | true |
-| installGwrFunction | Install the gwr (Git Worktree Remote) shell function | boolean | true |
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `installGcrFunction` | boolean | `true` | Installs the `gcr` helper for remote branch checkout. |
+| `installGwrFunction` | boolean | `true` | Installs the `gwr` helper for remote worktree creation. |
 
+## Behavior
 
+When enabled, the feature adds the helper functions to the shell profile so they are available in interactive sessions.
 
----
+- `gcr <remote-base-branch> [new-branch-suffix]`
+  - fetches remote refs
+  - checks out the remote branch into a local branch that tracks it
+  - runs package detection in the repository root after checkout
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/Agustin-Gigena/devcontainer-features/blob/main/src/git-extended/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+- `gwr <remote-base-branch> [worktree-suffix]`
+  - creates a worktree from the remote branch
+  - optionally adds the worktree folder to VS Code
+  - changes into the new worktree and runs package detection
+
+The dependency detector runs commands such as:
+
+- `npm install --save-exact`
+- `composer install`
+- `dotnet restore`
+- `bundle install`
+- `cargo build`
+
+## Notes
+
+This feature is designed for dev containers and assumes a Unix-like shell environment. It is intended to streamline branch and worktree workflows for projects that need their dependencies restored immediately after switching contexts.
