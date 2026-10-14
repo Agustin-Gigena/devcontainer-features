@@ -15,7 +15,7 @@ jobs:
       - name: "Install devcontainer CLI"
         run: npm install -g @devcontainers/cli
 
-      - name: "Test git-extended feature"
+      - name: "Test features"
         run: devcontainer features test --base-image ubuntu:latest .
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
