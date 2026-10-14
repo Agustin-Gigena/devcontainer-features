@@ -1,40 +1,43 @@
 #!/usr/bin/env bash
 set -e
 
-# DevContainers inyecta las opciones en mayúsculas
+# DevContainers injects options in uppercase
 TOOLS_LIST=${TOOLS:-""}
 TARGET_DIR="/usr/local/share/dotnet-tools"
 
 if [ -z "$TOOLS_LIST" ]; then
-    echo "No se especificaron herramientas .NET para instalar."
+    echo "No .NET tools specified to install."
     exit 0
 fi
 
-# Verificar si el SDK de dotnet está instalado
+# Verify dotnet SDK is installed
 if ! command -v dotnet &> /dev/null; then
-    echo "Error: El CLI de 'dotnet' no se encuentra. Asegúrate de instalar el SDK de .NET antes de ejecutar este feature."
+    echo "Error: 'dotnet' CLI not found. Ensure the .NET SDK is installed before running this feature."
     exit 1
 fi
 
-echo "Creando directorio destino: $TARGET_DIR"
+echo "Creating target directory: $TARGET_DIR"
 mkdir -p "$TARGET_DIR"
 chmod 755 "$TARGET_DIR"
 
-# Convertir la lista separada por comas en un array
+# Convert comma-separated list into an array
 IFS=',' read -r -a TOOLS_ARRAY <<< "$TOOLS_LIST"
 
 for tool in "${TOOLS_ARRAY[@]}"; do
-    # Limpiar espacios en blanco
+    # Trim whitespace
     tool=$(echo "$tool" | xargs)
     
     if [ -n "$tool" ]; then
-        echo "Instalando herramienta .NET: $tool"
-        # Instalamos forzando la ruta global compartida
-        dotnet tool install "$tool" --tool-path "$TARGET_DIR"
+        echo "Installing .NET tool: $tool"
+        # Install to the shared global path. If a single tool fails to install, warn and continue.
+        if ! dotnet tool install "$tool" --tool-path "$TARGET_DIR"; then
+            echo "Warning: Failed to install '$tool'. Continuing with remaining tools." >&2
+            continue
+        fi
     fi
 done
 
-# Asegurar que cualquier usuario pueda ejecutar los binarios instalados
+# Ensure installed binaries are executable by all users
 chmod -R 755 "$TARGET_DIR"
 
-echo "¡Instalación de herramientas .NET completada!"
+echo "Installation of .NET tools completed."
