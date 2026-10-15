@@ -2,6 +2,7 @@
     "install_multiple": {
         "image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
         "features": {
+            "ghcr.io/devcontainers/features/dotnet": {},
             "dotnet-tools": {
                 "tools": "dotnet-ef,csharpier"
             }
