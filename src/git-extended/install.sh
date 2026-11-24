@@ -239,7 +239,8 @@ if [ "$INSTALL_GWR" = "true" ]; then
 cat > "$BIN_DIR/gwr" << 'GWR_EOF'
 #!/bin/sh
 # gwr - create a git worktree tracking a remote base branch.
-# Usage: gwr <remote-base-branch> [worktree-suffix]
+# Usage: gwr [-D [-f]] <remote-base-branch> [worktree-suffix]
+#        gwr -D <branch> removes the worktree; -f discards local changes.
 set -e
 if [ -t 1 ] && [ -z "${NO_COLOR:-}" ] && [ "${TERM:-}" != dumb ]; then
     C_C=$(printf '\033[36m'); C_B=$(printf '\033[1m'); C_0=$(printf '\033[0m')
@@ -248,7 +249,19 @@ else
 fi
 
 if [ -z "${1:-}" ]; then
-    echo "Usage: gwr <remote-base-branch> [worktree-suffix]" >&2
+    echo "Usage: gwr [-D [-f]] <remote-base-branch> [worktree-suffix]" >&2
+    echo "       gwr -D <branch> removes the worktree (-f discards local changes)" >&2
+    exit 1
+fi
+
+DELETE=no; FORCE=no
+while [ "${1:-}" = "-D" ] || [ "${1:-}" = "-f" ]; do
+    [ "$1" = "-D" ] && DELETE=yes
+    [ "$1" = "-f" ] && FORCE=yes
+    shift
+done
+if [ -z "${1:-}" ]; then
+    echo "Usage: gwr -D [-f] <remote-base-branch> [worktree-suffix]" >&2
     exit 1
 fi
 
@@ -279,6 +292,21 @@ else
     WORKTREE_DIR="$BASE_ROOT/.worktrees"
 fi
 WORKTREE_PATH="$WORKTREE_DIR/$BRANCH_NAME"
+
+if [ "$DELETE" = yes ]; then
+    if [ ! -d "$WORKTREE_PATH" ]; then
+        echo "[gwr] worktree not found: $WORKTREE_PATH" >&2
+        exit 1
+    fi
+    if [ "$FORCE" = yes ]; then
+        git worktree remove --force "$WORKTREE_PATH"
+    elif ! git worktree remove "$WORKTREE_PATH" 2>/dev/null; then
+        echo "[gwr] worktree has uncommitted or untracked changes; discard them with: gwr -D -f $BRANCH_NAME" >&2
+        exit 1
+    fi
+    echo "${C_B}${C_C}[gwr] worktree removed: $WORKTREE_PATH${C_0}"
+    exit 0
+fi
 mkdir -p "$WORKTREE_DIR"
 
 git fetch --tags --prune-tags origin

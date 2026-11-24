@@ -101,6 +101,11 @@ check "gwr honors absolute worktreePath" env WORKTREEPATH="$TMP/wtabs" sh -c "gi
 check "gwr relative worktreePath bases on project root" env WORKTREEPATH=wt sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-y; cd '$TMP/repo/src' && gwr feature-y >/dev/null 2>&1 && test -d '$TMP/repo/wt/feature-y'"
 check "gwr honors absolute root option" env ROOT="$TMP/proot" sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-z; cd '$TMP/repo/src' && gwr feature-z >/dev/null 2>&1 && test -d '$TMP/proot/.worktrees/feature-z'"
 check "gwr relative root option bases on git root" env ROOT=sub WORKTREEPATH=wt sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-w; cd '$TMP/repo/src' && gwr feature-w >/dev/null 2>&1 && test -d '$TMP/repo/sub/wt/feature-w'"
+check "gwr -D removes the worktree" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr -D develop >/dev/null 2>&1 && test ! -e '$TMP/repo/.worktrees/develop'"
+check "gwr -D keeps the local branch" sh -c "git -C '$TMP/repo' rev-parse --verify refs/heads/develop >/dev/null"
+check "gwr -D missing worktree fails cleanly" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && ! gwr -D develop >/dev/null 2>&1"
+check "gwr -D refuses dirty worktree" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr feature-y >/dev/null 2>&1; echo dirty > '$TMP/repo/wt/feature-y/dirty.txt'; ! gwr -D feature-y >/dev/null 2>&1 && test -d '$TMP/repo/wt/feature-y'"
+check "gwr -D -f forces dirty removal" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr -D -f feature-y >/dev/null 2>&1 && test ! -e '$TMP/repo/wt/feature-y'"
 
 # Repo 5: nested JS project without a root package.json — the manager must
 # run inside the project directory, not at the repo root.
