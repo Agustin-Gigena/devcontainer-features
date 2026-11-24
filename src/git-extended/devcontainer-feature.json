@@ -17,10 +17,12 @@
         },
         "pkgManager": {
             "type": "string",
+            "default": "",
             "description": "Comma-separated managers pm_detect may run (npm, pnpm, yarn, bun, dotnet, composer, bundle, cargo). Unset = detect automatically."
         },
         "worktreePath": {
             "type": "string",
+            "default": "",
             "description": "Directory where gwr creates worktrees. Relative paths resolve against the current directory; unset = .worktrees in the current directory."
         }
     },
