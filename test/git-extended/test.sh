@@ -59,6 +59,41 @@ git -C "$TMP/repo4" init -q
 touch "$TMP/repo4/composer.json"
 check "missing manager skipped with warning" env PATH="/usr/local/bin:/usr/bin:/bin" sh -c "cd '$TMP/repo4' && pm_detect 2>'$TMP/warn' && grep -q 'composer not installed' '$TMP/warn'"
 
+# gcr/gwr runtime behavior against a local bare remote (no network needed).
+git init -q --bare "$TMP/remote.git"
+git clone -q "$TMP/remote.git" "$TMP/repo" 2>/dev/null
+git -C "$TMP/repo" config user.email test@example.com
+git -C "$TMP/repo" config user.name test
+BRANCH=$(git -C "$TMP/repo" rev-parse --abbrev-ref HEAD)
+echo hi > "$TMP/repo/hello.txt"
+git -C "$TMP/repo" add -A
+git -C "$TMP/repo" commit -qm base
+git -C "$TMP/repo" push -q origin "$BRANCH"
+
+# gcr: warns before resetting a branch that holds unpushed commits, and the
+# discarded commit stays recoverable in the reflog.
+echo local > "$TMP/repo/local.txt"
+git -C "$TMP/repo" add -A
+git -C "$TMP/repo" commit -qm "local-only commit"
+LOCAL_SHA=$(git -C "$TMP/repo" rev-parse HEAD)
+check "gcr warns before discarding unpushed commits" sh -c "cd '$TMP/repo' && gcr '$BRANCH' 2>&1 | grep -q 'recover with: git reflog'"
+check "gcr resets branch to remote state" sh -c "cd '$TMP/repo' && test \$(git rev-parse HEAD) = \$(git rev-parse origin/$BRANCH)"
+check "reset commit recoverable via reflog" sh -c "cd '$TMP/repo' && git reflog --format=%H | grep -q '^$LOCAL_SHA'"
+
+# gcr: a failing package manager must not fail the checkout itself, while
+# the standalone pm_detect keeps its nonzero exit contract.
+touch "$TMP/repo/Gemfile"
+check "gcr exit 0 despite failing manager" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo' && gcr '$BRANCH'"
+check "failing manager reported by gcr's pm_detect" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo' && gcr '$BRANCH' 2>&1 | grep -q 'failed: bundle install'"
+check "pm_detect still exits 1 when a manager fails" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo3' && ! pm_detect"
+
+# gwr: creates the worktree even when the code CLI is missing
+# (TERM_PROGRAM=vscode marks a VS Code terminal), warning instead of failing.
+git -C "$TMP/repo" push -q origin HEAD:refs/heads/develop
+check "gwr creates worktree despite missing code CLI" env TERM_PROGRAM=vscode sh -c "cd '$TMP/repo' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo-worktrees/develop' && grep -q 'error adding worktree to workspace: code not found' '$TMP/gwr.err' && grep -q 'worktree ready' '$TMP/gwr.out'"
+check "gwr worktree tracks the remote branch" sh -c "test \$(git -C '$TMP/repo-worktrees/develop' rev-parse --abbrev-ref HEAD) = develop"
+check "gwr second run reports existing worktree" sh -c "cd '$TMP/repo' && gwr develop >'$TMP/gwr2.out' 2>&1 && grep -q 'already checked out' '$TMP/gwr2.out'"
+
 echo "=== All tests passed! ==="
 
 reportResults

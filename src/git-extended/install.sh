@@ -30,7 +30,7 @@ run_pm_check() {
 
     # Single scan pass; pruned dirs keep vendored/nested copies from
     # triggering installs (e.g. node_modules/*/package.json).
-    FOUND=$(cd "$REPO_ROOT" && find . -maxdepth 3 \
+    FOUND=$(cd "$REPO_ROOT" && find . -maxdepth 6 \
         \( -name .git -o -name node_modules -o -name vendor -o -name target -o -name bin -o -name obj \) -prune -o -type f \
         \( -name package.json -o -name pnpm-lock.yaml -o -name yarn.lock -o -name bun.lock -o -name bun.lockb \
            -o -name '*.csproj' -o -name '*.fsproj' -o -name '*.sln' \
@@ -67,7 +67,7 @@ bundle install"
     fi
     if echo "$FOUND" | grep -q 'Cargo\.toml$'; then
         QUEUE="$QUEUE
-cargo build"
+cargo fetch"
     fi
 
     if [ -z "$QUEUE" ]; then
@@ -123,10 +123,20 @@ fi
 
 BRANCH_NAME="${1}${2:+_${2}}"
 git fetch --tags --prune-tags origin
+
+# -B forcibly moves an existing local branch; warn when that discards
+# commits the remote does not have (recoverable via reflog).
+UNPUBLISHED=$(git rev-list --count "origin/$1..$BRANCH_NAME" 2>/dev/null || true)
+if [ -n "$UNPUBLISHED" ] && [ "$UNPUBLISHED" -gt 0 ]; then
+    echo "[gcr] WARNING: '$BRANCH_NAME' has $UNPUBLISHED commit(s) not on origin/$1" >&2
+    echo "[gcr] resetting discards them from the branch; recover with: git reflog" >&2
+fi
 git checkout -t "origin/$1" -B "$BRANCH_NAME"
 
+# Dependency update is secondary to the checkout: report failures without
+# failing the git operation.
 . /usr/local/share/git-extended/pm_detect.sh
-run_pm_check
+run_pm_check || true
 GCR_EOF
 chmod 755 "$BIN_DIR/gcr"
 else
@@ -150,20 +160,39 @@ fi
 BRANCH_NAME="${1}${2:+_${2}}"
 REPO_ROOT=$(git rev-parse --show-toplevel)
 WORKTREE_DIR="$(dirname "$REPO_ROOT")/$(basename "$REPO_ROOT")-worktrees"
+WORKTREE_PATH="$WORKTREE_DIR/$BRANCH_NAME"
 mkdir -p "$WORKTREE_DIR"
 
 git fetch --tags --prune-tags origin
-git worktree add --track -B "$BRANCH_NAME" "$WORKTREE_DIR/$BRANCH_NAME" "origin/$1"
+
+# Git refuses to check out a branch twice (main worktree or a previous gwr
+# run); point at the existing location and succeed instead.
+USED_BY=$(git worktree list --porcelain | awk -v b="refs/heads/$BRANCH_NAME" '
+    /^worktree /{p=substr($0,10)}
+    $1 == "branch" && $2 == b {print p; exit}')
+if [ -n "$USED_BY" ]; then
+    echo "[gwr] branch '$BRANCH_NAME' already checked out at: $USED_BY"
+    exit 0
+fi
+
+git worktree add --track -B "$BRANCH_NAME" "$WORKTREE_PATH" "origin/$1"
 
 # A child process cannot cd the caller's shell: VS Code gets the worktree
-# added to its window, everyone else gets the path printed.
+# added to its window, everyone else gets the path printed. A missing or
+# failing code CLI must not fail the worktree itself.
 if [ "${TERM_PROGRAM:-}" = "vscode" ]; then
-    code --add "$WORKTREE_DIR/$BRANCH_NAME"
+    if command -v code >/dev/null 2>&1; then
+        code --add "$WORKTREE_PATH" || echo "[gwr] error adding worktree to workspace" >&2
+    else
+        echo "[gwr] error adding worktree to workspace: code not found" >&2
+    fi
 fi
-echo "[gwr] worktree ready: $WORKTREE_DIR/$BRANCH_NAME"
+echo "[gwr] worktree ready: $WORKTREE_PATH"
 
+# Dependency update is secondary to the worktree: report failures without
+# failing the git operation.
 . /usr/local/share/git-extended/pm_detect.sh
-run_pm_check
+run_pm_check || true
 GWR_EOF
 chmod 755 "$BIN_DIR/gwr"
 else
