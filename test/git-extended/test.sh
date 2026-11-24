@@ -111,6 +111,11 @@ LOG6="$TMP/log6"
 make_fake dotnet "$LOG6"
 check "slnx triggers dotnet restore" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo6' && pm_detect && grep -q 'RAN-dotnet-$TMP/repo6' '$LOG6'"
 
+# TTY mode: the spinner/colors path must still end with the summary line.
+if command -v script >/dev/null 2>&1; then
+    check "tty mode renders the summary" script -qec "cd '$TMP/repo5' && PATH='$FAKE_PATH' pm_detect" /dev/null | grep -q 'dependency update completed'
+fi
+
 echo "=== All tests passed! ==="
 
 reportResults
