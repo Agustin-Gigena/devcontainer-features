@@ -90,9 +90,11 @@ check "pm_detect still exits 1 when a manager fails" env PATH="$FAKE_PATH" sh -c
 # gwr: creates the worktree even when the code CLI is missing
 # (TERM_PROGRAM=vscode marks a VS Code terminal), warning instead of failing.
 git -C "$TMP/repo" push -q origin HEAD:refs/heads/develop
-check "gwr creates worktree despite missing code CLI" env TERM_PROGRAM=vscode sh -c "cd '$TMP/repo' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo-worktrees/develop' && grep -q 'error adding worktree to workspace: code not found' '$TMP/gwr.err' && grep -q 'worktree ready' '$TMP/gwr.out'"
-check "gwr worktree tracks the remote branch" sh -c "test \$(git -C '$TMP/repo-worktrees/develop' rev-parse --abbrev-ref HEAD) = develop"
+check "gwr creates worktree despite missing code CLI" env TERM_PROGRAM=vscode sh -c "cd '$TMP/repo' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo/.worktrees/develop' && grep -q 'error adding worktree to workspace: code not found' '$TMP/gwr.err' && grep -q 'worktree ready' '$TMP/gwr.out'"
+check "gwr worktree tracks the remote branch" sh -c "test \$(git -C '$TMP/repo/.worktrees/develop' rev-parse --abbrev-ref HEAD) = develop"
 check "gwr second run reports existing worktree" sh -c "cd '$TMP/repo' && gwr develop >'$TMP/gwr2.out' 2>&1 && grep -q 'already checked out' '$TMP/gwr2.out'"
+check "gwr honors absolute worktreePath" env WORKTREEPATH="$TMP/wtabs" sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-x; cd '$TMP/repo' && gwr feature-x >/dev/null 2>&1 && test -d '$TMP/wtabs/feature-x'"
+check "gwr relative worktreePath bases on cwd" env WORKTREEPATH=wt sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-y; cd '$TMP/repo' && gwr feature-y >/dev/null 2>&1 && test -d '$TMP/repo/wt/feature-y'"
 
 # Repo 5: nested JS project without a root package.json — the manager must
 # run inside the project directory, not at the repo root.
@@ -110,6 +112,14 @@ touch "$TMP/repo6/Inmobia.slnx"
 LOG6="$TMP/log6"
 make_fake dotnet "$LOG6"
 check "slnx triggers dotnet restore" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo6' && pm_detect && grep -q 'RAN-dotnet-$TMP/repo6' '$LOG6'"
+
+# Repo 7: PKGMANAGER option restricts which managers run.
+mkdir -p "$TMP/repo7"
+git -C "$TMP/repo7" init -q
+touch "$TMP/repo7/package.json" "$TMP/repo7/app.csproj"
+LOG7="$TMP/log7"
+make_fake npm "$LOG7"; make_fake dotnet "$LOG7"
+check "PKGMANAGER option filters managers" env PATH="$FAKE_PATH" PKGMANAGER=dotnet sh -c "cd '$TMP/repo7' && pm_detect && grep -q 'RAN-dotnet-$TMP/repo7' '$LOG7' && ! grep -q 'RAN-npm' '$LOG7'"
 
 # TTY mode: the spinner/colors path must still end with the summary line.
 if command -v script >/dev/null 2>&1; then

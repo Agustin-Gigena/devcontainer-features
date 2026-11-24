@@ -36,6 +36,15 @@ mgr_color() {
     esac
 }
 
+# True when $1 is in the PKGMANAGER allow-list (empty list = everything).
+mgr_allowed() {
+    [ -z "$ALLOWED" ] && return 0
+    for a in $ALLOWED; do
+        [ "$a" = "$1" ] && return 0
+    done
+    return 1
+}
+
 run_pm_check() {
     REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
         echo "dependencies: not inside a git repository, skipping" >&2
@@ -55,10 +64,16 @@ run_pm_check() {
         TTY=no; C_G=; C_R=; C_Y=; C_C=; C_D=; C_B=; C_0=
     fi
 
+    # Option PKGMANAGER: comma-separated allow-list of managers to run.
+    ALLOWED=
+    if [ -n "${PKGMANAGER:-}" ]; then
+        ALLOWED=$(printf '%s' "$PKGMANAGER" | tr ',' ' ')
+    fi
+
     # Single scan pass; pruned dirs keep vendored/nested copies from
     # triggering installs (e.g. node_modules/*/package.json).
     FOUND=$(cd "$REPO_ROOT" && find . -maxdepth 6 \
-        \( -name .git -o -name node_modules -o -name vendor -o -name target -o -name bin -o -name obj \) -prune -o -type f \
+        \( -name .git -o -name node_modules -o -name vendor -o -name target -o -name bin -o -name obj -o -name .worktrees \) -prune -o -type f \
         \( -name package.json -o -name pnpm-lock.yaml -o -name yarn.lock -o -name bun.lock -o -name bun.lockb \
            -o -name '*.csproj' -o -name '*.fsproj' -o -name '*.sln' -o -name '*.slnx' \
            -o -name composer.json -o -name Gemfile -o -name Cargo.toml \
@@ -72,17 +87,18 @@ run_pm_check() {
         [ -z "$F" ] && continue
         DIR=$(dirname "$F")
         case "$F" in
-            *.csproj|*.fsproj|*.sln|*.slnx) CMD="dotnet restore" ;;
-            */composer.json) CMD="composer install" ;;
-            */Gemfile) CMD="bundle install" ;;
-            */Cargo.toml) CMD="cargo fetch" ;;
+            *.csproj|*.fsproj|*.sln|*.slnx) MGR=dotnet; CMD="dotnet restore" ;;
+            */composer.json) MGR=composer; CMD="composer install" ;;
+            */Gemfile) MGR=bundle; CMD="bundle install" ;;
+            */Cargo.toml) MGR=cargo; CMD="cargo fetch" ;;
             */package.json)
-                if [ -f "$REPO_ROOT/$DIR/pnpm-lock.yaml" ]; then CMD="pnpm install"
-                elif [ -f "$REPO_ROOT/$DIR/yarn.lock" ]; then CMD="yarn install"
-                elif [ -f "$REPO_ROOT/$DIR/bun.lock" ] || [ -f "$REPO_ROOT/$DIR/bun.lockb" ]; then CMD="bun install"
-                else CMD="npm install"; fi ;;
+                if [ -f "$REPO_ROOT/$DIR/pnpm-lock.yaml" ]; then MGR=pnpm; CMD="pnpm install"
+                elif [ -f "$REPO_ROOT/$DIR/yarn.lock" ]; then MGR=yarn; CMD="yarn install"
+                elif [ -f "$REPO_ROOT/$DIR/bun.lock" ] || [ -f "$REPO_ROOT/$DIR/bun.lockb" ]; then MGR=bun; CMD="bun install"
+                else MGR=npm; CMD="npm install"; fi ;;
             *) continue ;;  # lockfiles only pick the manager for their sibling package.json
         esac
+        mgr_allowed "$MGR" || continue
         ENTRY="$DIR|$CMD"
         case "$SEEN" in *"$ENTRY"*) continue ;; esac
         SEEN="$SEEN
@@ -238,7 +254,17 @@ fi
 
 BRANCH_NAME="${1}${2:+_${2}}"
 REPO_ROOT=$(git rev-parse --show-toplevel)
-WORKTREE_DIR="$(dirname "$REPO_ROOT")/$(basename "$REPO_ROOT")-worktrees"
+# Option worktreePath: absolute, or relative to the directory where gwr runs;
+# default keeps worktrees under .worktrees there (never at / like the old
+# sibling-dir scheme when the repo is mounted at /).
+if [ -n "${WORKTREEPATH:-}" ]; then
+    case "$WORKTREEPATH" in
+        /*) WORKTREE_DIR="$WORKTREEPATH" ;;
+        *) WORKTREE_DIR="$PWD/$WORKTREEPATH" ;;
+    esac
+else
+    WORKTREE_DIR="$PWD/.worktrees"
+fi
 WORKTREE_PATH="$WORKTREE_DIR/$BRANCH_NAME"
 mkdir -p "$WORKTREE_DIR"
 

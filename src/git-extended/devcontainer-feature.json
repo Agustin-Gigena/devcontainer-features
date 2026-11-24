@@ -1,7 +1,7 @@
 {
     "name": "Git Extended",
     "id": "git-extended",
-    "version": "1.4.2",
+    "version": "1.5.0",
     "description": "Git workflow extensions: gcr/gwr checkout and worktree commands, plus pm_detect which updates dependencies for every package manager found in the repository",
     "documentationURL": "https://github.com/Agustin-Gigena/devcontainer-features/tree/main/src/git-extended",
     "options": {
@@ -14,6 +14,14 @@
             "type": "boolean",
             "default": true,
             "description": "Install the gwr (Git Worktree Remote) command"
+        },
+        "pkgManager": {
+            "type": "string",
+            "description": "Comma-separated managers pm_detect may run (npm, pnpm, yarn, bun, dotnet, composer, bundle, cargo). Unset = detect automatically."
+        },
+        "worktreePath": {
+            "type": "string",
+            "description": "Directory where gwr creates worktrees. Relative paths resolve against the current directory; unset = .worktrees in the current directory."
         }
     },
     "installsAfter": [
