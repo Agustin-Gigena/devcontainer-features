@@ -21,7 +21,7 @@ TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 mkdir -p "$TMP/bin"
 make_fake() {
-    printf '#!/bin/sh\necho RAN-%s >> "%s"\n' "$1" "$TMP/log" > "$TMP/bin/$1"
+    printf '#!/bin/sh\necho RAN-%s-%s >> "%s"\n' "$1" '$(pwd)' "${2:-$TMP/log}" > "$TMP/bin/$1"
     chmod +x "$TMP/bin/$1"
 }
 for m in npm pnpm yarn bun dotnet composer cargo; do
@@ -93,6 +93,23 @@ git -C "$TMP/repo" push -q origin HEAD:refs/heads/develop
 check "gwr creates worktree despite missing code CLI" env TERM_PROGRAM=vscode sh -c "cd '$TMP/repo' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo-worktrees/develop' && grep -q 'error adding worktree to workspace: code not found' '$TMP/gwr.err' && grep -q 'worktree ready' '$TMP/gwr.out'"
 check "gwr worktree tracks the remote branch" sh -c "test \$(git -C '$TMP/repo-worktrees/develop' rev-parse --abbrev-ref HEAD) = develop"
 check "gwr second run reports existing worktree" sh -c "cd '$TMP/repo' && gwr develop >'$TMP/gwr2.out' 2>&1 && grep -q 'already checked out' '$TMP/gwr2.out'"
+
+# Repo 5: nested JS project without a root package.json — the manager must
+# run inside the project directory, not at the repo root.
+mkdir -p "$TMP/repo5/web"
+git -C "$TMP/repo5" init -q
+touch "$TMP/repo5/web/package.json"
+LOG5="$TMP/log5"
+make_fake npm "$LOG5"
+check "nested JS project runs npm in its own dir" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo5' && pm_detect && grep -q 'RAN-npm-$TMP/repo5/web' '$LOG5'"
+
+# Repo 6: a .slnx solution file marks a dotnet project.
+mkdir -p "$TMP/repo6"
+git -C "$TMP/repo6" init -q
+touch "$TMP/repo6/Inmobia.slnx"
+LOG6="$TMP/log6"
+make_fake dotnet "$LOG6"
+check "slnx triggers dotnet restore" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo6' && pm_detect && grep -q 'RAN-dotnet-$TMP/repo6' '$LOG6'"
 
 echo "=== All tests passed! ==="
 

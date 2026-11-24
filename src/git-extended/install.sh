@@ -33,42 +33,38 @@ run_pm_check() {
     FOUND=$(cd "$REPO_ROOT" && find . -maxdepth 6 \
         \( -name .git -o -name node_modules -o -name vendor -o -name target -o -name bin -o -name obj \) -prune -o -type f \
         \( -name package.json -o -name pnpm-lock.yaml -o -name yarn.lock -o -name bun.lock -o -name bun.lockb \
-           -o -name '*.csproj' -o -name '*.fsproj' -o -name '*.sln' \
+           -o -name '*.csproj' -o -name '*.fsproj' -o -name '*.sln' -o -name '*.slnx' \
            -o -name composer.json -o -name Gemfile -o -name Cargo.toml \
         \) -print 2>/dev/null) || true
 
+    # One install per marker directory: in monorepos the manager runs where
+    # the project lives, not at the repo root.
     QUEUE=""
-    if echo "$FOUND" | grep -q 'package\.json$'; then
-        if echo "$FOUND" | grep -q 'pnpm-lock\.yaml$'; then
-            QUEUE="
-pnpm install"
-        elif echo "$FOUND" | grep -q 'yarn\.lock$'; then
-            QUEUE="
-yarn install"
-        elif echo "$FOUND" | grep -qE 'bun\.lockb?$'; then
-            QUEUE="
-bun install"
-        else
-            QUEUE="
-npm install"
-        fi
-    fi
-    if echo "$FOUND" | grep -qE '\.(cs|fs)proj$|\.sln$'; then
+    SEEN=""
+    while IFS= read -r F; do
+        [ -z "$F" ] && continue
+        DIR=$(dirname "$F")
+        case "$F" in
+            *.csproj|*.fsproj|*.sln|*.slnx) CMD="dotnet restore" ;;
+            */composer.json) CMD="composer install" ;;
+            */Gemfile) CMD="bundle install" ;;
+            */Cargo.toml) CMD="cargo fetch" ;;
+            */package.json)
+                if [ -f "$REPO_ROOT/$DIR/pnpm-lock.yaml" ]; then CMD="pnpm install"
+                elif [ -f "$REPO_ROOT/$DIR/yarn.lock" ]; then CMD="yarn install"
+                elif [ -f "$REPO_ROOT/$DIR/bun.lock" ] || [ -f "$REPO_ROOT/$DIR/bun.lockb" ]; then CMD="bun install"
+                else CMD="npm install"; fi ;;
+            *) continue ;;  # lockfiles only pick the manager for their sibling package.json
+        esac
+        ENTRY="$DIR|$CMD"
+        case "$SEEN" in *"$ENTRY"*) continue ;; esac
+        SEEN="$SEEN
+$ENTRY"
         QUEUE="$QUEUE
-dotnet restore"
-    fi
-    if echo "$FOUND" | grep -q 'composer\.json$'; then
-        QUEUE="$QUEUE
-composer install"
-    fi
-    if echo "$FOUND" | grep -q 'Gemfile$'; then
-        QUEUE="$QUEUE
-bundle install"
-    fi
-    if echo "$FOUND" | grep -q 'Cargo\.toml$'; then
-        QUEUE="$QUEUE
-cargo fetch"
-    fi
+$ENTRY"
+    done <<EOF
+$FOUND
+EOF
 
     if [ -z "$QUEUE" ]; then
         echo "[pm_detect] no known package manager files found"
@@ -76,16 +72,18 @@ cargo fetch"
     fi
 
     FAILED=0
-    while IFS= read -r CMD; do
-        if [ -z "$CMD" ]; then continue; fi
+    while IFS= read -r ENTRY; do
+        [ -z "$ENTRY" ] && continue
+        DIR=${ENTRY%%|*}
+        CMD=${ENTRY#*|}
         MGR=${CMD%% *}
         if ! command -v "$MGR" >/dev/null 2>&1; then
             echo "[pm_detect][WARN] $MGR not installed, skipping: $CMD" >&2
             continue
         fi
-        echo "[pm_detect] $CMD"
-        if ! (cd "$REPO_ROOT" && eval "$CMD" < /dev/null); then
-            echo "[pm_detect][ERROR] failed: $CMD" >&2
+        echo "[pm_detect] ($DIR) $CMD"
+        if ! (cd "$REPO_ROOT/$DIR" && eval "$CMD" < /dev/null); then
+            echo "[pm_detect][ERROR] failed: $CMD ($DIR)" >&2
             FAILED=1
         fi
     done <<EOF
