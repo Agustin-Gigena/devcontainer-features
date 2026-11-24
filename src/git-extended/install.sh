@@ -254,16 +254,17 @@ fi
 
 BRANCH_NAME="${1}${2:+_${2}}"
 REPO_ROOT=$(git rev-parse --show-toplevel)
-# Option worktreePath: absolute, or relative to the directory where gwr runs;
-# default keeps worktrees under .worktrees there (never at / like the old
-# sibling-dir scheme when the repo is mounted at /).
+# Worktrees live under the detected project root (never beside it: with
+# repos mounted at / that scheme hit '/repo-worktrees' permission errors).
+# Option worktreePath: absolute, or relative to the project root; empty
+# keeps the default .worktrees directory at the root.
 if [ -n "${WORKTREEPATH:-}" ]; then
     case "$WORKTREEPATH" in
         /*) WORKTREE_DIR="$WORKTREEPATH" ;;
-        *) WORKTREE_DIR="$PWD/$WORKTREEPATH" ;;
+        *) WORKTREE_DIR="$REPO_ROOT/$WORKTREEPATH" ;;
     esac
 else
-    WORKTREE_DIR="$PWD/.worktrees"
+    WORKTREE_DIR="$REPO_ROOT/.worktrees"
 fi
 WORKTREE_PATH="$WORKTREE_DIR/$BRANCH_NAME"
 mkdir -p "$WORKTREE_DIR"

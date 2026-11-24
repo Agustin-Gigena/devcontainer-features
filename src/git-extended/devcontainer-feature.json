@@ -1,7 +1,7 @@
 {
     "name": "Git Extended",
     "id": "git-extended",
-    "version": "1.5.0",
+    "version": "1.5.1",
     "description": "Git workflow extensions: gcr/gwr checkout and worktree commands, plus pm_detect which updates dependencies for every package manager found in the repository",
     "documentationURL": "https://github.com/Agustin-Gigena/devcontainer-features/tree/main/src/git-extended",
     "options": {
@@ -23,7 +23,7 @@
         "worktreePath": {
             "type": "string",
             "default": "",
-            "description": "Directory where gwr creates worktrees. Relative paths resolve against the current directory; unset = .worktrees in the current directory."
+            "description": "Directory where gwr creates worktrees. Relative paths resolve against the project root; empty = .worktrees in the project root."
         }
     },
     "installsAfter": [
