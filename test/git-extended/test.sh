@@ -91,7 +91,10 @@ check "pm_detect still exits 1 when a manager fails" env PATH="$FAKE_PATH" sh -c
 # gwr: creates the worktree even when the code CLI is missing
 # (TERM_PROGRAM=vscode marks a VS Code terminal), warning instead of failing.
 git -C "$TMP/repo" push -q origin HEAD:refs/heads/develop
-check "gwr creates worktree despite missing code CLI" env TERM_PROGRAM=vscode sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo/.worktrees/develop' && grep -q 'error adding worktree to workspace: code not found' '$TMP/gwr.err' && grep -q 'worktree ready' '$TMP/gwr.out'"
+echo '{}' > "$TMP/repo/package.json"
+git -C "$TMP/repo" add package.json && git -C "$TMP/repo" commit -qm pkg
+check "gwr creates worktree despite missing code CLI" env TERM_PROGRAM=vscode PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo/.worktrees/develop' && grep -q 'error adding worktree to workspace: code not found' '$TMP/gwr.err' && grep -q 'worktree ready' '$TMP/gwr.out'"
+check "gwr runs pm_detect inside the worktree" sh -c "grep -q 'RAN-npm-$TMP/repo/.worktrees/develop' '$TMP/log' && ! grep -qE 'RAN-npm-$TMP/repo\$' '$TMP/log'"
 check "gwr worktree tracks the remote branch" sh -c "test \$(git -C '$TMP/repo/.worktrees/develop' rev-parse --abbrev-ref HEAD) = develop"
 check "gwr second run reports existing worktree" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr2.out' 2>&1 && grep -q 'already checked out' '$TMP/gwr2.out'"
 check "gwr honors absolute worktreePath" env WORKTREEPATH="$TMP/wtabs" sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-x; cd '$TMP/repo/src' && gwr feature-x >/dev/null 2>&1 && test -d '$TMP/wtabs/feature-x'"
@@ -123,6 +126,14 @@ touch "$TMP/repo7/package.json" "$TMP/repo7/app.csproj"
 LOG7="$TMP/log7"
 make_fake npm "$LOG7"; make_fake dotnet "$LOG7"
 check "PKGMANAGER option filters managers" env PATH="$FAKE_PATH" PKGMANAGER=dotnet sh -c "cd '$TMP/repo7' && pm_detect && grep -q 'RAN-dotnet-$TMP/repo7' '$LOG7' && ! grep -q 'RAN-npm' '$LOG7'"
+
+# Repo 8: generated build output (cdk.out) is pruned from the scan.
+mkdir -p "$TMP/repo8/infra/cdk.out/asset.abc"
+git -C "$TMP/repo8" init -q
+touch "$TMP/repo8/package.json" "$TMP/repo8/infra/cdk.out/asset.abc/package.json"
+LOG8="$TMP/log8"
+make_fake npm "$LOG8"
+check "generated cdk.out dirs are pruned" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo8' && pm_detect && test \$(grep -c RAN '$LOG8') -eq 1 && grep -q 'RAN-npm-$TMP/repo8' '$LOG8'"
 
 # TTY mode: the spinner/colors path must still end with the summary line.
 if command -v script >/dev/null 2>&1; then

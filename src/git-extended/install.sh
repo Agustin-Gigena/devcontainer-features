@@ -73,7 +73,7 @@ run_pm_check() {
     # Single scan pass; pruned dirs keep vendored/nested copies from
     # triggering installs (e.g. node_modules/*/package.json).
     FOUND=$(cd "$REPO_ROOT" && find . -maxdepth 6 \
-        \( -name .git -o -name node_modules -o -name vendor -o -name target -o -name bin -o -name obj -o -name .worktrees \) -prune -o -type f \
+        \( -name .git -o -name node_modules -o -name vendor -o -name target -o -name bin -o -name obj -o -name .worktrees -o -name cdk.out -o -name dist -o -name build \) -prune -o -type f \
         \( -name package.json -o -name pnpm-lock.yaml -o -name yarn.lock -o -name bun.lock -o -name bun.lockb \
            -o -name '*.csproj' -o -name '*.fsproj' -o -name '*.sln' -o -name '*.slnx' \
            -o -name composer.json -o -name Gemfile -o -name Cargo.toml \
@@ -307,10 +307,10 @@ if [ "${TERM_PROGRAM:-}" = "vscode" ]; then
 fi
 echo "${C_B}${C_C}[gwr] worktree ready: $WORKTREE_PATH${C_0}"
 
-# Dependency update is secondary to the worktree: report failures without
-# failing the git operation.
+# Dependency update runs inside the new worktree (that is where the user
+# will work) and is secondary to the git operation: report, never fail gwr.
 . /usr/local/share/git-extended/pm_detect.sh
-run_pm_check || true
+(cd "$WORKTREE_PATH" && run_pm_check) || true
 GWR_EOF
 chmod 755 "$BIN_DIR/gwr"
 else
