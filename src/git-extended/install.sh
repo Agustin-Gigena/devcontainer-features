@@ -293,6 +293,51 @@ else
 fi
 WORKTREE_PATH="$WORKTREE_DIR/$BRANCH_NAME"
 
+# Keep the multi-root workspace file at the project root in sync: the
+# worktree folder entry is added on creation and dropped on removal. An
+# existing *.code-workspace is edited; none is created (root + worktree).
+# Entries are single-line; VS Code parses workspace files as JSONC, so the
+# trailing comma left when the last worktree entry is removed is fine.
+ws_sync() {
+    ADD=$1
+    REL="$WORKTREE_PATH"
+    case "$REL" in
+        "$BASE_ROOT"/*) REL="${REL#"$BASE_ROOT"/}" ;;
+    esac
+    WS_FILE=
+    for f in "$BASE_ROOT"/*.code-workspace; do
+        if [ -e "$f" ]; then WS_FILE="$f"; break; fi
+    done
+    if [ -z "$WS_FILE" ]; then
+        WS_FILE="$BASE_ROOT/$(basename "$BASE_ROOT").code-workspace"
+        printf '{\n    "folders": [\n        { "path": "." }\n    ]\n}\n' > "$WS_FILE"
+    fi
+    if [ "$ADD" = yes ]; then
+        grep -qF "\"path\": \"$REL\"" "$WS_FILE" && return 0
+        awk -v e="{ \"path\": \"$REL\" }" '
+            {
+                if (ins) { print; next }
+                if ($0 ~ /"folders"[[:space:]]*:[[:space:]]*\[/) {
+                    if ($0 ~ /\]/) {
+                        sub(/\]/, "\n        " e "\n    ]")
+                        print; ins = 1; next
+                    }
+                    print
+                    if ((getline nxt) > 0) {
+                        if (nxt ~ /^[[:space:]]*\]/) { print "        " e; print nxt }
+                        else { print "        " e ","; print nxt }
+                        ins = 1
+                    } else ins = 1
+                    next
+                }
+                print
+            }
+        ' "$WS_FILE" > "$WS_FILE.tmp" && mv "$WS_FILE.tmp" "$WS_FILE"
+    else
+        grep -vF "\"path\": \"$REL\"" "$WS_FILE" | sed 's/, *\]/ ]/' > "$WS_FILE.tmp" && mv "$WS_FILE.tmp" "$WS_FILE"
+    fi
+}
+
 if [ "$DELETE" = yes ]; then
     if [ ! -d "$WORKTREE_PATH" ]; then
         echo "[gwr] worktree not found: $WORKTREE_PATH" >&2
@@ -304,6 +349,7 @@ if [ "$DELETE" = yes ]; then
         echo "[gwr] worktree has uncommitted or untracked changes; discard them with: gwr -D -f $BRANCH_NAME" >&2
         exit 1
     fi
+    ws_sync no
     echo "${C_B}${C_C}[gwr] worktree removed: $WORKTREE_PATH${C_0}"
     exit 0
 fi
@@ -323,16 +369,14 @@ fi
 
 git worktree add --track -B "$BRANCH_NAME" "$WORKTREE_PATH" "origin/$1"
 
-# A child process cannot cd the caller's shell: VS Code gets the worktree
-# added to its window, everyone else gets the path printed. A missing or
-# failing code CLI must not fail the worktree itself.
-if [ "${TERM_PROGRAM:-}" = "vscode" ]; then
-    if command -v code >/dev/null 2>&1; then
-        code --add "$WORKTREE_PATH" || echo "${C_C}[gwr] error adding worktree to workspace${C_0}" >&2
-    else
-        echo "${C_C}[gwr] error adding worktree to workspace: code not found${C_0}" >&2
-    fi
+# A child process cannot cd the caller's shell: VS Code tracks the worktree
+# through the workspace file above, everyone else gets the path printed.
+if command -v code >/dev/null 2>&1; then
+    code --add "$WORKTREE_PATH" 2>/dev/null || true
+else
+    echo "${C_Y}[gwr] tip: install the 'code' CLI so worktrees are added to your VS Code window automatically${C_0}" >&2
 fi
+ws_sync yes
 echo "${C_B}${C_C}[gwr] worktree ready: $WORKTREE_PATH${C_0}"
 
 # Dependency update runs inside the new worktree (that is where the user

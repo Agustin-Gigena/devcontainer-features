@@ -93,7 +93,8 @@ check "pm_detect still exits 1 when a manager fails" env PATH="$FAKE_PATH" sh -c
 git -C "$TMP/repo" push -q origin HEAD:refs/heads/develop
 echo '{}' > "$TMP/repo/package.json"
 git -C "$TMP/repo" add package.json && git -C "$TMP/repo" commit -qm pkg
-check "gwr creates worktree despite missing code CLI" env TERM_PROGRAM=vscode PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo/.worktrees/develop' && grep -q 'error adding worktree to workspace: code not found' '$TMP/gwr.err' && grep -q 'worktree ready' '$TMP/gwr.out'"
+check "gwr creates worktree and workspace entry" env TERM_PROGRAM=vscode PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo/.worktrees/develop' && test -f '$TMP/repo/repo.code-workspace' && grep -q '\"path\": \".\"' '$TMP/repo/repo.code-workspace' && grep -qF '\"path\": \".worktrees/develop\"' '$TMP/repo/repo.code-workspace' && grep -q 'worktree ready' '$TMP/gwr.out' && grep -qi \"install the 'code' cli\" '$TMP/gwr.err'"
+jq -e '.folders | length == 2' "$TMP/repo/repo.code-workspace" >/dev/null 2>&1 && check "workspace file is valid json" true
 check "gwr runs pm_detect inside the worktree" sh -c "grep -q 'RAN-npm-$TMP/repo/.worktrees/develop' '$TMP/log' && ! grep -qE 'RAN-npm-$TMP/repo\$' '$TMP/log'"
 check "gwr worktree tracks the remote branch" sh -c "test \$(git -C '$TMP/repo/.worktrees/develop' rev-parse --abbrev-ref HEAD) = develop"
 check "gwr second run reports existing worktree" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr2.out' 2>&1 && grep -q 'already checked out' '$TMP/gwr2.out'"
@@ -101,7 +102,7 @@ check "gwr honors absolute worktreePath" env WORKTREEPATH="$TMP/wtabs" sh -c "gi
 check "gwr relative worktreePath bases on project root" env WORKTREEPATH=wt sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-y; cd '$TMP/repo/src' && gwr feature-y >/dev/null 2>&1 && test -d '$TMP/repo/wt/feature-y'"
 check "gwr honors absolute root option" env ROOT="$TMP/proot" sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-z; cd '$TMP/repo/src' && gwr feature-z >/dev/null 2>&1 && test -d '$TMP/proot/.worktrees/feature-z'"
 check "gwr relative root option bases on git root" env ROOT=sub WORKTREEPATH=wt sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-w; cd '$TMP/repo/src' && gwr feature-w >/dev/null 2>&1 && test -d '$TMP/repo/sub/wt/feature-w'"
-check "gwr -D removes the worktree" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr -D develop >/dev/null 2>&1 && test ! -e '$TMP/repo/.worktrees/develop'"
+check "gwr -D removes the worktree" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr -D develop >/dev/null 2>&1 && test ! -e '$TMP/repo/.worktrees/develop' && ! grep -qF '\"path\": \".worktrees/develop\"' '$TMP/repo/repo.code-workspace'"
 check "gwr -D keeps the local branch" sh -c "git -C '$TMP/repo' rev-parse --verify refs/heads/develop >/dev/null"
 check "gwr -D missing worktree fails cleanly" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && ! gwr -D develop >/dev/null 2>&1"
 check "gwr -D refuses dirty worktree" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr feature-y >/dev/null 2>&1; echo dirty > '$TMP/repo/wt/feature-y/dirty.txt'; ! gwr -D feature-y >/dev/null 2>&1 && test -d '$TMP/repo/wt/feature-y'"

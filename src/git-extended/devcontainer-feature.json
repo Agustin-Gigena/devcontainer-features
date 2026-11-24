@@ -1,7 +1,7 @@
 {
     "name": "Git Extended",
     "id": "git-extended",
-    "version": "1.6.0",
+    "version": "1.7.0",
     "description": "Git workflow extensions: gcr/gwr checkout and worktree commands, plus pm_detect which updates dependencies for every package manager found in the repository",
     "documentationURL": "https://github.com/Agustin-Gigena/devcontainer-features/tree/main/src/git-extended",
     "options": {
@@ -32,6 +32,7 @@
         }
     },
     "installsAfter": [
-        "ghcr.io/devcontainers/features/common-utils"
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers-extra/features/vscode-cli"
     ]
 }
