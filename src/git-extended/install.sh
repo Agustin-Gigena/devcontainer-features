@@ -253,18 +253,30 @@ if [ -z "${1:-}" ]; then
 fi
 
 BRANCH_NAME="${1}${2:+_${2}}"
-REPO_ROOT=$(git rev-parse --show-toplevel)
-# Worktrees live under the detected project root (never beside it: with
-# repos mounted at / that scheme hit '/repo-worktrees' permission errors).
+# Project root: option ROOT overrides git auto-detection (absolute, or
+# relative to the detected git root). Worktrees live under it, never beside
+# it: with repos mounted at / the old sibling scheme hit permission errors.
+REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || REPO_ROOT=
+BASE_ROOT="$REPO_ROOT"
+if [ -n "${ROOT:-}" ]; then
+    case "$ROOT" in
+        /*) BASE_ROOT="$ROOT" ;;
+        *) BASE_ROOT="${REPO_ROOT:-$PWD}/$ROOT" ;;
+    esac
+fi
+if [ -z "$BASE_ROOT" ]; then
+    echo "[gwr] not inside a git repository and no root option set" >&2
+    exit 1
+fi
 # Option worktreePath: absolute, or relative to the project root; empty
 # keeps the default .worktrees directory at the root.
 if [ -n "${WORKTREEPATH:-}" ]; then
     case "$WORKTREEPATH" in
         /*) WORKTREE_DIR="$WORKTREEPATH" ;;
-        *) WORKTREE_DIR="$REPO_ROOT/$WORKTREEPATH" ;;
+        *) WORKTREE_DIR="$BASE_ROOT/$WORKTREEPATH" ;;
     esac
 else
-    WORKTREE_DIR="$REPO_ROOT/.worktrees"
+    WORKTREE_DIR="$BASE_ROOT/.worktrees"
 fi
 WORKTREE_PATH="$WORKTREE_DIR/$BRANCH_NAME"
 mkdir -p "$WORKTREE_DIR"

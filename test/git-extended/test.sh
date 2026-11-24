@@ -96,6 +96,8 @@ check "gwr worktree tracks the remote branch" sh -c "test \$(git -C '$TMP/repo/.
 check "gwr second run reports existing worktree" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr2.out' 2>&1 && grep -q 'already checked out' '$TMP/gwr2.out'"
 check "gwr honors absolute worktreePath" env WORKTREEPATH="$TMP/wtabs" sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-x; cd '$TMP/repo/src' && gwr feature-x >/dev/null 2>&1 && test -d '$TMP/wtabs/feature-x'"
 check "gwr relative worktreePath bases on project root" env WORKTREEPATH=wt sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-y; cd '$TMP/repo/src' && gwr feature-y >/dev/null 2>&1 && test -d '$TMP/repo/wt/feature-y'"
+check "gwr honors absolute root option" env ROOT="$TMP/proot" sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-z; cd '$TMP/repo/src' && gwr feature-z >/dev/null 2>&1 && test -d '$TMP/proot/.worktrees/feature-z'"
+check "gwr relative root option bases on git root" env ROOT=sub WORKTREEPATH=wt sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-w; cd '$TMP/repo/src' && gwr feature-w >/dev/null 2>&1 && test -d '$TMP/repo/sub/wt/feature-w'"
 
 # Repo 5: nested JS project without a root package.json — the manager must
 # run inside the project directory, not at the repo root.
