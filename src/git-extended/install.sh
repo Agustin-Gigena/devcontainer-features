@@ -33,12 +33,12 @@ run_pm_check() {
     if [ -t 1 ] && [ -z "${NO_COLOR:-}" ] && [ "${TERM:-}" != dumb ]; then
         TTY=yes
         C_G=$(printf '\033[32m'); C_R=$(printf '\033[31m'); C_Y=$(printf '\033[33m')
-        C_C=$(printf '\033[36m'); C_D=$(printf '\033[2m'); C_0=$(printf '\033[0m')
+        C_C=$(printf '\033[36m'); C_D=$(printf '\033[2m'); C_B=$(printf '\033[1m'); C_0=$(printf '\033[0m')
         OUT_DIR=$(mktemp -d "${TMPDIR:-/tmp}/pm_detect.XXXXXX") || OUT_DIR=
         if [ -n "$OUT_DIR" ]; then trap 'rm -rf "$OUT_DIR"' EXIT; fi
-        printf '\n%s── pm_detect ─ %s%s%s\n' "$C_C" "$C_D" "$REPO_ROOT" "$C_0"
+        printf '\n%s%s── pm_detect ─ %s%s%s\n' "$C_B" "$C_C" "$C_D" "$REPO_ROOT" "$C_0"
     else
-        TTY=no; C_G=; C_R=; C_Y=; C_C=; C_D=; C_0=
+        TTY=no; C_G=; C_R=; C_Y=; C_C=; C_D=; C_B=; C_0=
     fi
 
     # Single scan pass; pruned dirs keep vendored/nested copies from
@@ -102,19 +102,23 @@ EOF
             (cd "$REPO_ROOT/$DIR" && eval "$CMD" < /dev/null) >"$OUT" 2>&1 &
             PID=$!; I=0
             while kill -0 "$PID" 2>/dev/null; do
-                case $((I % 4)) in 0) S='|' ;; 1) S='/' ;; 2) S='-' ;; 3) S='\' ;; esac
+                # npm-style braille dot spinner (cli-spinners "dots")
+                case $((I % 10)) in
+                    0) S='⠋' ;; 1) S='⠙' ;; 2) S='⠹' ;; 3) S='⠸' ;; 4) S='⠼' ;;
+                    5) S='⠴' ;; 6) S='⠦' ;; 7) S='⠧' ;; 8) S='⠇' ;; 9) S='⠏' ;;
+                esac
                 printf '\r%s%s %s %s(%s)%s  ' "$C_C" "$S" "$CMD" "$C_D" "$DIR" "$C_0"
-                I=$((I+1)); sleep 0.1 2>/dev/null || sleep 1
+                I=$((I+1)); sleep 0.08 2>/dev/null || sleep 1
             done
             RC=0; wait "$PID" || RC=$?
             DUR=$(( $(date +%s) - START ))
             printf '\033[2K\r'
             if [ "$RC" -eq 0 ]; then
                 OK=$((OK+1))
-                printf '%s✔%s %s %s(%s · %ss)%s\n' "$C_G" "$C_0" "$CMD" "$C_D" "$DIR" "$DUR" "$C_0"
+                printf '%s%s✔%s %s %s(%s · %ss)%s\n' "$C_B" "$C_G" "$C_0" "$CMD" "$C_D" "$DIR" "$DUR" "$C_0"
             else
                 BAD=$((BAD+1)); FAILED=1
-                printf '%s✘ failed: %s %s(%s)%s\n' "$C_R" "$CMD" "$C_D" "$DIR" "$C_0"
+                printf '%s%s✘ failed: %s %s(%s)%s\n' "$C_B" "$C_R" "$CMD" "$C_D" "$DIR" "$C_0"
                 printf '%s' "$C_D"
                 tail -n 5 "$OUT" | sed 's/^/    /'
                 printf '%s\n' "$C_0"
@@ -135,9 +139,9 @@ EOF
     TOT=$(( $(date +%s) - T0 ))
     if [ "$TTY" = yes ]; then
         if [ "$FAILED" -eq 1 ]; then
-            printf '%s✗ dependency update finished with errors%s %s(%s ok · %s failed · %ss)%s\n' "$C_R" "$C_0" "$C_D" "$OK" "$BAD" "$TOT" "$C_0"
+            printf '%s%s✗ dependency update finished with errors%s %s(%s ok · %s failed · %ss)%s\n' "$C_B" "$C_R" "$C_0" "$C_D" "$OK" "$BAD" "$TOT" "$C_0"
         else
-            printf '%s✔ dependency update completed%s %s(%s ok · %ss)%s\n' "$C_G" "$C_0" "$C_D" "$OK" "$TOT" "$C_0"
+            printf '%s%s✔ dependency update completed%s %s(%s ok · %ss)%s\n' "$C_B" "$C_G" "$C_0" "$C_D" "$OK" "$TOT" "$C_0"
         fi
     else
         if [ "$FAILED" -eq 1 ]; then
