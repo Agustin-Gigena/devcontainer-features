@@ -1,0 +1,11 @@
+{
+    "no_helper_commands": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "git-extended": {
+                "installGcrFunction": false,
+                "installGwrFunction": false
+            }
+        }
+    }
+}
