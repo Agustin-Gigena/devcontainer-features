@@ -22,9 +22,23 @@ cat > "$LIB_DIR/pm_detect.sh" << 'PM_DETECT_LIB_EOF'
 # Detects every package manager used by the current git repository and
 # updates its dependencies. Sourced by gcr, gwr and the pm_detect command.
 
+# Per-manager brand color for the dependency lines.
+mgr_color() {
+    case "$1" in
+        npm)      printf '\033[31m' ;;
+        pnpm)     printf '\033[93m' ;;
+        yarn)     printf '\033[34m' ;;
+        bun)      printf '\033[35m' ;;
+        dotnet)   printf '\033[94m' ;;
+        composer) printf '\033[33m' ;;
+        bundle)   printf '\033[91m' ;;
+        cargo)    printf '\033[92m' ;;
+    esac
+}
+
 run_pm_check() {
     REPO_ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
-        echo "[pm_detect] not inside a git repository, skipping" >&2
+        echo "dependencies: not inside a git repository, skipping" >&2
         return 0
     }
 
@@ -36,7 +50,7 @@ run_pm_check() {
         C_C=$(printf '\033[36m'); C_D=$(printf '\033[2m'); C_B=$(printf '\033[1m'); C_0=$(printf '\033[0m')
         OUT_DIR=$(mktemp -d "${TMPDIR:-/tmp}/pm_detect.XXXXXX") || OUT_DIR=
         if [ -n "$OUT_DIR" ]; then trap 'rm -rf "$OUT_DIR"' EXIT; fi
-        printf '\n%s%s── pm_detect ─ %s%s%s\n' "$C_B" "$C_C" "$C_D" "$REPO_ROOT" "$C_0"
+        printf '\n%s%s── dependencies ─ %s%s%s\n' "$C_B" "$C_C" "$C_D" "$REPO_ROOT" "$C_0"
     else
         TTY=no; C_G=; C_R=; C_Y=; C_C=; C_D=; C_B=; C_0=
     fi
@@ -80,7 +94,7 @@ $FOUND
 EOF
 
     if [ -z "$QUEUE" ]; then
-        echo "${C_D}pm_detect: no known package manager files found${C_0}"
+        echo "${C_D}no known package manager files found${C_0}"
         return 0
     fi
 
@@ -90,8 +104,10 @@ EOF
         DIR=${ENTRY%%|*}
         CMD=${ENTRY#*|}
         MGR=${CMD%% *}
+        MC=
+        if [ "$TTY" = yes ]; then MC=$(mgr_color "$MGR"); fi
         if ! command -v "$MGR" >/dev/null 2>&1; then
-            echo "${C_Y}[pm_detect][WARN] $MGR not installed, skipping: $CMD${C_0}" >&2
+            echo "${C_Y}WARN: $MGR not installed, skipping: $CMD${C_0}" >&2
             continue
         fi
         if [ "$TTY" = yes ] && [ -n "$OUT_DIR" ]; then
@@ -107,7 +123,7 @@ EOF
                     0) S='⠋' ;; 1) S='⠙' ;; 2) S='⠹' ;; 3) S='⠸' ;; 4) S='⠼' ;;
                     5) S='⠴' ;; 6) S='⠦' ;; 7) S='⠧' ;; 8) S='⠇' ;; 9) S='⠏' ;;
                 esac
-                printf '\r%s%s %s %s(%s)%s  ' "$C_C" "$S" "$CMD" "$C_D" "$DIR" "$C_0"
+                printf '\r%s%s %s%s%s %s(%s)%s  ' "$C_C" "$S" "$MC" "$CMD" "$C_0" "$C_D" "$DIR" "$C_0"
                 I=$((I+1)); sleep 0.08 2>/dev/null || sleep 1
             done
             RC=0; wait "$PID" || RC=$?
@@ -115,21 +131,21 @@ EOF
             printf '\033[2K\r'
             if [ "$RC" -eq 0 ]; then
                 OK=$((OK+1))
-                printf '%s%s✔%s %s %s(%s · %ss)%s\n' "$C_B" "$C_G" "$C_0" "$CMD" "$C_D" "$DIR" "$DUR" "$C_0"
+                printf '%s%s✔%s %s%s%s %s(%s · %ss)%s\n' "$C_B" "$C_G" "$C_0" "$MC" "$CMD" "$C_0" "$C_D" "$DIR" "$DUR" "$C_0"
             else
                 BAD=$((BAD+1)); FAILED=1
-                printf '%s%s✘ failed: %s %s(%s)%s\n' "$C_B" "$C_R" "$CMD" "$C_D" "$DIR" "$C_0"
+                printf '%s%s✘ failed: %s%s%s %s(%s)%s\n' "$C_B" "$C_R" "$MC" "$CMD" "$C_0" "$C_D" "$DIR" "$C_0"
                 printf '%s' "$C_D"
                 tail -n 5 "$OUT" | sed 's/^/    /'
                 printf '%s\n' "$C_0"
             fi
         else
-            echo "[pm_detect] ($DIR) $CMD"
+            echo "$CMD ($DIR)"
             if (cd "$REPO_ROOT/$DIR" && eval "$CMD" < /dev/null); then
                 OK=$((OK+1))
             else
                 BAD=$((BAD+1)); FAILED=1
-                echo "[pm_detect][ERROR] failed: $CMD ($DIR)" >&2
+                echo "ERROR: failed: $CMD ($DIR)" >&2
             fi
         fi
     done <<EOF
@@ -145,9 +161,9 @@ EOF
         fi
     else
         if [ "$FAILED" -eq 1 ]; then
-            echo "[pm_detect] dependency update finished with errors" >&2
+            echo "dependency update finished with errors" >&2
         else
-            echo "[pm_detect] dependency update completed"
+            echo "dependency update completed"
         fi
     fi
     return "$FAILED"
@@ -169,9 +185,9 @@ cat > "$BIN_DIR/gcr" << 'GCR_EOF'
 # Usage: gcr <remote-base-branch> [new-branch-suffix]
 set -e
 if [ -t 1 ] && [ -z "${NO_COLOR:-}" ] && [ "${TERM:-}" != dumb ]; then
-    C_Y=$(printf '\033[33m'); C_0=$(printf '\033[0m')
+    C_C=$(printf '\033[36m'); C_0=$(printf '\033[0m')
 else
-    C_Y=; C_0=
+    C_C=; C_0=
 fi
 
 if [ -z "${1:-}" ]; then
@@ -186,8 +202,8 @@ git fetch --tags --prune-tags origin
 # commits the remote does not have (recoverable via reflog).
 UNPUBLISHED=$(git rev-list --count "origin/$1..$BRANCH_NAME" 2>/dev/null || true)
 if [ -n "$UNPUBLISHED" ] && [ "$UNPUBLISHED" -gt 0 ]; then
-    echo "${C_Y}[gcr] WARNING: '$BRANCH_NAME' has $UNPUBLISHED commit(s) not on origin/$1${C_0}" >&2
-    echo "${C_Y}[gcr] resetting discards them from the branch; recover with: git reflog${C_0}" >&2
+    echo "${C_C}[gcr] WARNING: '$BRANCH_NAME' has $UNPUBLISHED commit(s) not on origin/$1${C_0}" >&2
+    echo "${C_C}[gcr] resetting discards them from the branch; recover with: git reflog${C_0}" >&2
 fi
 git checkout -t "origin/$1" -B "$BRANCH_NAME"
 
@@ -210,9 +226,9 @@ cat > "$BIN_DIR/gwr" << 'GWR_EOF'
 # Usage: gwr <remote-base-branch> [worktree-suffix]
 set -e
 if [ -t 1 ] && [ -z "${NO_COLOR:-}" ] && [ "${TERM:-}" != dumb ]; then
-    C_Y=$(printf '\033[33m'); C_G=$(printf '\033[32m'); C_D=$(printf '\033[2m'); C_0=$(printf '\033[0m')
+    C_C=$(printf '\033[36m'); C_B=$(printf '\033[1m'); C_0=$(printf '\033[0m')
 else
-    C_Y=; C_G=; C_D=; C_0=
+    C_C=; C_B=; C_0=
 fi
 
 if [ -z "${1:-}" ]; then
@@ -234,7 +250,7 @@ USED_BY=$(git worktree list --porcelain | awk -v b="refs/heads/$BRANCH_NAME" '
     /^worktree /{p=substr($0,10)}
     $1 == "branch" && $2 == b {print p; exit}')
 if [ -n "$USED_BY" ]; then
-    echo "${C_D}[gwr] branch '$BRANCH_NAME' already checked out at: $USED_BY${C_0}"
+    echo "${C_C}[gwr] branch '$BRANCH_NAME' already checked out at: $USED_BY${C_0}"
     exit 0
 fi
 
@@ -245,12 +261,12 @@ git worktree add --track -B "$BRANCH_NAME" "$WORKTREE_PATH" "origin/$1"
 # failing code CLI must not fail the worktree itself.
 if [ "${TERM_PROGRAM:-}" = "vscode" ]; then
     if command -v code >/dev/null 2>&1; then
-        code --add "$WORKTREE_PATH" || echo "${C_Y}[gwr] error adding worktree to workspace${C_0}" >&2
+        code --add "$WORKTREE_PATH" || echo "${C_C}[gwr] error adding worktree to workspace${C_0}" >&2
     else
-        echo "${C_Y}[gwr] error adding worktree to workspace: code not found${C_0}" >&2
+        echo "${C_C}[gwr] error adding worktree to workspace: code not found${C_0}" >&2
     fi
 fi
-echo "${C_G}[gwr] worktree ready: $WORKTREE_PATH${C_0}"
+echo "${C_B}${C_C}[gwr] worktree ready: $WORKTREE_PATH${C_0}"
 
 # Dependency update is secondary to the worktree: report failures without
 # failing the git operation.
