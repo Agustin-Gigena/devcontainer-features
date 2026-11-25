@@ -10,7 +10,7 @@ check "gcr command in non-login shell" sh -c 'command -v gcr'
 check "gwr command in non-login shell" sh -c 'command -v gwr'
 check "pm_detect command in non-login shell" sh -c 'command -v pm_detect'
 check "shared library installed" test -f /usr/local/share/git-extended/pm_detect.sh
-check "no profile.d hook left" test ! -e /etc/profile.d/git-extended.sh
+check "profile.d wrapper installed" test -f /etc/profile.d/git-extended.sh
 check "old functions dir removed" test ! -e /usr/local/git-extended
 check "gcr without args fails" sh -c '! gcr 2>/dev/null'
 check "gwr without args fails" sh -c '! gwr 2>/dev/null'
