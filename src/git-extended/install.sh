@@ -197,8 +197,8 @@ chmod 755 "$BIN_DIR/pm_detect"
 if [ "$INSTALL_GCR" = "true" ]; then
 cat > "$BIN_DIR/gcr" << 'GCR_EOF'
 #!/bin/sh
-# gcr - checkout a remote base branch into a local branch.
-# Usage: gcr <remote-base-branch> [new-branch-suffix]
+# gcr - move to a branch; create it from origin when it does not exist.
+# Usage: gcr <branch> [suffix]
 set -e
 if [ -t 1 ] && [ -z "${NO_COLOR:-}" ] && [ "${TERM:-}" != dumb ]; then
     C_C=$(printf '\033[36m'); C_0=$(printf '\033[0m')
@@ -207,21 +207,27 @@ else
 fi
 
 if [ -z "${1:-}" ]; then
-    echo "Usage: gcr <remote-base-branch> [new-branch-suffix]" >&2
+    echo "Usage: gcr <branch> [suffix]" >&2
     exit 1
 fi
 
 BRANCH_NAME="${1}${2:+_${2}}"
-git fetch --tags --prune-tags origin
 
-# -B forcibly moves an existing local branch; warn when that discards
-# commits the remote does not have (recoverable via reflog).
-UNPUBLISHED=$(git rev-list --count "origin/$1..$BRANCH_NAME" 2>/dev/null || true)
-if [ -n "$UNPUBLISHED" ] && [ "$UNPUBLISHED" -gt 0 ]; then
-    echo "${C_C}[gcr] WARNING: '$BRANCH_NAME' has $UNPUBLISHED commit(s) not on origin/$1${C_0}" >&2
-    echo "${C_C}[gcr] resetting discards them from the branch; recover with: git reflog${C_0}" >&2
+if git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
+    # The branch already exists locally: move to it without touching origin.
+    USED_BY=$(git worktree list --porcelain | awk -v b="refs/heads/$BRANCH_NAME" '
+        /^worktree /{p=substr($0,10)}
+        $1 == "branch" && $2 == b {print p; exit}')
+    if [ -n "$USED_BY" ] && [ "$USED_BY" != "$(pwd)" ]; then
+        echo "[gcr] branch '$BRANCH_NAME' is checked out at: $USED_BY" >&2
+        echo "[gcr] cd to that directory to work on it" >&2
+        exit 1
+    fi
+    git checkout "$BRANCH_NAME"
+else
+    git fetch --tags --prune-tags origin
+    git checkout -t "origin/$1" -B "$BRANCH_NAME"
 fi
-git checkout -t "origin/$1" -B "$BRANCH_NAME"
 
 # Dependency update is secondary to the checkout: report failures without
 # failing the git operation.
@@ -234,6 +240,35 @@ else
 # previous build where this option was true.
 rm -f "$BIN_DIR/gcr"
 fi
+
+# Bash completion: branch names for gcr/gwr (local branches for gwr -D).
+mkdir -p /etc/bash_completion.d
+cat > /etc/bash_completion.d/git-extended << 'COMPLETION_EOF'
+# bash completion for gcr/gwr (Git Extended)
+_git_ext_branches() {
+    {
+        git for-each-ref --format='%(refname:short)' refs/heads
+        git for-each-ref --format='%(refname:short)' refs/remotes/origin \
+            | sed -e 's|^origin/||' -e '/^HEAD$/d'
+    } | sort -u
+}
+_gcr_completion() {
+    local cur
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=($(compgen -W "$(_git_ext_branches)" -- "$cur"))
+}
+_gwr_completion() {
+    local cur
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    if [ "$COMP_CWORD" -eq 2 ] && [ "${COMP_WORDS[1]}" = "-D" ]; then
+        COMPREPLY=($(compgen -W "$(git branch --format='%(refname:short)' 2>/dev/null)" -- "$cur"))
+        return
+    fi
+    COMPREPLY=($(compgen -W "$(_git_ext_branches) -D -f" -- "$cur"))
+}
+complete -F _gcr_completion gcr
+complete -F _gwr_completion gwr
+COMPLETION_EOF
 
 if [ "$INSTALL_GWR" = "true" ]; then
 cat > "$BIN_DIR/gwr" << 'GWR_EOF'
