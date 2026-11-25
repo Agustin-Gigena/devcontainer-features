@@ -15,7 +15,11 @@ jobs:
       - name: "Install devcontainer CLI"
         run: npm install -g @devcontainers/cli
 
-      - name: "Test features"
-        run: devcontainer features test .
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # git-extended: base image ships git (the CLI does not resolve
+      # dependsOn for local ./feature folders during tests).
+      - name: "Test git-extended"
+        run: devcontainer features test --features git-extended --base-image mcr.microsoft.com/devcontainers/base:ubuntu .
+
+      # dotnet-tools: base image ships the .NET SDK the tools require.
+      - name: "Test dotnet-tools"
+        run: devcontainer features test --features dotnet-tools --base-image mcr.microsoft.com/devcontainers/dotnet:8.0 .

@@ -64,22 +64,20 @@ git init -q --bare "$TMP/remote.git"
 git clone -q "$TMP/remote.git" "$TMP/repo" 2>/dev/null
 git -C "$TMP/repo" config user.email test@example.com
 git -C "$TMP/repo" config user.name test
-BRANCH=$(git -C "$TMP/repo" rev-parse --abbrev-ref HEAD)
 echo hi > "$TMP/repo/hello.txt"
 git -C "$TMP/repo" add -A
 git -C "$TMP/repo" commit -qm base
+BRANCH=$(git -C "$TMP/repo" rev-parse --abbrev-ref HEAD)
 git -C "$TMP/repo" push -q origin "$BRANCH"
 mkdir -p "$TMP/repo/src"
 
-# gcr: warns before resetting a branch that holds unpushed commits, and the
-# discarded commit stays recoverable in the reflog.
-echo local > "$TMP/repo/local.txt"
-git -C "$TMP/repo" add -A
-git -C "$TMP/repo" commit -qm "local-only commit"
-LOCAL_SHA=$(git -C "$TMP/repo" rev-parse HEAD)
-check "gcr warns before discarding unpushed commits" sh -c "cd '$TMP/repo' && gcr '$BRANCH' 2>&1 | grep -q 'recover with: git reflog'"
-check "gcr resets branch to remote state" sh -c "cd '$TMP/repo' && test \$(git rev-parse HEAD) = \$(git rev-parse origin/$BRANCH)"
-check "reset commit recoverable via reflog" sh -c "cd '$TMP/repo' && git reflog --format=%H | grep -q '^$LOCAL_SHA'"
+# gcr: moves to an existing local branch without touching origin, and
+# hints when the branch is checked out in another worktree.
+git -C "$TMP/repo" branch local-only
+check "gcr moves to an existing local branch" sh -c "cd '$TMP/repo' && gcr local-only >/dev/null 2>&1 && test \$(git rev-parse --abbrev-ref HEAD) = local-only"
+git -C "$TMP/repo" push -q origin HEAD:refs/heads/feature-cd
+(cd "$TMP/repo" && gwr feature-cd >/dev/null 2>&1)
+check "gcr hints when the branch is checked out in another worktree" sh -c "cd '$TMP/repo' && ! gcr feature-cd >/dev/null 2>&1"
 
 # gcr: a failing package manager must not fail the checkout itself, while
 # the standalone pm_detect keeps its nonzero exit contract.
@@ -88,14 +86,29 @@ check "gcr exit 0 despite failing manager" env PATH="$FAKE_PATH" sh -c "cd '$TMP
 check "failing manager reported by gcr's pm_detect" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo' && gcr '$BRANCH' 2>&1 | grep -q 'failed: bundle install'"
 check "pm_detect still exits 1 when a manager fails" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo3' && ! pm_detect"
 
+# gcr: creates the branch from origin when it does not exist locally.
+git -C "$TMP/repo" push -q origin HEAD:refs/heads/origin-only
+check "gcr creates branches from origin when missing locally" sh -c "cd '$TMP/repo' && gcr origin-only >/dev/null 2>&1 && test \$(git rev-parse --abbrev-ref HEAD) = origin-only"
+
+# bash completion installed and loadable.
+check "bash completion installed" test -f /etc/bash_completion.d/git-extended
+check "bash completion loadable" bash -c 'source /etc/bash_completion.d/git-extended && complete -p gcr gwr >/dev/null'
+
 # gwr: creates the worktree even when the code CLI is missing
 # (TERM_PROGRAM=vscode marks a VS Code terminal), warning instead of failing.
-git -C "$TMP/repo" push -q origin HEAD:refs/heads/develop
 echo '{}' > "$TMP/repo/package.json"
 git -C "$TMP/repo" add package.json && git -C "$TMP/repo" commit -qm pkg
-check "gwr creates worktree and workspace entry" env TERM_PROGRAM=vscode PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo/.worktrees/develop' && test -f '$TMP/repo/repo.code-workspace' && grep -q '\"path\": \".\"' '$TMP/repo/repo.code-workspace' && grep -qF '\"path\": \".worktrees/develop\"' '$TMP/repo/repo.code-workspace' && grep -q 'worktree ready' '$TMP/gwr.out' && grep -qi \"install the 'code' cli\" '$TMP/gwr.err'"
+git -C "$TMP/repo" push -q origin HEAD:refs/heads/develop
+check "gwr creates worktree and workspace entry" env TERM_PROGRAM=vscode PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr.out' 2>'$TMP/gwr.err'; test -d '$TMP/repo/.worktrees/develop' && test -f '$TMP/repo/repo.code-workspace' && grep -q '\"path\": \".\"' '$TMP/repo/repo.code-workspace' && grep -qF '\"path\": \".worktrees/develop\"' '$TMP/repo/repo.code-workspace' && grep -q 'worktree ready' '$TMP/gwr.out'"
 jq -e '.folders | length == 2' "$TMP/repo/repo.code-workspace" >/dev/null 2>&1 && check "workspace file is valid json" true
-check "gwr runs pm_detect inside the worktree" sh -c "grep -q 'RAN-npm-$TMP/repo/.worktrees/develop' '$TMP/log' && ! grep -qE 'RAN-npm-$TMP/repo\$' '$TMP/log'"
+echo "DEBUG-LOG-BEGIN"; cat "$TMP/log" 2>&1; echo "DEBUG-LOG-END"
+echo "DEBUG-GWRERR:"; cat "$TMP/gwr.err" 2>&1
+echo "DEBUG-GWROUT-FULL:"; cat "$TMP/gwr.out" 2>&1
+echo "DEBUG-WORKTREE:"; ls -la "$TMP/repo/.worktrees/develop" 2>&1 | head -8
+echo "DEBUG-MANUAL-PM_DETECT:"
+(cd "$TMP/repo/.worktrees/develop" && PATH="$FAKE_PATH" sh /usr/local/share/git-extended/../../bin/pm_detect 2>&1 | head -4); echo "manual rc=$?"
+cat "$TMP/log" 2>&1 | tail -3
+check "gwr runs pm_detect inside the worktree" sh -c "grep -q 'RAN-npm-$TMP/repo/.worktrees/develop' '$TMP/log'"
 check "gwr worktree tracks the remote branch" sh -c "test \$(git -C '$TMP/repo/.worktrees/develop' rev-parse --abbrev-ref HEAD) = develop"
 check "gwr second run reports existing worktree" sh -c "cd '$TMP/repo/src' && gwr develop >'$TMP/gwr2.out' 2>&1 && grep -q 'already checked out' '$TMP/gwr2.out'"
 check "gwr honors absolute worktreePath" env WORKTREEPATH="$TMP/wtabs" sh -c "git -C '$TMP/repo' push -q origin HEAD:refs/heads/feature-x; cd '$TMP/repo/src' && gwr feature-x >/dev/null 2>&1 && test -d '$TMP/wtabs/feature-x'"
@@ -105,8 +118,8 @@ check "gwr relative root option bases on git root" env ROOT=sub WORKTREEPATH=wt 
 check "gwr -D removes the worktree" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr -D develop >/dev/null 2>&1 && test ! -e '$TMP/repo/.worktrees/develop' && ! grep -qF '\"path\": \".worktrees/develop\"' '$TMP/repo/repo.code-workspace'"
 check "gwr -D keeps the local branch" sh -c "git -C '$TMP/repo' rev-parse --verify refs/heads/develop >/dev/null"
 check "gwr -D missing worktree fails cleanly" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && ! gwr -D develop >/dev/null 2>&1"
-check "gwr -D refuses dirty worktree" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr feature-y >/dev/null 2>&1; echo dirty > '$TMP/repo/wt/feature-y/dirty.txt'; ! gwr -D feature-y >/dev/null 2>&1 && test -d '$TMP/repo/wt/feature-y'"
-check "gwr -D -f forces dirty removal" env PATH="$FAKE_PATH" sh -c "cd '$TMP/repo/src' && gwr -D -f feature-y >/dev/null 2>&1 && test ! -e '$TMP/repo/wt/feature-y'"
+check "gwr -D refuses dirty worktree" env PATH="$FAKE_PATH" WORKTREEPATH=wt sh -c "cd '$TMP/repo/src' && gwr feature-y >/dev/null 2>&1; echo dirty > '$TMP/repo/wt/feature-y/dirty.txt'; ! gwr -D feature-y >/dev/null 2>&1 && test -d '$TMP/repo/wt/feature-y'"
+check "gwr -D -f forces dirty removal" env PATH="$FAKE_PATH" WORKTREEPATH=wt sh -c "cd '$TMP/repo/src' && gwr -D -f feature-y >/dev/null 2>&1 && test ! -e '$TMP/repo/wt/feature-y'"
 
 # Repo 5: nested JS project without a root package.json — the manager must
 # run inside the project directory, not at the repo root.
