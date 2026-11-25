@@ -219,12 +219,6 @@ if git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
         /^worktree /{p=substr($0,10)}
         $1 == "branch" && $2 == b {print p; exit}')
     if [ -n "$USED_BY" ] && [ "$USED_BY" != "$(pwd)" ]; then
-        # Shell wrapper (GCR_SHELL_CD=1) hands the path over so the user's
-        # shell can cd to the worktree; plain runs get a hint instead.
-        if [ -n "${GCR_SHELL_CD:-}" ] && [ -n "${GCR_CD_FILE:-}" ]; then
-            printf '%s\n' "$USED_BY" > "$GCR_CD_FILE"
-            exit 0
-        fi
         echo "[gcr] branch '$BRANCH_NAME' is checked out at: $USED_BY" >&2
         echo "[gcr] cd to that directory to work on it" >&2
         exit 1
@@ -453,22 +447,7 @@ fi
 # Shell wrappers: gcr/gwr as functions that cd the user's shell to the
 # target worktree when the binaries hand the path over (G*_SHELL_CD=1).
 cat > "$LIB_DIR/shell-init" << 'SHELL_INIT_EOF'
-# Git Extended shell wrappers (bash/zsh): cd to worktrees on gcr/gwr.
-gcr() {
-    local _rc=0 _f="${TMPDIR:-/tmp}/gcr-cd-$$"
-    if command -v gcr >/dev/null 2>&1; then
-        GCR_SHELL_CD=1 GCR_CD_FILE="$_f" command gcr "$@"
-        _rc=$?
-        if [ -s "$_f" ]; then
-            cd "$(cat "$_f")" && _rc=0
-        fi
-        rm -f "$_f"
-    else
-        echo "gcr: command not found" >&2
-        _rc=127
-    fi
-    return $_rc
-}
+# Git Extended shell wrapper (bash/zsh): gwr cds the shell to worktrees.
 gwr() {
     local _rc=0 _f="${TMPDIR:-/tmp}/gwr-cd-$$"
     if command -v gwr >/dev/null 2>&1; then
