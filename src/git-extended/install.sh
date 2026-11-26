@@ -28,8 +28,8 @@ mgr_color() {
         npm)      printf '\033[31m' ;;
         pnpm)     printf '\033[93m' ;;
         yarn)     printf '\033[34m' ;;
-        bun)      printf '\033[35m' ;;
-        dotnet)   printf '\033[94m' ;;
+        bun)      printf '\033[96m' ;;
+        dotnet)   printf '\033[35m' ;;
         composer) printf '\033[33m' ;;
         bundle)   printf '\033[91m' ;;
         cargo)    printf '\033[92m' ;;
@@ -213,20 +213,25 @@ fi
 
 BRANCH_NAME="${1}${2:+_${2}}"
 
-if git show-ref --verify --quiet "refs/heads/$BRANCH_NAME"; then
-    # The branch already exists locally: move to it without touching origin.
-    USED_BY=$(git worktree list --porcelain | awk -v b="refs/heads/$BRANCH_NAME" '
-        /^worktree /{p=substr($0,10)}
-        $1 == "branch" && $2 == b {print p; exit}')
-    if [ -n "$USED_BY" ] && [ "$USED_BY" != "$(pwd)" ]; then
-        echo "[gcr] branch '$BRANCH_NAME' is checked out at: $USED_BY" >&2
-        echo "[gcr] cd to that directory to work on it" >&2
-        exit 1
-    fi
-    git checkout "$BRANCH_NAME"
-else
-    git fetch --tags --prune-tags origin
+# Refuse when the branch is checked out in another worktree (git would
+# fail with a raw fatal anyway).
+USED_BY=$(git worktree list --porcelain | awk -v b="refs/heads/$BRANCH_NAME" '
+    /^worktree /{p=substr($0,10)}
+    $1 == "branch" && $2 == b {print p; exit}')
+if [ -n "$USED_BY" ] && [ "$USED_BY" != "$(pwd)" ]; then
+    echo "[gcr] branch '$BRANCH_NAME' is checked out at: $USED_BY" >&2
+    echo "[gcr] cd to that directory to work on it" >&2
+    exit 1
+fi
+
+# Fetch + resolve: if the branch exists on origin, reset the local one to
+# the remote state (-B: git refuses when uncommitted changes would be
+# lost); if it only exists locally, just move to it.
+git fetch --tags --prune-tags origin
+if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH_NAME"; then
     git checkout -t "origin/$1" -B "$BRANCH_NAME"
+else
+    git checkout "$BRANCH_NAME"
 fi
 
 # Dependency update is secondary to the checkout: report failures without
