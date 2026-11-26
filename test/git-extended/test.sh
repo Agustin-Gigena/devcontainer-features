@@ -86,7 +86,7 @@ echo advanced > "$TMP/repo/hello.txt"
 git -C "$TMP/repo" commit -aqm "remote advance"
 git -C "$TMP/repo" push -q origin "$BRANCH"
 git -C "$TMP/repo" reset -q --hard origin/"$BRANCH"~1
-(cd "$TMP/repo" && gcr "$BRANCH" > /dev/null 2>&1)
+(cd "$TMP/repo" && gcr "$BRANCH" > "$TMP/gcr-update.log" 2>&1); echo "DBG-UPD: rc=$? HEAD=$(git -C "$TMP/repo" rev-parse HEAD 2>&1) origin=$(git -C "$TMP/repo" rev-parse origin/master 2>&1)"; echo "DBG-GCR-LOG:"; cat "$TMP/gcr-update.log" 2>&1
 check "gcr updates an outdated local branch to the remote state" sh -c "test \$(git -C '$TMP/repo' rev-parse HEAD) = \$(git -C '$TMP/repo' rev-parse origin/$BRANCH)"
 git -C "$TMP/repo" reset -q --hard origin/"$BRANCH"~1
 BASE_SHA=$(git -C "$TMP/repo" rev-parse HEAD)
