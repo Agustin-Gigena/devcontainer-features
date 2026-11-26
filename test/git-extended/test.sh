@@ -75,9 +75,24 @@ mkdir -p "$TMP/repo/src"
 # hints when the branch is checked out in another worktree.
 git -C "$TMP/repo" branch local-only
 check "gcr moves to an existing local branch" sh -c "cd '$TMP/repo' && gcr local-only >/dev/null 2>&1 && test \$(git rev-parse --abbrev-ref HEAD) = local-only"
+git -C "$TMP/repo" checkout -q master
 git -C "$TMP/repo" push -q origin HEAD:refs/heads/feature-cd
 (cd "$TMP/repo" && gwr feature-cd >/dev/null 2>&1)
 check "gcr hints when the branch is checked out in another worktree" sh -c "cd '$TMP/repo' && ! gcr feature-cd >/dev/null 2>&1"
+
+# gcr: resets an outdated local branch to its remote state (fetch + -B),
+# but git itself refuses when uncommitted changes would be lost.
+echo advanced > "$TMP/repo/hello.txt"
+git -C "$TMP/repo" commit -aqm "remote advance"
+git -C "$TMP/repo" push -q origin "$BRANCH"
+git -C "$TMP/repo" reset -q --hard origin/"$BRANCH"~1
+(cd "$TMP/repo" && gcr "$BRANCH" > /dev/null 2>&1)
+check "gcr updates an outdated local branch to the remote state" sh -c "test \$(git -C '$TMP/repo' rev-parse HEAD) = \$(git -C '$TMP/repo' rev-parse origin/$BRANCH)"
+git -C "$TMP/repo" reset -q --hard origin/"$BRANCH"~1
+BASE_SHA=$(git -C "$TMP/repo" rev-parse HEAD)
+echo dirty > "$TMP/repo/hello.txt"
+check "gcr refuses when uncommitted changes would be lost" sh -c "cd '$TMP/repo' && ! gcr '$BRANCH' >/dev/null 2>&1 && test \$(git rev-parse HEAD) = $BASE_SHA"
+git -C "$TMP/repo" reset -q --hard origin/"$BRANCH"
 
 # gcr: a failing package manager must not fail the checkout itself, while
 # the standalone pm_detect keeps its nonzero exit contract.
