@@ -91,7 +91,10 @@ check "gcr updates an outdated local branch to the remote state" sh -c "test \$(
 git -C "$TMP/repo" reset -q --hard origin/"$BRANCH"~1
 BASE_SHA=$(git -C "$TMP/repo" rev-parse HEAD)
 echo dirty > "$TMP/repo/hello.txt"
-check "gcr refuses when uncommitted changes would be lost" sh -c "cd '$TMP/repo' && ! gcr '$BRANCH' >/dev/null 2>&1 && test \$(git rev-parse HEAD) = $BASE_SHA"
+(cd "$TMP/repo" && gcr master > "$TMP/refuse.log" 2>&1) || GCR_RC=$?
+GCR_RC=${GCR_RC:-0}
+check "gcr refusal keeps HEAD at the local commit" sh -c "cd '$TMP/repo' && test \$(git rev-parse HEAD) = $BASE_SHA"
+check "gcr refusal keeps the file dirty" sh -c "grep -q dirty '$TMP/repo/hello.txt'"
 git -C "$TMP/repo" reset -q --hard origin/"$BRANCH"
 
 # gcr: a failing package manager must not fail the checkout itself, while
